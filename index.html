@@ -7,11 +7,9 @@
   <meta name="description" content="Stackemy — One Core. Limitless Possibilities.">
   <style>
     :root {
-      --bg: #04060d;
-      --bg-soft: #0b1020;
       --panel: rgba(10, 14, 28, 0.82);
-      --panel-strong: rgba(7, 10, 20, 0.92);
       --border: rgba(91, 118, 255, 0.28);
+      --divider: rgba(255, 255, 255, 0.10);
       --text: #f5f7ff;
       --muted: #a9b3ce;
       --blue: #3b82ff;
@@ -42,6 +40,52 @@
 
     a {
       color: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(3, 5, 13, 0.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-shell {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 84px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .header-divider {
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        rgba(59,130,255,0.10),
+        rgba(255,255,255,0.18),
+        rgba(211,45,255,0.10)
+      );
+    }
+
+    .brand {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      text-decoration: none;
+    }
+
+    .brand .stack {
+      color: #f4f5f7;
+    }
+
+    .brand .emy {
+      background: linear-gradient(90deg, var(--blue), var(--magenta), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .button {
@@ -75,18 +119,17 @@
 
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: calc(100vh - 85px);
       background:
         linear-gradient(
           180deg,
-          rgba(3,5,13,0.15) 0%,
-          rgba(3,5,13,0.18) 40%,
-          rgba(3,5,13,0.72) 100%
+          rgba(3,5,13,0.08) 0%,
+          rgba(3,5,13,0.14) 45%,
+          rgba(3,5,13,0.62) 100%
         ),
         url("stackemy-hero.png") center center / cover no-repeat;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      align-items: flex-end;
       overflow: hidden;
     }
 
@@ -94,94 +137,46 @@
       content: "";
       position: absolute;
       inset: auto 0 0 0;
-      height: 160px;
+      height: 180px;
       background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,1) 100%);
       pointer-events: none;
     }
 
-    .topbar {
+    .hero-shell {
       position: relative;
       z-index: 2;
       width: min(1200px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 24px 0 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .brand {
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      text-decoration: none;
-    }
-
-    .brand .stack {
-      color: #f4f5f7;
-    }
-
-    .brand .emy {
-      background: linear-gradient(90deg, var(--blue), var(--magenta), var(--cyan));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: min(1200px, calc(100% - 32px));
-      margin: 0 auto;
-      min-height: calc(100vh - 100px);
-      display: flex;
-      align-items: flex-end;
-      padding: 0 0 48px;
+      padding: 0 0 44px;
     }
 
     .hero-panel {
-      max-width: 640px;
-      background: rgba(7, 10, 20, 0.56);
+      max-width: 520px;
+      background: rgba(7, 10, 20, 0.50);
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 24px;
-      padding: 24px;
+      padding: 22px;
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
-    }
-
-    .eyebrow {
-      margin: 0 0 10px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.20em;
-      color: var(--cyan);
-    }
-
-    .hero-panel h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
     }
 
     .hero-panel p {
       margin: 0;
       color: #d6def7;
       line-height: 1.75;
-      font-size: 1.02rem;
+      font-size: 1rem;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 22px;
+      margin-top: 18px;
     }
 
     .scroll-cue {
       display: inline-block;
-      margin-top: 18px;
+      margin-top: 16px;
       font-size: 0.9rem;
       color: #c7d3ff;
       text-decoration: none;
@@ -193,8 +188,44 @@
       margin: 0 auto;
     }
 
+    .tagline-section {
+      padding: 36px 0 20px;
+    }
+
+    .tagline-card {
+      text-align: center;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      color: var(--cyan);
+    }
+
+    .tagline-card h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .tagline-card p {
+      margin: 0 auto;
+      max-width: 860px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.05rem;
+    }
+
     .intro {
-      padding: 72px 0 28px;
+      padding: 8px 0 24px;
     }
 
     .intro-card {
@@ -207,7 +238,7 @@
 
     .intro-card h2 {
       margin: 0 0 14px;
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(1.9rem, 4vw, 3rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
     }
@@ -292,19 +323,22 @@
     }
 
     @media (max-width: 760px) {
-      .topbar {
+      .header-shell {
+        min-height: auto;
+        padding: 18px 0;
         flex-direction: column;
         align-items: flex-start;
       }
 
-      .hero-content {
-        padding-bottom: 30px;
+      .hero {
+        min-height: calc(100vh - 95px);
       }
 
       .hero-panel {
-        padding: 20px;
+        padding: 18px;
       }
 
+      .tagline-card,
       .intro-card {
         padding: 24px;
       }
@@ -320,19 +354,20 @@
   </style>
 </head>
 <body>
-  <section class="hero">
-    <div class="topbar">
+  <header class="site-header">
+    <div class="header-shell">
       <a class="brand" href="#top" aria-label="Stackemy home">
         <span class="stack">stack</span><span class="emy">emy</span>
       </a>
 
       <a class="button button-secondary" href="mailto:hello@stackemy.com">Contact</a>
     </div>
+    <div class="header-divider"></div>
+  </header>
 
-    <div class="hero-content" id="top">
+  <section class="hero" id="top">
+    <div class="hero-shell">
       <div class="hero-panel">
-        <p class="eyebrow">TECHNOLOGICAL CHEMISTRY</p>
-        <h1>One Core. Limitless Possibilities.</h1>
         <p>
           Stackemy is a unified platform built around a protected core —
           bringing together CRM, intelligence, analytics, and extensible
@@ -350,6 +385,20 @@
   </section>
 
   <main>
+    <section class="tagline-section">
+      <div class="section-shell">
+        <div class="tagline-card">
+          <p class="eyebrow">TECHNOLOGICAL CHEMISTRY</p>
+          <h1>One Core. Limitless Possibilities.</h1>
+          <p>
+            Stackemy is designed to unify core systems, intelligence,
+            extensibility, and execution into a single operating environment
+            for modern business.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section class="intro">
       <div class="section-shell">
         <div class="intro-card" id="overview">
