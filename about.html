@@ -1,1 +1,1090 @@
+rm about.html
+cat > about.html <<'EOF'
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Stackemy</title>
+  <meta name="description" content="About Stackemy — inspired by technology and alchemy, built to deliver next-generation business systems through modern engineering, intelligence, and long-horizon innovation.">
+  <style>
+    :root {
+      --bg: #04060d;
+      --panel: rgba(10, 14, 28, 0.84);
+      --border: rgba(91, 118, 255, 0.24);
+      --text: #f5f7ff;
+      --muted: #a9b3ce;
+      --blue: #3b82ff;
+      --cyan: #27e8ff;
+      --magenta: #d32dff;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --radius: 24px;
+      --max: 1280px;
+      --content: 1200px;
+      --header-height: 98px;
+    }
 
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top center, rgba(59,130,255,.16), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(211,45,255,.12), transparent 24%),
+        radial-gradient(circle at 20% 80%, rgba(39,232,255,.10), transparent 24%),
+        linear-gradient(180deg, #03050d 0%, #02040a 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(2, 4, 10, 0.90);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .header-shell {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      min-height: var(--header-height);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      flex: 0 0 auto;
+    }
+
+    .brand-logo {
+      display: block;
+      height: 60px;
+      width: auto;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
+
+    .nav a {
+      position: relative;
+      font-size: 1.08rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.94);
+      white-space: nowrap;
+    }
+
+    .nav a.active::after,
+    .nav a:hover::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -12px;
+      width: 42px;
+      height: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), transparent);
+      opacity: 0.85;
+      border-radius: 999px;
+      box-shadow: 0 0 10px rgba(59,130,255,.5);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 185px;
+      padding: 16px 26px;
+      border-radius: 18px;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: rgba(20, 16, 48, 0.82);
+      border: 1px solid rgba(117, 126, 255, 0.65);
+      box-shadow:
+        0 0 0 1px rgba(0, 212, 255, 0.10) inset,
+        0 0 18px rgba(96, 88, 255, 0.35),
+        0 0 28px rgba(211, 45, 255, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .section-shell {
+      width: min(var(--content), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 34px 0 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.94fr 1.06fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .graphic-panel,
+    .statement-band,
+    .panel,
+    .principle-card,
+    .closing-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      border-radius: 28px;
+      padding: 38px 34px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      background:
+        radial-gradient(circle at 16% 16%, rgba(39,232,255,0.10), transparent 24%),
+        radial-gradient(circle at 82% 18%, rgba(211,45,255,0.10), transparent 22%),
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
+    }
+
+    .hero-copy::before,
+    .graphic-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.42;
+      pointer-events: none;
+    }
+
+    .hero-copy > *,
+    .graphic-panel > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      line-height: 0.94;
+      letter-spacing: -0.06em;
+      max-width: 640px;
+    }
+
+    .gradient-line {
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.88;
+      font-size: 1.03rem;
+    }
+
+    .origin-card {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .origin-card strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+      font-size: 0.98rem;
+    }
+
+    .origin-card span {
+      display: block;
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 0.95rem;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .hero-tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: #dce6ff;
+      font-size: 0.9rem;
+    }
+
+    .graphic-panel {
+      border-radius: 28px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      min-height: 720px;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(39,232,255,0.10), transparent 18%),
+        radial-gradient(circle at 70% 78%, rgba(211,45,255,0.08), transparent 20%),
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
+    }
+
+    .graphic-panel::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow:
+        inset 0 0 80px rgba(255,255,255,0.02),
+        inset 0 0 140px rgba(59,130,255,0.04);
+      pointer-events: none;
+    }
+
+    .graphic-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .graphic-title h2 {
+      margin: 8px 0 10px;
+      font-size: clamp(2rem, 4vw, 3.15rem);
+      line-height: 1.03;
+      letter-spacing: -0.04em;
+    }
+
+    .graphic-title p {
+      margin: 0 auto;
+      max-width: 720px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .innovation-scene {
+      position: relative;
+      min-height: 570px;
+    }
+
+    .ai-head {
+      position: absolute;
+      left: 18px;
+      top: 36px;
+      width: 286px;
+      height: 366px;
+      border-radius: 46% 46% 40% 40% / 40% 40% 48% 48%;
+      background:
+        radial-gradient(circle at 42% 28%, rgba(39,232,255,0.22), rgba(59,130,255,0.14) 48%, rgba(211,45,255,0.10) 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow:
+        0 0 24px rgba(39,232,255,0.16),
+        0 0 56px rgba(59,130,255,0.12),
+        inset 0 0 44px rgba(255,255,255,0.04);
+    }
+
+    .ai-head::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 52px;
+      width: 174px;
+      height: 174px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow:
+        0 0 16px rgba(39,232,255,0.10),
+        inset 0 0 18px rgba(255,255,255,0.03);
+    }
+
+    .ai-head::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 34px;
+      width: 128px;
+      height: 88px;
+      transform: translateX(-50%);
+      border-radius: 0 0 60px 60px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: none;
+      box-shadow: inset 0 -12px 20px rgba(59,130,255,0.06);
+    }
+
+    .head-network {
+      position: absolute;
+      left: 50%;
+      top: 72px;
+      width: 138px;
+      height: 138px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      border: 1px solid rgba(39,232,255,0.10);
+      overflow: hidden;
+    }
+
+    .head-network::before,
+    .head-network::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 18px 18px;
+      opacity: 0.8;
+    }
+
+    .head-core {
+      position: absolute;
+      left: 50%;
+      top: 142px;
+      width: 76px;
+      height: 76px;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, rgba(39,232,255,0.95), rgba(59,130,255,0.82) 55%, rgba(211,45,255,0.72) 100%);
+      box-shadow:
+        0 0 20px rgba(39,232,255,0.28),
+        0 0 42px rgba(59,130,255,0.20);
+    }
+
+    .head-signals span {
+      position: absolute;
+      display: block;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(39,232,255,0), rgba(39,232,255,0.85), rgba(211,45,255,0));
+      box-shadow: 0 0 10px rgba(39,232,255,0.18);
+    }
+
+    .head-signals span:nth-child(1) {
+      width: 114px;
+      left: 50%;
+      top: 160px;
+      transform: translateX(-50%);
+    }
+
+    .head-signals span:nth-child(2) {
+      width: 84px;
+      left: 50%;
+      top: 186px;
+      transform: translateX(-50%);
+    }
+
+    .head-signals span:nth-child(3) {
+      width: 66px;
+      left: 50%;
+      top: 212px;
+      transform: translateX(-50%);
+    }
+
+    .chemistry-rig {
+      position: absolute;
+      right: 18px;
+      bottom: 14px;
+      width: 366px;
+      height: 474px;
+    }
+
+    .chem-platform {
+      position: absolute;
+      left: 34px;
+      right: 34px;
+      bottom: 24px;
+      height: 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(39,232,255,0.18), rgba(59,130,255,0.16), rgba(211,45,255,0.18));
+      box-shadow:
+        0 0 16px rgba(39,232,255,0.12),
+        inset 0 0 18px rgba(255,255,255,0.03);
+    }
+
+    .flask-neck {
+      position: absolute;
+      left: 202px;
+      top: 46px;
+      width: 22px;
+      height: 96px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(8,13,26,0.56);
+    }
+
+    .flask-body {
+      position: absolute;
+      left: 114px;
+      top: 124px;
+      width: 196px;
+      height: 242px;
+      clip-path: polygon(32% 0%, 68% 0%, 88% 20%, 100% 88%, 0% 88%, 12% 20%);
+      border: 1px solid rgba(255,255,255,0.12);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+        rgba(8,13,26,0.54);
+      box-shadow:
+        inset 0 0 30px rgba(255,255,255,0.02),
+        0 0 26px rgba(59,130,255,0.08);
+    }
+
+    .flask-liquid {
+      position: absolute;
+      left: 130px;
+      top: 214px;
+      width: 164px;
+      height: 124px;
+      clip-path: polygon(4% 18%, 96% 12%, 100% 100%, 0% 100%);
+      background:
+        linear-gradient(180deg, rgba(39,232,255,0.65), rgba(59,130,255,0.55) 50%, rgba(211,45,255,0.50));
+      box-shadow:
+        0 0 18px rgba(39,232,255,0.18),
+        0 0 34px rgba(211,45,255,0.12);
+      opacity: 0.95;
+    }
+
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.92);
+      box-shadow: 0 0 12px rgba(255,255,255,0.18);
+    }
+
+    .bubble.b1 { width: 10px; height: 10px; left: 184px; top: 196px; }
+    .bubble.b2 { width: 14px; height: 14px; left: 216px; top: 174px; background: rgba(39,232,255,0.95); }
+    .bubble.b3 { width: 8px; height: 8px; left: 238px; top: 202px; background: rgba(211,45,255,0.95); }
+    .bubble.b4 { width: 12px; height: 12px; left: 172px; top: 234px; background: rgba(59,130,255,0.95); }
+
+    .tube {
+      position: absolute;
+      left: 60px;
+      top: 78px;
+      width: 132px;
+      height: 86px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      border-left: 1px solid rgba(255,255,255,0.12);
+      border-radius: 40px 0 0 0;
+    }
+
+    .tube::after {
+      content: "";
+      position: absolute;
+      right: -22px;
+      top: 66px;
+      width: 22px;
+      height: 88px;
+      border-right: 1px solid rgba(255,255,255,0.12);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      border-radius: 0 0 22px 0;
+    }
+
+    .data-sparks span {
+      position: absolute;
+      display: block;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, rgba(39,232,255,0.95), rgba(59,130,255,0.85) 58%, rgba(211,45,255,0.70) 100%);
+      box-shadow:
+        0 0 16px rgba(39,232,255,0.18),
+        0 0 28px rgba(59,130,255,0.14);
+    }
+
+    .data-sparks span:nth-child(1) {
+      width: 26px;
+      height: 26px;
+      left: 34px;
+      top: 62px;
+    }
+
+    .data-sparks span:nth-child(2) {
+      width: 18px;
+      height: 18px;
+      left: 78px;
+      top: 98px;
+    }
+
+    .data-sparks span:nth-child(3) {
+      width: 14px;
+      height: 14px;
+      left: 116px;
+      top: 64px;
+    }
+
+    .graphic-notes {
+      position: absolute;
+      right: 18px;
+      top: 34px;
+      width: 236px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .graphic-note {
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+    }
+
+    .graphic-note strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+      font-size: 0.94rem;
+    }
+
+    .graphic-note span {
+      display: block;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.88rem;
+    }
+
+    .section {
+      padding: 24px 0 0;
+    }
+
+    .statement-band {
+      border-radius: 24px;
+      padding: 34px 30px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(10,14,28,0.90), rgba(7,10,20,0.96));
+    }
+
+    .statement-band h2 {
+      margin: 8px auto 14px;
+      max-width: 980px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+    }
+
+    .statement-band p {
+      margin: 0 auto;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.04rem;
+    }
+
+    .about-columns {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 18px;
+    }
+
+    .panel {
+      border-radius: var(--radius);
+      padding: 34px 30px;
+    }
+
+    .panel h2 {
+      margin: 8px 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+    }
+
+    .panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.04rem;
+    }
+
+    .belief-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .belief-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .belief-item strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .belief-item span {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .principle-card {
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .principle-card .label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+
+    .principle-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+    }
+
+    .principle-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .closing {
+      padding: 24px 0 40px;
+    }
+
+    .closing-panel {
+      border-radius: 24px;
+      padding: 34px 30px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(10,14,28,0.90), rgba(7,10,20,0.96));
+    }
+
+    .closing-panel h2 {
+      margin: 8px 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .closing-panel p {
+      margin: 0 auto;
+      max-width: 940px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.04rem;
+    }
+
+    .footer {
+      padding: 8px 0 32px;
+      text-align: center;
+      color: #8892b2;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1180px) {
+      .hero-grid,
+      .about-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .graphic-panel {
+        min-height: 760px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .principles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .graphic-notes {
+        position: relative;
+        width: 100%;
+        right: auto;
+        top: auto;
+        margin-top: 18px;
+      }
+
+      .innovation-scene {
+        min-height: 780px;
+      }
+
+      .ai-head {
+        left: 50%;
+        transform: translateX(-50%);
+        top: 34px;
+      }
+
+      .chemistry-rig {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        bottom: 20px;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .header-shell {
+        min-height: auto;
+        padding: 18px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .brand-logo {
+        height: 54px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 18px 24px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .brand-logo {
+        height: 48px;
+      }
+
+      .header-cta {
+        width: 100%;
+      }
+
+      .hero-copy,
+      .graphic-panel,
+      .statement-band,
+      .panel,
+      .principle-card,
+      .closing-panel {
+        padding: 24px;
+      }
+
+      .graphic-panel {
+        min-height: 860px;
+      }
+
+      .innovation-scene {
+        min-height: 700px;
+      }
+
+      .ai-head {
+        width: 228px;
+        height: 300px;
+      }
+
+      .head-network {
+        width: 112px;
+        height: 112px;
+        top: 58px;
+      }
+
+      .head-core {
+        width: 60px;
+        height: 60px;
+        top: 116px;
+      }
+
+      .chemistry-rig {
+        width: 300px;
+        height: 390px;
+      }
+
+      .flask-neck {
+        left: 164px;
+      }
+
+      .flask-body {
+        left: 88px;
+        width: 164px;
+        height: 204px;
+      }
+
+      .flask-liquid {
+        left: 102px;
+        width: 138px;
+        height: 98px;
+        top: 186px;
+      }
+
+      .tube {
+        width: 104px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-shell">
+      <a class="brand" href="index.html" aria-label="Stackemy home">
+        <img src="stackemy-header-logo.png" alt="Stackemy logo" class="brand-logo">
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="core.html">The Core</a>
+        <a href="future.html">Meet the Future</a>
+        <a href="solutions.html">Solutions</a>
+        <a class="active" href="about.html">About</a>
+      </nav>
+
+      <a class="header-cta" href="get-started.html">Get Started</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="section-shell">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">About</p>
+            <h1>Stackemy was inspired by <span class="gradient-line">technology and alchemy.</span></h1>
+            <p>
+              The name Stackemy comes from the idea that building next-generation systems is a kind of
+              technical alchemy — the deliberate blending of modern engineering, intelligence, architecture,
+              and innovation into something stronger than ordinary software.
+            </p>
+
+            <div class="origin-card">
+              <strong>Why the name fits</strong>
+              <span>
+                Stackemy represents technological chemistry: combining deep system design, AI, analytics,
+                workflow, and long-horizon product thinking into one coherent operating environment built to last.
+              </span>
+            </div>
+
+            <div class="hero-tags">
+              <span class="hero-tag">Technology</span>
+              <span class="hero-tag">Alchemy</span>
+              <span class="hero-tag">Innovation</span>
+              <span class="hero-tag">Modern Engineering</span>
+              <span class="hero-tag">AI</span>
+              <span class="hero-tag">Long-Horizon Systems</span>
+            </div>
+
+            <div class="origin-card">
+              <strong>The deeper company idea</strong>
+              <span>
+                Delivering modern solutions for many decades to come requires more than feature building.
+                It requires turning complexity into coherence, intelligence into utility, and architecture
+                into enduring business infrastructure.
+              </span>
+            </div>
+          </div>
+
+          <div class="graphic-panel">
+            <div class="graphic-title">
+              <p class="eyebrow">Technology Meets Alchemy</p>
+              <h2>The AI head and chemistry set define the company metaphor.</h2>
+              <p>
+                Together they represent the Stackemy philosophy: intelligent engineering, technical synthesis,
+                and next-generation system creation through deliberate design.
+              </p>
+            </div>
+
+            <div class="innovation-scene">
+              <div class="ai-head">
+                <div class="head-network"></div>
+                <div class="head-core"></div>
+                <div class="head-signals">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+
+              <div class="graphic-notes">
+                <div class="graphic-note">
+                  <strong>AI head</strong>
+                  <span>Represents intelligence, reasoning, foresight, and the future-facing mindset behind modern system design.</span>
+                </div>
+
+                <div class="graphic-note">
+                  <strong>Chemistry set</strong>
+                  <span>Represents synthesis, experimentation, and precision — combining technical elements into one stronger result.</span>
+                </div>
+
+                <div class="graphic-note">
+                  <strong>Technical alchemy</strong>
+                  <span>Represents the belief that real innovation comes from designing coherent systems, not stacking disconnected tools.</span>
+                </div>
+              </div>
+
+              <div class="chemistry-rig">
+                <div class="tube"></div>
+                <div class="data-sparks">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+
+                <div class="flask-neck"></div>
+                <div class="flask-body"></div>
+                <div class="flask-liquid"></div>
+
+                <div class="bubble b1"></div>
+                <div class="bubble b2"></div>
+                <div class="bubble b3"></div>
+                <div class="bubble b4"></div>
+
+                <div class="chem-platform"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="statement-band">
+          <p class="eyebrow">What We Believe</p>
+          <h2>Innovation is not novelty. It is building systems strong enough to matter for decades.</h2>
+          <p>
+            Stackemy is built on the belief that modern business software should be more intelligent, more
+            coherent, and more durable than the fragmented tools most companies are forced to operate today.
+            Real innovation comes from combining architecture, engineering, product design, and intelligence
+            into systems that endure.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="about-columns">
+          <div class="panel">
+            <p class="eyebrow">Our Direction</p>
+            <h2>Building next-generation solutions through modern engineering.</h2>
+            <p>
+              Stackemy is not being shaped around temporary convenience. It is being shaped around technical
+              quality, structural clarity, and long-horizon engineering discipline. The goal is to build
+              systems that can support modern business complexity while remaining elegant, extensible, and
+              relevant for many decades to come.
+            </p>
+
+            <div class="belief-list">
+              <div class="belief-item">
+                <strong>Innovation with structure</strong>
+                <span>The future belongs to systems that are ambitious in vision and disciplined in execution.</span>
+              </div>
+
+              <div class="belief-item">
+                <strong>Engineering with longevity</strong>
+                <span>Solutions should be designed to remain stable, extensible, and useful over the long term.</span>
+              </div>
+
+              <div class="belief-item">
+                <strong>Intelligence with context</strong>
+                <span>AI becomes more powerful when it lives inside a coherent operating architecture.</span>
+              </div>
+
+              <div class="belief-item">
+                <strong>Transformation with purpose</strong>
+                <span>Technical alchemy means turning fragmented categories into one stronger system model.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="principles-grid">
+            <article class="principle-card">
+              <span class="label">Technology</span>
+              <h3>Modern systems require more than ordinary software assembly.</h3>
+              <p>
+                Stackemy is built from the belief that serious operating environments require strong architecture,
+                not just surface functionality. The system has to be coherent underneath to feel powerful above.
+              </p>
+            </article>
+
+            <article class="principle-card">
+              <span class="label">Alchemy</span>
+              <h3>The strongest solutions come from synthesis.</h3>
+              <p>
+                Alchemy is the metaphor for combining intelligence, engineering, analytics, workflow, and design
+                into something more valuable than the individual parts alone.
+              </p>
+            </article>
+
+            <article class="principle-card">
+              <span class="label">Innovation</span>
+              <h3>Next-generation products require long-horizon thinking.</h3>
+              <p>
+                The aim is not to chase short trends. It is to create modern systems that can lead now and
+                remain relevant far into the future.
+              </p>
+            </article>
+
+            <article class="principle-card">
+              <span class="label">Engineering</span>
+              <h3>Durability is part of the product.</h3>
+              <p>
+                Good engineering is what makes a platform stable, extensible, intelligent, and capable of
+                supporting decades of growth without losing its architectural center.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="section-shell">
+        <div class="closing-panel">
+          <p class="eyebrow">The Company Idea</p>
+          <h2>Stackemy exists to turn technical complexity into enduring business infrastructure.</h2>
+          <p>
+            The name, the philosophy, and the product direction all point to the same belief: the future
+            belongs to companies that can combine intelligence, engineering, architecture, and innovation
+            into one coherent operating environment. That is the technical alchemy Stackemy is built to
+            deliver — not just for today, but for many decades to come.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="footer">
+      © 2026 Stackemy. All rights reserved.
+    </section>
+  </main>
+</body>
+</html>
+EOF
