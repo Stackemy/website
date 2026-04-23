@@ -7,7 +7,9 @@
   <meta name="description" content="The protected core of Stackemy — a stable CRM foundation designed to remain intact as future capability grows around it.">
   <style>
     :root {
+      --bg: #04060d;
       --panel: rgba(10, 14, 28, 0.84);
+      --panel-strong: rgba(8, 11, 22, 0.96);
       --border: rgba(91, 118, 255, 0.28);
       --text: #f5f7ff;
       --muted: #a9b3ce;
@@ -21,8 +23,13 @@
       --header-height: 98px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -35,7 +42,10 @@
         linear-gradient(180deg, #03050d 0%, #02040a 100%);
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .site-header {
       position: sticky;
@@ -119,19 +129,20 @@
 
     .hero {
       position: relative;
-      min-height: 54vh;
+      min-height: 62vh;
       background:
-        linear-gradient(180deg, rgba(3,5,13,0.30) 0%, rgba(3,5,13,0.72) 100%),
+        linear-gradient(180deg, rgba(3,5,13,0.36) 0%, rgba(3,5,13,0.78) 100%),
         url("stackemy-hero.png") center center / cover no-repeat;
       display: flex;
       align-items: flex-end;
+      overflow: hidden;
     }
 
     .hero::after {
       content: "";
       position: absolute;
       inset: auto 0 0 0;
-      height: 180px;
+      height: 200px;
       background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.96) 100%);
       pointer-events: none;
     }
@@ -145,7 +156,7 @@
     .hero-inner {
       position: relative;
       z-index: 2;
-      padding: 0 0 34px;
+      padding: 0 0 38px;
     }
 
     .eyebrow {
@@ -158,9 +169,9 @@
     }
 
     .hero h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2.5rem, 5vw, 5rem);
-      line-height: 0.98;
+      margin: 0 0 16px;
+      font-size: clamp(2.8rem, 5vw, 5.4rem);
+      line-height: 0.94;
       letter-spacing: -0.05em;
       max-width: 900px;
     }
@@ -169,12 +180,18 @@
       margin: 0;
       max-width: 820px;
       color: #d2dbf6;
-      line-height: 1.8;
-      font-size: 1.05rem;
+      line-height: 1.85;
+      font-size: 1.06rem;
     }
 
     .section {
-      padding: 22px 0 0;
+      padding: 24px 0 0;
+    }
+
+    .core-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
     }
 
     .panel {
@@ -187,8 +204,8 @@
 
     .panel h2 {
       margin: 0 0 14px;
-      font-size: clamp(1.9rem, 4vw, 3rem);
-      line-height: 1.05;
+      font-size: clamp(2rem, 4vw, 3.1rem);
+      line-height: 1.04;
       letter-spacing: -0.04em;
     }
 
@@ -196,15 +213,128 @@
       margin: 0;
       color: var(--muted);
       line-height: 1.85;
-      max-width: 940px;
       font-size: 1.04rem;
+    }
+
+    .principles {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .principle {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .principle span {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .diagram-panel {
+      background: linear-gradient(
+        180deg,
+        rgba(10,14,28,0.88),
+        rgba(7,10,20,0.96)
+      );
+      border: 1px solid rgba(94,126,255,0.22);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 30px 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .diagram-title {
+      margin: 0 0 18px;
+      font-size: 1.45rem;
+      letter-spacing: -0.03em;
+    }
+
+    .core-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .stack-box {
+      position: relative;
+      border-radius: 18px;
+      padding: 18px 18px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.03);
+      overflow: hidden;
+    }
+
+    .stack-box::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--blue), var(--cyan), var(--magenta));
+      box-shadow: 0 0 14px rgba(59,130,255,.45);
+    }
+
+    .stack-box strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+      color: #ffffff;
+    }
+
+    .stack-box span {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.97rem;
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+    }
+
+    .statement-panel {
+      background: linear-gradient(
+        180deg,
+        rgba(10,14,28,0.88),
+        rgba(7,10,20,0.96)
+      );
+      border: 1px solid rgba(94,126,255,0.22);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 34px 30px;
+    }
+
+    .statement-panel h3 {
+      margin: 0 0 14px;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .statement-panel p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.02rem;
     }
 
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
-      padding: 20px 0 40px;
     }
 
     .card {
@@ -217,13 +347,45 @@
 
     .card h3 {
       margin: 0 0 10px;
-      font-size: 1.2rem;
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
     }
 
     .card p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.75;
+    }
+
+    .closing {
+      padding: 24px 0 40px;
+    }
+
+    .closing-panel {
+      background: linear-gradient(
+        180deg,
+        rgba(10,14,28,0.90),
+        rgba(7,10,20,0.96)
+      );
+      border: 1px solid rgba(94,126,255,0.22);
+      border-radius: 24px;
+      padding: 34px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .closing-panel h2 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .closing-panel p {
+      margin: 0;
+      max-width: 940px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.04rem;
     }
 
     .footer {
@@ -231,6 +393,13 @@
       text-align: center;
       color: #8892b2;
       font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .core-grid,
+      .split-section {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 920px) {
@@ -241,15 +410,36 @@
         align-items: flex-start;
       }
 
-      .brand-logo { height: 54px; }
-      .nav { flex-wrap: wrap; gap: 18px 24px; }
-      .grid { grid-template-columns: 1fr; }
+      .brand-logo {
+        height: 54px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 18px 24px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 760px) {
-      .brand-logo { height: 48px; }
-      .header-cta { width: 100%; }
-      .panel, .card { padding: 24px; }
+      .brand-logo {
+        height: 48px;
+      }
+
+      .header-cta {
+        width: 100%;
+      }
+
+      .panel,
+      .diagram-panel,
+      .statement-panel,
+      .card,
+      .closing-panel {
+        padding: 24px;
+      }
     }
   </style>
 </head>
@@ -275,64 +465,137 @@
     <section class="hero">
       <div class="hero-inner">
         <p class="eyebrow">The Core</p>
-        <h1>The center of Stackemy is meant to stay protected.</h1>
+        <h1>The center of Stackemy is designed to stay intact.</h1>
         <p>
-          Stackemy is not being built around a disposable center. The CRM core is the protected foundation
-          of the entire system — designed to remain stable while future capability expands around it.
+          The core is not a temporary starting point and not a feature subset. It is the protected
+          CRM foundation of the system — designed to remain stable while future capability expands
+          around it.
         </p>
       </div>
     </section>
 
     <section class="section">
       <div class="section-shell">
-        <div class="panel">
-          <p class="eyebrow">Protected by Design</p>
-          <h2>The core is the long-term center of gravity.</h2>
-          <p>
-            In most software ecosystems, the original system becomes unstable as new requirements arrive.
-            Teams patch around it, fork logic, duplicate entities, and slowly create a fragmented operating
-            environment. Stackemy is being built differently. The CRM core is not a temporary first module.
-            It is the enduring structural center of the platform. That means the design of the core must
-            be stable enough to support years of extension without losing coherence.
-          </p>
+        <div class="core-grid">
+          <div class="panel">
+            <p class="eyebrow">Protected by Design</p>
+            <h2>The core is the long-term center of gravity.</h2>
+            <p>
+              Most software platforms grow weaker as they expand. New requirements arrive, teams bolt on
+              exceptions, duplicate behavior, fork logic, and slowly create a system that no longer feels
+              like one coherent structure. Stackemy is being built to resist that pattern from the
+              beginning. The CRM core is the enduring center of the platform. It is meant to be protected,
+              stable, and strong enough to support years of extension without losing its integrity.
+            </p>
+
+            <div class="principles">
+              <div class="principle">
+                <strong>Protected foundation</strong>
+                <span>The core remains structurally intact even as new modules, capabilities, and industries are added.</span>
+              </div>
+              <div class="principle">
+                <strong>Extension over mutation</strong>
+                <span>Future systems should grow around the core rather than cut through it and destabilize it.</span>
+              </div>
+              <div class="principle">
+                <strong>Long-term coherence</strong>
+                <span>The point is not simply to add features. It is to preserve one coherent operating architecture over time.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="diagram-panel">
+            <p class="eyebrow">Core Structure</p>
+            <h3 class="diagram-title">The platform expands outward, but the center stays protected.</h3>
+
+            <div class="core-stack">
+              <div class="stack-box">
+                <strong>Protected CRM Core</strong>
+                <span>The enduring center where core relationship and operating entities remain stable.</span>
+              </div>
+
+              <div class="stack-box">
+                <strong>Shared System Services</strong>
+                <span>Permissions, policies, context, events, visibility, and other structural layers that reinforce the core.</span>
+              </div>
+
+              <div class="stack-box">
+                <strong>Solution Extensions</strong>
+                <span>Industry modules, analytics, intelligence, workflows, and future operating layers extending around the foundation.</span>
+              </div>
+
+              <div class="stack-box">
+                <strong>Unified Experience</strong>
+                <span>The user sees one coherent environment, even as multiple layers operate beneath it.</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-shell">
-        <div class="grid">
-          <article class="card">
-            <h3>One protected foundation</h3>
+        <div class="split-section">
+          <div class="statement-panel">
+            <p class="eyebrow">What the Core Prevents</p>
+            <h3>Without a protected center, every future layer pulls the system apart.</h3>
             <p>
-              The core is designed to remain intact. Core CRM behavior should not be casually rewritten
-              or distorted by future modules.
+              When the center of a platform is not protected, every added requirement becomes a source of
+              drift. Industry-specific behavior starts mutating base behavior. Analytics become detached
+              from execution. Intelligence layers become shallow because they are built on fragmented
+              context. Permissions become inconsistent. Reporting becomes partial. Over time, the system
+              becomes a loose federation of exceptions instead of a platform.
             </p>
-          </article>
+          </div>
 
-          <article class="card">
-            <h3>Extension over mutation</h3>
-            <p>
-              Future capability should grow around the core rather than cutting through it. This preserves
-              integrity while still allowing expansion.
-            </p>
-          </article>
+          <div class="grid">
+            <article class="card">
+              <h3>No fragmented entity model</h3>
+              <p>
+                The core prevents the system from splitting into competing definitions of the same business
+                objects across different modules or layers.
+              </p>
+            </article>
 
-          <article class="card">
-            <h3>System-wide coherence</h3>
-            <p>
-              A protected center helps every other layer of the platform stay aligned — data, permissions,
-              workflows, visibility, reporting, and future intelligence systems.
-            </p>
-          </article>
+            <article class="card">
+              <h3>No unstable extensions</h3>
+              <p>
+                Extensions should not quietly rewrite the center. The core defines the protected baseline
+                that future capabilities must respect.
+              </p>
+            </article>
 
-          <article class="card">
-            <h3>Long-term architectural discipline</h3>
-            <p>
-              The goal is not to ship disconnected pieces quickly. The goal is to create a system whose
-              structure remains sound as the surface area expands.
-            </p>
-          </article>
+            <article class="card">
+              <h3>No visibility drift</h3>
+              <p>
+                Governance, hierarchy, reporting, and access control all become more reliable when they are
+                anchored in one stable center.
+              </p>
+            </article>
+
+            <article class="card">
+              <h3>No architectural collapse later</h3>
+              <p>
+                The purpose of protecting the core now is to prevent the system from requiring structural
+                reinvention once the platform becomes broader.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="section-shell">
+        <div class="closing-panel">
+          <p class="eyebrow">The Core Principle</p>
+          <h2>Everything else can grow because the center is designed not to move.</h2>
+          <p>
+            The broader Stackemy vision only works if the foundation underneath it is stable enough to
+            carry the weight of the future. That is why the core matters so much. It is not a module among
+            modules. It is the protected center that makes the rest of the system possible.
+          </p>
         </div>
       </div>
     </section>
