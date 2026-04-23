@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Core | Stackemy</title>
-  <meta name="description" content="The Core of Stackemy — the protected CRM center designed to remain stable while intelligence, analytics, industry systems, and experience grow around it.">
+  <meta name="description" content="The protected core of Stackemy — a stable CRM center engineered to support analytics, AI, industry systems, and future expansion without losing architectural integrity.">
   <style>
     :root {
       --bg: #03050d;
@@ -20,7 +20,6 @@
       --max: 1280px;
       --content: 1200px;
       --header-height: 98px;
-      --radius: 24px;
     }
 
     * {
@@ -159,9 +158,9 @@
       overflow: hidden;
       isolation: isolate;
       background:
-        radial-gradient(circle at 24% 32%, rgba(41,235,255,0.08), transparent 18%),
-        radial-gradient(circle at 80% 24%, rgba(211,61,255,0.10), transparent 20%),
-        radial-gradient(circle at 56% 80%, rgba(77,161,255,0.08), transparent 18%),
+        radial-gradient(circle at 18% 36%, rgba(41,235,255,0.08), transparent 18%),
+        radial-gradient(circle at 82% 26%, rgba(211,61,255,0.10), transparent 20%),
+        radial-gradient(circle at 56% 82%, rgba(77,161,255,0.08), transparent 18%),
         linear-gradient(180deg, #03050d 0%, #040814 100%);
     }
 
@@ -170,8 +169,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.020) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.020) 1px, transparent 1px);
       background-size: 42px 42px;
       opacity: 0.10;
       pointer-events: none;
@@ -196,265 +195,64 @@
       pointer-events: none;
     }
 
+    .hero-art-image {
+      position: absolute;
+      inset: 0;
+      background-image: url("futuristic_energy_core_and_network_system.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 78% center;
+      opacity: 0.97;
+      filter: saturate(1.08) brightness(0.90);
+      transform: scale(1.03);
+    }
+
+    .hero-art-image::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg,
+          rgba(3,5,13,0.88) 0%,
+          rgba(3,5,13,0.80) 14%,
+          rgba(3,5,13,0.62) 24%,
+          rgba(3,5,13,0.22) 42%,
+          rgba(3,5,13,0.16) 58%,
+          rgba(3,5,13,0.44) 76%,
+          rgba(3,5,13,0.72) 100%
+        );
+    }
+
     .hero-glow {
       position: absolute;
       border-radius: 50%;
-      filter: blur(12px);
+      filter: blur(14px);
+      pointer-events: none;
+      z-index: 2;
     }
 
     .hero-glow.one {
-      width: 420px;
-      height: 420px;
-      left: -90px;
-      top: 120px;
-      background: radial-gradient(circle, rgba(41,235,255,0.18) 0%, rgba(41,235,255,0.04) 46%, transparent 74%);
+      width: 460px;
+      height: 460px;
+      left: -140px;
+      top: 110px;
+      background: radial-gradient(circle, rgba(41,235,255,0.16) 0%, rgba(41,235,255,0.04) 46%, transparent 74%);
     }
 
     .hero-glow.two {
-      width: 520px;
-      height: 520px;
-      right: -100px;
-      top: 10px;
+      width: 620px;
+      height: 620px;
+      right: -90px;
+      top: -40px;
       background: radial-gradient(circle, rgba(211,61,255,0.18) 0%, rgba(211,61,255,0.05) 44%, transparent 74%);
     }
 
     .hero-glow.three {
-      width: 320px;
-      height: 320px;
-      right: 180px;
-      bottom: 90px;
-      background: radial-gradient(circle, rgba(77,161,255,0.14) 0%, rgba(77,161,255,0.04) 44%, transparent 74%);
-    }
-
-    .particle-field,
-    .particle-field::before,
-    .particle-field::after {
-      position: absolute;
-      inset: 0;
-      content: "";
-      pointer-events: none;
-    }
-
-    .particle-field {
-      opacity: 0.18;
-      background:
-        radial-gradient(circle at 12% 20%, rgba(41,235,255,0.9) 0 1px, transparent 2px),
-        radial-gradient(circle at 18% 42%, rgba(77,161,255,0.8) 0 1px, transparent 2px),
-        radial-gradient(circle at 26% 26%, rgba(211,61,255,0.9) 0 1px, transparent 2px),
-        radial-gradient(circle at 74% 24%, rgba(41,235,255,0.9) 0 1px, transparent 2px),
-        radial-gradient(circle at 82% 38%, rgba(211,61,255,0.9) 0 1px, transparent 2px),
-        radial-gradient(circle at 70% 62%, rgba(77,161,255,0.9) 0 1px, transparent 2px),
-        radial-gradient(circle at 56% 78%, rgba(41,235,255,0.9) 0 1px, transparent 2px);
-    }
-
-    .particle-field::before {
-      opacity: 0.24;
-      background:
-        radial-gradient(circle at 22% 18%, rgba(41,235,255,0.8) 0 1px, transparent 2px),
-        radial-gradient(circle at 30% 48%, rgba(211,61,255,0.8) 0 1px, transparent 2px),
-        radial-gradient(circle at 78% 16%, rgba(77,161,255,0.8) 0 1px, transparent 2px),
-        radial-gradient(circle at 86% 56%, rgba(41,235,255,0.8) 0 1px, transparent 2px),
-        radial-gradient(circle at 62% 70%, rgba(211,61,255,0.8) 0 1px, transparent 2px);
-    }
-
-    .particle-field::after {
-      opacity: 0.20;
-      background:
-        radial-gradient(circle at 14% 58%, rgba(77,161,255,0.8) 0 1px, transparent 2px),
-        radial-gradient(circle at 24% 76%, rgba(41,235,255,0.8) 0 1px, transparent 2px),
-        radial-gradient(circle at 68% 44%, rgba(211,61,255,0.8) 0 1px, transparent 2px),
-        radial-gradient(circle at 80% 78%, rgba(77,161,255,0.8) 0 1px, transparent 2px);
-    }
-
-    .core-energy {
-      position: absolute;
-      right: 2%;
-      top: 50%;
-      width: 700px;
-      height: 700px;
-      transform: translateY(-50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .energy-ring,
-    .energy-ring::before,
-    .energy-ring::after {
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.08);
-      content: "";
-    }
-
-    .energy-ring.outer {
-      width: 560px;
-      height: 560px;
-      box-shadow:
-        0 0 40px rgba(41,235,255,0.06),
-        0 0 60px rgba(211,61,255,0.05);
-    }
-
-    .energy-ring.outer::before {
-      inset: 42px;
-      border-color: rgba(255,255,255,0.05);
-    }
-
-    .energy-ring.outer::after {
-      inset: 96px;
-      border-color: rgba(255,255,255,0.04);
-    }
-
-    .energy-ring.middle {
-      width: 380px;
-      height: 380px;
-      border-color: rgba(41,235,255,0.16);
-      box-shadow:
-        0 0 28px rgba(41,235,255,0.12),
-        inset 0 0 24px rgba(255,255,255,0.02);
-    }
-
-    .energy-ring.inner {
-      width: 230px;
-      height: 230px;
-      border-color: rgba(211,61,255,0.18);
-      box-shadow:
-        0 0 30px rgba(211,61,255,0.10),
-        inset 0 0 24px rgba(255,255,255,0.02);
-    }
-
-    .energy-axis {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      background: linear-gradient(90deg, rgba(41,235,255,0), rgba(41,235,255,0.72), rgba(211,61,255,0.72), rgba(41,235,255,0));
-      box-shadow: 0 0 14px rgba(41,235,255,0.16);
-      transform-origin: center;
-      opacity: 0.88;
-    }
-
-    .energy-axis.h {
-      width: 520px;
-      height: 2px;
-      transform: translate(-50%, -50%);
-    }
-
-    .energy-axis.v {
-      width: 2px;
-      height: 520px;
-      transform: translate(-50%, -50%);
-      background: linear-gradient(180deg, rgba(41,235,255,0), rgba(41,235,255,0.72), rgba(211,61,255,0.72), rgba(41,235,255,0));
-    }
-
-    .energy-axis.d1,
-    .energy-axis.d2 {
       width: 360px;
-      height: 2px;
-    }
-
-    .energy-axis.d1 {
-      transform: translate(-50%, -50%) rotate(33deg);
-    }
-
-    .energy-axis.d2 {
-      transform: translate(-50%, -50%) rotate(-33deg);
-    }
-
-    .core-center {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      width: 190px;
-      height: 190px;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 36% 34%, rgba(127,248,255,0.92), rgba(77,161,255,0.78) 42%, rgba(211,61,255,0.90) 100%);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow:
-        0 0 30px rgba(41,235,255,0.22),
-        0 0 60px rgba(77,161,255,0.16),
-        inset 0 0 40px rgba(255,255,255,0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 22px;
-      text-align: center;
-      z-index: 4;
-    }
-
-    .core-center span {
-      display: block;
-      font-size: 1.16rem;
-      font-weight: 800;
-      line-height: 1.3;
-      color: #ffffff;
-      letter-spacing: -0.02em;
-      text-shadow: 0 0 20px rgba(255,255,255,0.10);
-    }
-
-    .core-node {
-      position: absolute;
-      width: 150px;
-      min-height: 102px;
-      padding: 16px 14px 14px;
-      border-radius: 22px;
-      background: rgba(9, 14, 28, 0.90);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow:
-        0 16px 36px rgba(0,0,0,0.24),
-        inset 0 0 24px rgba(255,255,255,0.02);
-      text-align: center;
-      z-index: 4;
-    }
-
-    .core-node::before {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      border-radius: 16px;
-      border: 1px solid rgba(41,235,255,0.08);
-      pointer-events: none;
-    }
-
-    .core-node strong {
-      display: block;
-      margin-bottom: 6px;
-      color: #eef4ff;
-      font-size: 0.92rem;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-    }
-
-    .core-node span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.82rem;
-      line-height: 1.5;
-    }
-
-    .node-top {
-      left: 50%;
-      top: 48px;
-      transform: translateX(-50%);
-    }
-
-    .node-right {
-      right: 40px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .node-bottom {
-      left: 50%;
-      bottom: 48px;
-      transform: translateX(-50%);
-    }
-
-    .node-left {
-      left: 40px;
-      top: 50%;
-      transform: translateY(-50%);
+      height: 360px;
+      left: 20%;
+      bottom: 40px;
+      background: radial-gradient(circle, rgba(77,161,255,0.12) 0%, rgba(77,161,255,0.03) 44%, transparent 74%);
     }
 
     .hero-inner {
@@ -470,16 +268,18 @@
       min-height: 820px;
       display: flex;
       align-items: center;
+      justify-content: flex-start;
     }
 
     .hero-copy {
       position: relative;
       z-index: 5;
-      width: min(720px, 100%);
-      padding: 36px 36px 32px;
+      width: min(650px, 100%);
+      margin-left: 28px;
+      padding: 38px 36px 34px;
       border-radius: 30px;
       background:
-        linear-gradient(180deg, rgba(9, 13, 26, 0.58), rgba(7, 10, 20, 0.82));
+        linear-gradient(180deg, rgba(9, 13, 26, 0.56), rgba(7, 10, 20, 0.82));
       border: 1px solid rgba(95, 125, 255, 0.24);
       box-shadow: var(--shadow);
       backdrop-filter: blur(14px);
@@ -487,8 +287,8 @@
 
     .hero-copy h1 {
       margin: 0 0 18px;
-      max-width: 720px;
-      font-size: clamp(2.9rem, 5.7vw, 5.8rem);
+      max-width: 620px;
+      font-size: clamp(3rem, 5.7vw, 5.9rem);
       line-height: 0.93;
       letter-spacing: -0.065em;
     }
@@ -498,7 +298,7 @@
       color: #dbe5ff;
       font-size: 1.08rem;
       line-height: 1.92;
-      max-width: 620px;
+      max-width: 570px;
     }
 
     .hero-points {
@@ -685,13 +485,16 @@
       }
 
       .hero-layout {
-        min-height: 880px;
+        min-height: 850px;
       }
 
-      .core-energy {
-        right: -8%;
-        width: 620px;
-        height: 620px;
+      .hero-copy {
+        width: min(620px, 100%);
+        margin-left: 16px;
+      }
+
+      .hero-art-image {
+        background-position: 82% center;
       }
     }
 
@@ -705,38 +508,29 @@
       }
 
       .hero-layout {
-        min-height: 960px;
+        min-height: 900px;
+        align-items: flex-start;
+        padding-top: 20px;
       }
 
       .hero-copy {
         width: 100%;
+        margin-left: 0;
       }
 
-      .core-energy {
-        right: -12%;
-        width: 560px;
-        height: 560px;
+      .hero-art-image {
+        background-position: 72% center;
       }
 
-      .energy-ring.outer {
-        width: 480px;
-        height: 480px;
+      .hero-art-image::before {
+        background:
+          linear-gradient(180deg,
+            rgba(3,5,13,0.62) 0%,
+            rgba(3,5,13,0.42) 26%,
+            rgba(3,5,13,0.36) 58%,
+            rgba(3,5,13,0.84) 100%
+          );
       }
-
-      .energy-ring.middle {
-        width: 320px;
-        height: 320px;
-      }
-
-      .energy-ring.inner {
-        width: 200px;
-        height: 200px;
-      }
-
-      .energy-axis.h { width: 440px; }
-      .energy-axis.v { height: 440px; }
-      .energy-axis.d1,
-      .energy-axis.d2 { width: 300px; }
     }
 
     @media (max-width: 920px) {
@@ -767,19 +561,6 @@
       .closing-panel {
         padding: 24px;
       }
-
-      .hero-layout {
-        min-height: 980px;
-      }
-
-      .core-energy {
-        right: 50%;
-        top: auto;
-        bottom: 30px;
-        transform: translateX(50%);
-        width: 560px;
-        height: 560px;
-      }
     }
 
     @media (max-width: 760px) {
@@ -800,63 +581,12 @@
       }
 
       .hero-layout {
-        min-height: 940px;
+        min-height: 820px;
       }
 
-      .core-energy {
-        width: 420px;
-        height: 420px;
-        bottom: 18px;
+      .hero-art-image {
+        background-position: 70% center;
       }
-
-      .energy-ring.outer {
-        width: 360px;
-        height: 360px;
-      }
-
-      .energy-ring.middle {
-        width: 240px;
-        height: 240px;
-      }
-
-      .energy-ring.inner {
-        width: 150px;
-        height: 150px;
-      }
-
-      .core-center {
-        width: 132px;
-        height: 132px;
-        padding: 18px;
-      }
-
-      .core-center span {
-        font-size: 0.92rem;
-      }
-
-      .energy-axis.h { width: 320px; }
-      .energy-axis.v { height: 320px; }
-      .energy-axis.d1,
-      .energy-axis.d2 { width: 220px; }
-
-      .core-node {
-        width: 118px;
-        min-height: 82px;
-        padding: 12px 10px 10px;
-      }
-
-      .core-node strong {
-        font-size: 0.8rem;
-      }
-
-      .core-node span {
-        font-size: 0.74rem;
-      }
-
-      .node-top { top: 30px; }
-      .node-bottom { bottom: 30px; }
-      .node-left { left: 8px; }
-      .node-right { right: 8px; }
     }
   </style>
 </head>
@@ -881,45 +611,10 @@
   <main>
     <section class="hero">
       <div class="hero-art" aria-hidden="true">
+        <div class="hero-art-image"></div>
         <div class="hero-glow one"></div>
         <div class="hero-glow two"></div>
         <div class="hero-glow three"></div>
-        <div class="particle-field"></div>
-
-        <div class="core-energy">
-          <div class="energy-ring outer"></div>
-          <div class="energy-ring middle"></div>
-          <div class="energy-ring inner"></div>
-
-          <div class="energy-axis h"></div>
-          <div class="energy-axis v"></div>
-          <div class="energy-axis d1"></div>
-          <div class="energy-axis d2"></div>
-
-          <div class="core-center">
-            <span>Protected<br>CRM Core</span>
-          </div>
-
-          <div class="core-node node-top">
-            <strong>Industry Modules</strong>
-            <span>Grow around the center without rewriting it.</span>
-          </div>
-
-          <div class="core-node node-right">
-            <strong>Intelligence Layer</strong>
-            <span>System-native AI works from protected context.</span>
-          </div>
-
-          <div class="core-node node-bottom">
-            <strong>Analytics & Visibility</strong>
-            <span>Reporting stays trustworthy when the center is stable.</span>
-          </div>
-
-          <div class="core-node node-left">
-            <strong>Unified Experience</strong>
-            <span>One coherent environment because the foundation stays intact.</span>
-          </div>
-        </div>
       </div>
 
       <div class="hero-inner">
@@ -928,15 +623,15 @@
             <p class="eyebrow">The Core</p>
             <h1>The center of Stackemy is designed to <span class="gradient-line">stay protected.</span></h1>
             <p class="hero-intro">
-              The core is not a temporary starting point and not a feature subset. It is the protected
-              CRM foundation of the system — designed to remain stable while future capability expands
-              around it.
+              The core is not a temporary starting point and not a small subset of features. It is the
+              protected CRM foundation of the entire system — engineered to remain stable while future
+              capability expands around it.
             </p>
 
             <div class="hero-points">
               <div class="hero-point">A protected center creates long-term structural stability.</div>
               <div class="hero-point">Future modules extend around the core instead of mutating it.</div>
-              <div class="hero-point">The whole platform stays coherent because the foundation stays intact.</div>
+              <div class="hero-point">AI, analytics, and industry systems stay coherent because the foundation stays intact.</div>
             </div>
           </div>
         </div>
