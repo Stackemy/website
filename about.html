@@ -4,19 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Stackemy</title>
-  <meta name="description" content="About Stackemy — inspired by technology and alchemy, built through modern engineering, intelligence, and long-horizon innovation to deliver next-generation solutions for decades to come.">
+  <meta name="description" content="About Stackemy — where technology meets science. A modern, magical platform blending business technology, innovation, alchemy, and white-labeled industry solutions.">
   <style>
     :root {
-      --bg: #04060d;
-      --panel: rgba(10, 14, 28, 0.84);
-      --panel-strong: rgba(8, 11, 22, 0.96);
-      --border: rgba(91, 118, 255, 0.24);
+      --bg: #03050d;
+      --bg-soft: #060a16;
+      --panel: rgba(9, 14, 28, 0.78);
+      --panel-strong: rgba(8, 12, 24, 0.92);
+      --border: rgba(107, 123, 255, 0.24);
+      --border-soft: rgba(255, 255, 255, 0.08);
       --text: #f5f7ff;
-      --muted: #a9b3ce;
-      --blue: #3b82ff;
-      --cyan: #27e8ff;
-      --magenta: #d32dff;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      --muted: #a8b3d3;
+      --blue: #4da1ff;
+      --cyan: #29ebff;
+      --magenta: #d33dff;
+      --purple: #7c4dff;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.45);
       --radius: 24px;
       --max: 1280px;
       --content: 1200px;
@@ -36,10 +39,11 @@
       font-family: Inter, Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top center, rgba(59,130,255,.16), transparent 28%),
-        radial-gradient(circle at 80% 20%, rgba(211,45,255,.12), transparent 24%),
-        radial-gradient(circle at 20% 80%, rgba(39,232,255,.10), transparent 24%),
-        linear-gradient(180deg, #03050d 0%, #02040a 100%);
+        radial-gradient(circle at top center, rgba(77,161,255,0.14), transparent 26%),
+        radial-gradient(circle at 85% 18%, rgba(211,61,255,0.10), transparent 22%),
+        radial-gradient(circle at 15% 78%, rgba(41,235,255,0.08), transparent 22%),
+        linear-gradient(180deg, #02040a 0%, #040814 100%);
+      overflow-x: hidden;
     }
 
     a {
@@ -50,8 +54,8 @@
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(2, 4, 10, 0.90);
+      z-index: 30;
+      background: rgba(2, 4, 10, 0.88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
@@ -103,9 +107,9 @@
       height: 2px;
       transform: translateX(-50%);
       background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), transparent);
-      opacity: 0.85;
+      opacity: 0.9;
       border-radius: 999px;
-      box-shadow: 0 0 10px rgba(59,130,255,.5);
+      box-shadow: 0 0 10px rgba(77,161,255,0.5);
     }
 
     .header-cta {
@@ -132,51 +136,6 @@
       margin: 0 auto;
     }
 
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(3,5,13,0.32) 0%,
-          rgba(3,5,13,0.16) 22%,
-          rgba(3,5,13,0.26) 62%,
-          rgba(3,5,13,0.84) 100%
-        ),
-        url("stackemy-hero.png") center center / cover no-repeat;
-      overflow: hidden;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 220px;
-      background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.97) 100%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
-      padding: 0 0 34px;
-    }
-
-    .hero-card {
-      width: min(760px, 100%);
-      padding: 32px 30px;
-      border-radius: 28px;
-      background:
-        linear-gradient(180deg, rgba(9, 13, 26, 0.72), rgba(7, 10, 20, 0.86));
-      border: 1px solid rgba(95, 125, 255, 0.22);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(12px);
-    }
-
     .eyebrow {
       margin: 0 0 10px;
       font-size: 0.82rem;
@@ -186,14 +145,6 @@
       text-transform: uppercase;
     }
 
-    .hero-card h1 {
-      margin: 0 0 16px;
-      font-size: clamp(2.8rem, 5vw, 5.2rem);
-      line-height: 0.94;
-      letter-spacing: -0.06em;
-      max-width: 700px;
-    }
-
     .gradient-line {
       background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta));
       -webkit-background-clip: text;
@@ -201,90 +152,267 @@
       color: transparent;
     }
 
-    .hero-card p {
-      margin: 0;
-      max-width: 700px;
-      color: #dbe5ff;
-      line-height: 1.88;
-      font-size: 1.03rem;
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 70px);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(3,5,13,0.26) 0%, rgba(3,5,13,0.12) 20%, rgba(3,5,13,0.30) 66%, rgba(3,5,13,0.92) 100%),
+        url("stackemy-hero.png") center center / cover no-repeat;
     }
 
-    .hero-tags {
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 26% 36%, rgba(41,235,255,0.10), transparent 24%),
+        radial-gradient(circle at 74% 30%, rgba(211,61,255,0.10), transparent 22%),
+        linear-gradient(90deg, rgba(2,4,10,0.72) 0%, rgba(2,4,10,0.46) 46%, rgba(2,4,10,0.70) 100%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 220px;
+      background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.98) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 52px 0 42px;
+    }
+
+    .hero-content {
+      width: min(780px, 100%);
+      padding: 34px 34px 30px;
+      border-radius: 28px;
+      background:
+        linear-gradient(180deg, rgba(9, 13, 26, 0.60), rgba(8, 11, 22, 0.82));
+      border: 1px solid rgba(103, 122, 255, 0.22);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      max-width: 760px;
+      font-size: clamp(3rem, 5.9vw, 6rem);
+      line-height: 0.93;
+      letter-spacing: -0.065em;
+    }
+
+    .hero-intro {
+      margin: 0;
+      max-width: 740px;
+      color: #dbe5ff;
+      font-size: 1.08rem;
+      line-height: 1.9;
+    }
+
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 22px;
+      gap: 14px;
+      margin-top: 24px;
     }
 
-    .hero-tag {
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.10);
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 16px;
+      font-weight: 700;
+      font-size: 0.98rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary {
+      color: #04111c;
+      background: linear-gradient(90deg, var(--cyan), #8ff3ff);
+      box-shadow: 0 0 22px rgba(41,235,255,0.22);
+    }
+
+    .btn-secondary {
+      color: #f4f6ff;
       background: rgba(255,255,255,0.04);
-      color: #dce6ff;
-      font-size: 0.9rem;
+      border: 1px solid rgba(255,255,255,0.10);
       backdrop-filter: blur(8px);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero-pillars {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .hero-pillar {
+      padding: 14px 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-pillar strong {
+      display: block;
+      font-size: 0.92rem;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .hero-pillar span {
+      display: block;
+      color: #c5d1ee;
+      font-size: 0.88rem;
+      line-height: 1.55;
     }
 
     .section {
       padding: 24px 0 0;
+      position: relative;
+      z-index: 1;
     }
 
-    .statement-band,
+    .wide-band,
     .panel,
-    .principle-card,
-    .closing-panel {
+    .closing-panel,
+    .value-card,
+    .formula-card {
       background: var(--panel);
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
     }
 
-    .statement-band {
-      border-radius: 24px;
-      padding: 34px 30px;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(10,14,28,0.90), rgba(7,10,20,0.96));
+    .wide-band {
+      border-radius: 26px;
+      padding: 36px 34px;
+      background:
+        radial-gradient(circle at 14% 18%, rgba(41,235,255,0.08), transparent 24%),
+        radial-gradient(circle at 86% 20%, rgba(211,61,255,0.08), transparent 24%),
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.97));
     }
 
-    .statement-band h2 {
-      margin: 8px auto 14px;
-      max-width: 980px;
-      font-size: clamp(2rem, 4vw, 3rem);
+    .wide-band h2 {
+      margin: 8px 0 12px;
+      font-size: clamp(2rem, 4vw, 3.1rem);
       line-height: 1.04;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.045em;
+      max-width: 940px;
     }
 
-    .statement-band p {
-      margin: 0 auto;
+    .wide-band p {
+      margin: 0;
       max-width: 980px;
       color: var(--muted);
-      line-height: 1.85;
+      line-height: 1.9;
       font-size: 1.04rem;
     }
 
-    .about-columns {
+    .value-grid {
       display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
+    .value-card {
+      border-radius: 24px;
+      padding: 28px 24px;
+      background:
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(8,11,22,0.98));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .value-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .value-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      margin-bottom: 16px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background:
+        radial-gradient(circle at 30% 30%, rgba(41,235,255,0.42), transparent 50%),
+        linear-gradient(135deg, rgba(77,161,255,0.22), rgba(211,61,255,0.22));
+      box-shadow:
+        inset 0 0 18px rgba(255,255,255,0.03),
+        0 0 18px rgba(77,161,255,0.10);
+    }
+
+    .value-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.25rem;
+      letter-spacing: -0.03em;
+    }
+
+    .value-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+
+    .split-layout {
+      display: grid;
+      grid-template-columns: 0.94fr 1.06fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
     .panel {
-      border-radius: var(--radius);
-      padding: 34px 30px;
+      border-radius: 24px;
+      padding: 32px 28px;
+      background:
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(8,11,22,0.98));
     }
 
     .panel h2 {
       margin: 8px 0 14px;
       font-size: clamp(2rem, 4vw, 3rem);
       line-height: 1.04;
-      letter-spacing: -0.04em;
+      letter-spacing: -0.045em;
     }
 
     .panel p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.85;
-      font-size: 1.04rem;
+      line-height: 1.9;
+      font-size: 1.02rem;
     }
 
     .belief-list {
@@ -296,35 +424,40 @@
     .belief-item {
       padding: 16px 18px;
       border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .belief-item strong {
       display: block;
       margin-bottom: 6px;
-      color: #fff;
       font-size: 1rem;
+      color: #ffffff;
     }
 
     .belief-item span {
+      display: block;
       color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.98rem;
+      font-size: 0.96rem;
+      line-height: 1.72;
     }
 
-    .principles-grid {
+    .formula-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .principle-card {
+    .formula-card {
       border-radius: 22px;
       padding: 24px;
+      background:
+        radial-gradient(circle at top left, rgba(77,161,255,0.08), transparent 32%),
+        radial-gradient(circle at bottom right, rgba(211,61,255,0.08), transparent 28%),
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(8,11,22,0.98));
     }
 
-    .principle-card .label {
+    .formula-step {
       display: inline-block;
       margin-bottom: 10px;
       font-size: 0.76rem;
@@ -334,16 +467,17 @@
       text-transform: uppercase;
     }
 
-    .principle-card h3 {
+    .formula-card h3 {
       margin: 0 0 10px;
       font-size: 1.18rem;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
     }
 
-    .principle-card p {
+    .formula-card p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.75;
+      line-height: 1.76;
+      font-size: 0.98rem;
     }
 
     .closing {
@@ -351,47 +485,68 @@
     }
 
     .closing-panel {
-      border-radius: 24px;
-      padding: 34px 30px;
+      border-radius: 26px;
+      padding: 38px 34px;
       text-align: center;
-      background: linear-gradient(180deg, rgba(10,14,28,0.90), rgba(7,10,20,0.96));
+      background:
+        radial-gradient(circle at 14% 18%, rgba(41,235,255,0.08), transparent 24%),
+        radial-gradient(circle at 86% 20%, rgba(211,61,255,0.08), transparent 24%),
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.97));
     }
 
     .closing-panel h2 {
-      margin: 8px 0 14px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
+      margin: 8px auto 14px;
+      max-width: 960px;
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      line-height: 1.04;
+      letter-spacing: -0.045em;
     }
 
     .closing-panel p {
       margin: 0 auto;
-      max-width: 940px;
+      max-width: 960px;
       color: var(--muted);
-      line-height: 1.85;
+      line-height: 1.92;
       font-size: 1.04rem;
     }
 
     .footer {
-      padding: 8px 0 32px;
+      padding: 8px 0 34px;
       text-align: center;
       color: #8892b2;
       font-size: 0.92rem;
     }
 
     @media (max-width: 1180px) {
-      .about-columns {
-        grid-template-columns: 1fr;
+      .hero-pillars,
+      .value-grid,
+      .split-layout {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .hero {
-        min-height: 88vh;
+      .hero-pillars .hero-pillar:last-child {
+        grid-column: span 2;
+      }
+
+      .split-layout {
+        grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 980px) {
-      .principles-grid {
+      .value-grid,
+      .hero-pillars,
+      .formula-grid {
         grid-template-columns: 1fr;
+      }
+
+      .hero-pillars .hero-pillar:last-child {
+        grid-column: auto;
+      }
+
+      .hero {
+        min-height: 88vh;
+        background-position: 56% center;
       }
     }
 
@@ -416,13 +571,13 @@
         gap: 18px 24px;
       }
 
-      .hero {
-        min-height: 82vh;
-        background-position: 58% center;
-      }
-
-      .hero-card {
-        max-width: 100%;
+      .hero-content,
+      .wide-band,
+      .panel,
+      .value-card,
+      .formula-card,
+      .closing-panel {
+        padding: 24px;
       }
     }
 
@@ -435,17 +590,27 @@
         width: 100%;
       }
 
-      .hero-card,
-      .statement-band,
-      .panel,
-      .principle-card,
-      .closing-panel {
-        padding: 24px;
+      .hero {
+        min-height: 80vh;
+        background-position: 62% center;
       }
 
-      .hero {
-        min-height: 74vh;
-        background-position: 62% center;
+      .hero-inner {
+        padding: 30px 0 24px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.7rem, 12vw, 4rem);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
       }
     }
   </style>
@@ -471,24 +636,38 @@
   <main>
     <section class="hero">
       <div class="hero-inner">
-        <div class="hero-card">
-          <p class="eyebrow">About</p>
-          <h1>Inspired by <span class="gradient-line">technology and alchemy.</span></h1>
-          <p>
-            Stackemy was named from the idea of technological chemistry — the blending of modern engineering,
-            intelligence, architecture, and innovation into something more powerful than ordinary software.
-            The futuristic human-like AI head and the chemistry lab together represent exactly what the company
-            stands for: intelligent system design, technical synthesis, and next-generation solutions built
-            to endure for many decades to come.
+        <div class="hero-content">
+          <p class="eyebrow">About Stackemy</p>
+          <h1>Stackemy is where <span class="gradient-line">Technology meets Science.</span></h1>
+          <p class="hero-intro">
+            Innovation and the art of alchemy combine common business technology with tailored
+            technology for industries, agencies, and products through white labeling. Engineered by
+            custom-building from a strong core, Stackemy is designed to transform complexity into a
+            more unified, magical, and modern operating experience.
           </p>
 
-          <div class="hero-tags">
-            <span class="hero-tag">Technology</span>
-            <span class="hero-tag">Alchemy</span>
-            <span class="hero-tag">AI</span>
-            <span class="hero-tag">Modern Engineering</span>
-            <span class="hero-tag">Innovation</span>
-            <span class="hero-tag">Long-Horizon Systems</span>
+          <div class="hero-actions">
+            <a class="btn-primary" href="solutions.html">Explore Solutions</a>
+            <a class="btn-secondary" href="get-started.html">Start the Conversation</a>
+          </div>
+
+          <div class="hero-pillars">
+            <div class="hero-pillar">
+              <strong>Core Technology</strong>
+              <span>Foundational business capability brought together into one modern system.</span>
+            </div>
+            <div class="hero-pillar">
+              <strong>Tailored Solutions</strong>
+              <span>Industry, agency, and product-specific experiences built with precision.</span>
+            </div>
+            <div class="hero-pillar">
+              <strong>White Label Ready</strong>
+              <span>Branded and adaptable delivery for organizations building under their own identity.</span>
+            </div>
+            <div class="hero-pillar">
+              <strong>Engineered to Last</strong>
+              <span>Custom-built with long-horizon thinking, extensibility, and modern design discipline.</span>
+            </div>
           </div>
         </div>
       </div>
@@ -496,13 +675,15 @@
 
     <section class="section">
       <div class="section-shell">
-        <div class="statement-band">
-          <p class="eyebrow">What the Name Means</p>
-          <h2>Stackemy is the idea that technical excellence comes from synthesis, not fragmentation.</h2>
+        <div class="wide-band">
+          <p class="eyebrow">The Stackemy Idea</p>
+          <h2>Where science, engineering, and alchemy come together to create something more powerful than ordinary software.</h2>
           <p>
-            The company name reflects a deeper belief: building serious modern systems requires more than
-            assembling features. It requires combining architecture, intelligence, workflow, analytics,
-            engineering discipline, and product clarity into one coherent operating environment.
+            Stackemy is built around the belief that modern technology should feel more coherent,
+            more intelligent, and more transformative than the fragmented tools most businesses are
+            forced to work with today. The name reflects that philosophy: part technology, part
+            science, part alchemy — a deliberate combination of structure, innovation, and imagination
+            used to turn business complexity into elegant operating systems.
           </p>
         </div>
       </div>
@@ -510,74 +691,104 @@
 
     <section class="section">
       <div class="section-shell">
-        <div class="about-columns">
-          <div class="panel">
-            <p class="eyebrow">Our Direction</p>
-            <h2>Building next-generation solutions through modern engineering.</h2>
+        <div class="value-grid">
+          <article class="value-card">
+            <div class="value-icon"></div>
+            <h3>Common business technology</h3>
             <p>
-              Stackemy is being built around the belief that modern business systems should be stronger,
-              more intelligent, and more durable than the fragmented tools most companies operate today.
-              The aim is to create solutions that can support complexity while remaining elegant, extensible,
-              and architecturally sound over the long term.
+              Stackemy brings the essential layers of modern business technology into one connected
+              foundation, reducing fragmentation and creating a cleaner, more powerful operating core.
+            </p>
+          </article>
+
+          <article class="value-card">
+            <div class="value-icon"></div>
+            <h3>Tailored technology by context</h3>
+            <p>
+              The platform extends beyond generic software by supporting customized experiences for
+              industries, agencies, and specialized products — shaped around real operating needs.
+            </p>
+          </article>
+
+          <article class="value-card">
+            <div class="value-icon"></div>
+            <h3>White-labeled by design</h3>
+            <p>
+              Stackemy is built with the flexibility to power branded solutions, allowing organizations
+              to deliver modern technology under their own identity without sacrificing quality or cohesion.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="split-layout">
+          <div class="panel">
+            <p class="eyebrow">How We Think</p>
+            <h2>Engineered by custom building, not by stitching together compromises.</h2>
+            <p>
+              Stackemy is guided by the idea that the strongest platforms are intentionally designed
+              from the ground up. Instead of relying on a patchwork of disconnected tools, the system
+              is shaped around coherence, extensibility, and long-term usefulness. That is where the
+              science comes in — disciplined engineering, strong architecture, and thoughtful system design.
             </p>
 
             <div class="belief-list">
               <div class="belief-item">
-                <strong>Innovation with structure</strong>
-                <span>Real innovation is not novelty. It is disciplined system creation that remains valuable over time.</span>
+                <strong>Technology with structure</strong>
+                <span>Every strong experience begins with a strong foundation underneath it.</span>
               </div>
-
               <div class="belief-item">
-                <strong>Engineering with longevity</strong>
-                <span>The goal is not to build for the moment. It is to build systems capable of lasting for decades.</span>
+                <strong>Science with rigor</strong>
+                <span>Designing modern systems requires precision, reasoning, and repeatable quality.</span>
               </div>
-
               <div class="belief-item">
-                <strong>Intelligence with context</strong>
-                <span>AI becomes more powerful when it lives inside a coherent architecture instead of sitting outside it.</span>
+                <strong>Alchemy with imagination</strong>
+                <span>The most powerful outcomes come from combining disciplines into something greater.</span>
               </div>
-
               <div class="belief-item">
-                <strong>Technical alchemy with purpose</strong>
-                <span>Turning complexity into coherence is the deeper transformation the company is built to deliver.</span>
+                <strong>Brandable by intent</strong>
+                <span>White labeling is not an afterthought — it is part of how the vision expands.</span>
               </div>
             </div>
           </div>
 
-          <div class="principles-grid">
-            <article class="principle-card">
-              <span class="label">Technology</span>
-              <h3>Modern systems require deep architecture underneath the surface.</h3>
+          <div class="formula-grid">
+            <article class="formula-card">
+              <span class="formula-step">Formula 01</span>
+              <h3>Start with a strong core</h3>
               <p>
-                Stackemy is built from the belief that serious operating environments need structural quality,
-                not just attractive features. The system has to be coherent underneath to feel powerful above.
+                A modern system needs a unified foundation that can anchor the rest of the experience.
+                Stackemy begins there — with core business technology that creates order and consistency.
               </p>
             </article>
 
-            <article class="principle-card">
-              <span class="label">Alchemy</span>
-              <h3>The strongest solutions come from deliberate synthesis.</h3>
+            <article class="formula-card">
+              <span class="formula-step">Formula 02</span>
+              <h3>Extend into tailored domains</h3>
               <p>
-                Alchemy is the metaphor for combining engineering, analytics, intelligence, workflow, and design
-                into something more valuable than the individual parts alone.
+                Different industries, agencies, and products need different layers of capability.
+                Stackemy is designed to expand into those layers without losing its center.
               </p>
             </article>
 
-            <article class="principle-card">
-              <span class="label">Innovation</span>
-              <h3>Next-generation products require long-horizon thinking.</h3>
+            <article class="formula-card">
+              <span class="formula-step">Formula 03</span>
+              <h3>Package for white-labeled growth</h3>
               <p>
-                The ambition is not to chase short software cycles. It is to create systems that can lead now
-                and continue mattering far into the future.
+                Great platforms should be able to serve multiple brands and market contexts.
+                White labeling allows Stackemy’s system power to become a platform for others too.
               </p>
             </article>
 
-            <article class="principle-card">
-              <span class="label">Engineering</span>
-              <h3>Durability is part of the product itself.</h3>
+            <article class="formula-card">
+              <span class="formula-step">Formula 04</span>
+              <h3>Deliver a magical experience</h3>
               <p>
-                Good engineering is what makes a platform stable, extensible, intelligent, and capable of
-                supporting many decades of evolution without losing its center.
+                The final outcome should not feel mechanical. It should feel elegant, modern, and
+                almost transformative — the point where engineering excellence becomes something memorable.
               </p>
             </article>
           </div>
@@ -588,13 +799,13 @@
     <section class="closing">
       <div class="section-shell">
         <div class="closing-panel">
-          <p class="eyebrow">The Company Idea</p>
-          <h2>Stackemy exists to turn modern technical complexity into enduring business infrastructure.</h2>
+          <p class="eyebrow">The Long-Horizon Vision</p>
+          <h2>Stackemy exists to turn modern business technology into a more unified, tailored, and magical system for the future.</h2>
           <p>
-            The name, the visual language, and the product direction all point to the same belief:
-            the future belongs to companies that can combine intelligence, engineering, architecture,
-            and innovation into one coherent operating environment. That is the technical alchemy
-            Stackemy is built to deliver.
+            It is where technology meets science, and where innovation meets the art of alchemy.
+            By combining common business technology with custom-built, white-labeled solutions for
+            industries, agencies, and products, Stackemy is being shaped into a platform that feels
+            both powerful and imaginative — engineered for modern needs, and designed to endure.
           </p>
         </div>
       </div>
