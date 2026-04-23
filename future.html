@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Meet the Future | Stackemy</title>
-  <meta name="description" content="Meet the future of Stackemy — where the consolidated stack, the industry layer, the CRM, and the experience become one unified operating environment.">
+  <meta name="description" content="Meet the future of Stackemy — where the consolidated stack, industry capability, CRM, intelligence, analytics, and experience converge into one operating environment.">
   <style>
     :root {
+      --bg: #04060d;
       --panel: rgba(10, 14, 28, 0.84);
       --panel-strong: rgba(8, 11, 22, 0.96);
       --border: rgba(91, 118, 255, 0.28);
@@ -22,8 +23,13 @@
       --header-height: 98px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -36,7 +42,10 @@
         linear-gradient(180deg, #03050d 0%, #02040a 100%);
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .site-header {
       position: sticky;
@@ -118,35 +127,28 @@
       backdrop-filter: blur(10px);
     }
 
-    .hero {
-      position: relative;
-      min-height: 58vh;
-      background:
-        linear-gradient(180deg, rgba(3,5,13,0.34) 0%, rgba(3,5,13,0.78) 100%),
-        url("stackemy-hero.png") center center / cover no-repeat;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 180px;
-      background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.96) 100%);
-      pointer-events: none;
-    }
-
-    .hero-inner,
     .section-shell {
       width: min(var(--content), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      padding: 0 0 36px;
+    .hero {
+      padding: 34px 0 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 38px 34px;
     }
 
     .eyebrow {
@@ -158,23 +160,226 @@
       text-transform: uppercase;
     }
 
-    .hero h1 {
+    .hero-copy h1 {
       margin: 0 0 16px;
-      font-size: clamp(2.6rem, 5vw, 5.2rem);
-      line-height: 0.96;
+      font-size: clamp(2.7rem, 5vw, 5.2rem);
+      line-height: 0.94;
       letter-spacing: -0.05em;
-      max-width: 980px;
+      max-width: 760px;
     }
 
-    .hero p {
+    .hero-copy p {
       margin: 0;
-      max-width: 860px;
-      color: #d2dbf6;
-      line-height: 1.85;
-      font-size: 1.06rem;
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 1.05rem;
     }
 
-    .section { padding: 22px 0 0; }
+    .future-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .future-point {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: #d8e1fb;
+      line-height: 1.65;
+    }
+
+    .hero-graphic {
+      position: relative;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(39,232,255,0.12), transparent 26%),
+        radial-gradient(circle at 50% 50%, rgba(59,130,255,0.12), transparent 44%),
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
+      border: 1px solid rgba(94,126,255,0.24);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .hero-graphic::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .future-graphic-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 18px;
+      height: 100%;
+      align-content: center;
+    }
+
+    .future-graphic-title {
+      margin: 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.84rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .future-core {
+      position: relative;
+      width: min(100%, 440px);
+      aspect-ratio: 1 / 1;
+      margin: 0 auto;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow:
+        0 0 0 18px rgba(59,130,255,0.03),
+        0 0 0 54px rgba(39,232,255,0.02);
+    }
+
+    .future-core::before,
+    .future-core::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .future-core::before {
+      inset: 12%;
+    }
+
+    .future-core::after {
+      inset: 25%;
+    }
+
+    .future-center {
+      position: absolute;
+      inset: 34%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 16px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, rgba(39,232,255,0.18), rgba(59,130,255,0.10) 45%, rgba(162,45,255,0.10) 100%);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow:
+        0 0 24px rgba(39,232,255,0.18),
+        0 0 42px rgba(59,130,255,0.16);
+      color: #ffffff;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+
+    .orbit-node {
+      position: absolute;
+      width: 132px;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(9, 14, 28, 0.90);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: #e4ecff;
+      font-size: 0.92rem;
+      line-height: 1.35;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+    }
+
+    .orbit-node.top { top: -6px; left: 50%; transform: translateX(-50%); }
+    .orbit-node.right { top: 50%; right: -24px; transform: translateY(-50%); }
+    .orbit-node.bottom { bottom: -6px; left: 50%; transform: translateX(-50%); }
+    .orbit-node.left { top: 50%; left: -24px; transform: translateY(-50%); }
+
+    .section {
+      padding: 24px 0 0;
+    }
+
+    .statement-band {
+      background: linear-gradient(
+        180deg,
+        rgba(10,14,28,0.90),
+        rgba(7,10,20,0.96)
+      );
+      border: 1px solid rgba(94,126,255,0.22);
+      border-radius: 24px;
+      padding: 34px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .statement-band h2 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      max-width: 960px;
+    }
+
+    .statement-band p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.04rem;
+    }
+
+    .pillar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .pillar {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .pillar-label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: var(--cyan);
+      text-transform: uppercase;
+    }
+
+    .pillar h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+    }
+
+    .pillar p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
 
     .panel {
       background: var(--panel);
@@ -186,8 +391,8 @@
 
     .panel h2 {
       margin: 0 0 14px;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.05;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.04;
       letter-spacing: -0.04em;
     }
 
@@ -195,98 +400,37 @@
       margin: 0;
       color: var(--muted);
       line-height: 1.85;
-      max-width: 960px;
       font-size: 1.04rem;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      padding: 20px 0 0;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.22rem;
-      letter-spacing: -0.02em;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .split-grid {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 18px;
-      padding: 20px 0 0;
-    }
-
-    .stack-list {
+    .system-list {
       display: grid;
       gap: 14px;
-      margin-top: 18px;
+      margin-top: 22px;
     }
 
-    .stack-item {
+    .system-item {
       padding: 16px 18px;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.03);
     }
 
-    .stack-item strong {
+    .system-item strong {
       display: block;
       margin-bottom: 6px;
+      color: #fff;
       font-size: 1rem;
-      color: #ffffff;
     }
 
-    .stack-item span {
+    .system-item span {
       color: var(--muted);
       line-height: 1.7;
       font-size: 0.98rem;
     }
 
-    .quote-panel {
-      background: linear-gradient(
-        180deg,
-        rgba(10,14,28,0.88),
-        rgba(7,10,20,0.96)
-      );
-      border: 1px solid rgba(94,126,255,0.22);
-      border-radius: 24px;
-      box-shadow: var(--shadow);
-      padding: 34px 30px;
-    }
-
-    .quote-panel h3 {
-      margin: 0 0 14px;
-      font-size: clamp(1.7rem, 3vw, 2.5rem);
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-    }
-
-    .quote-panel p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 1.02rem;
-    }
-
     .closing {
-      padding: 20px 0 40px;
+      padding: 24px 0 40px;
     }
 
     .closing-panel {
@@ -310,7 +454,7 @@
 
     .closing-panel p {
       margin: 0;
-      max-width: 920px;
+      max-width: 940px;
       color: var(--muted);
       line-height: 1.85;
       font-size: 1.04rem;
@@ -323,6 +467,23 @@
       font-size: 0.92rem;
     }
 
+    @media (max-width: 1180px) {
+      .pillar-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .split-section {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-graphic {
+        min-height: 540px;
+      }
+    }
+
     @media (max-width: 920px) {
       .header-shell {
         min-height: auto;
@@ -331,23 +492,53 @@
         align-items: flex-start;
       }
 
-      .brand-logo { height: 54px; }
-      .nav { flex-wrap: wrap; gap: 18px 24px; }
-      .grid,
-      .split-grid {
-        grid-template-columns: 1fr;
+      .brand-logo {
+        height: 54px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 18px 24px;
       }
     }
 
     @media (max-width: 760px) {
-      .brand-logo { height: 48px; }
-      .header-cta { width: 100%; }
+      .brand-logo {
+        height: 48px;
+      }
+
+      .header-cta {
+        width: 100%;
+      }
+
+      .hero-copy,
+      .hero-graphic,
+      .statement-band,
+      .pillar,
       .panel,
-      .card,
-      .quote-panel,
       .closing-panel {
         padding: 24px;
       }
+
+      .pillar-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-graphic {
+        min-height: 470px;
+      }
+
+      .future-core {
+        width: min(100%, 320px);
+      }
+
+      .orbit-node {
+        width: 102px;
+        font-size: 0.84rem;
+      }
+
+      .orbit-node.right { right: -12px; }
+      .orbit-node.left { left: -12px; }
     }
   </style>
 </head>
@@ -371,29 +562,56 @@
 
   <main>
     <section class="hero">
-      <div class="hero-inner">
-        <p class="eyebrow">Meet the Future</p>
-        <h1>Where the consolidated stack, the industry layer, the CRM, and the experience become one.</h1>
-        <p>
-          The future of Stackemy is not a larger collection of tools. It is a more unified business
-          environment — one architecture where the operational core, industry-specific capability,
-          intelligence, analytics, and user experience work together as a single system.
-        </p>
+      <div class="section-shell">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Meet the Future</p>
+            <h1>Where the consolidated stack, the industry layer, the CRM, and the experience become one.</h1>
+            <p>
+              The future of Stackemy is not a larger collection of tools. It is a more unified business
+              environment — one architecture where the operational core, industry-specific capability,
+              intelligence, analytics, and user experience work together as a single system.
+            </p>
+
+            <div class="future-points">
+              <div class="future-point">Consolidated stack instead of endless disconnected applications.</div>
+              <div class="future-point">Industry systems extending around the CRM rather than replacing it.</div>
+              <div class="future-point">A product experience that feels unified because the architecture is unified.</div>
+            </div>
+          </div>
+
+          <div class="hero-graphic">
+            <div class="future-graphic-inner">
+              <p class="future-graphic-title">Future operating environment model</p>
+
+              <div class="future-core">
+                <div class="future-center">Unified<br>Operating<br>Environment</div>
+
+                <div class="orbit-node top">Industry<br>Layer</div>
+                <div class="orbit-node right">Intelligence<br>& AI</div>
+                <div class="orbit-node bottom">Analytics &<br>Visibility</div>
+                <div class="orbit-node left">Protected<br>CRM Core</div>
+              </div>
+
+              <p class="future-graphic-title">Multiple categories. One coherent system.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-shell">
-        <div class="panel">
+        <div class="statement-band">
           <p class="eyebrow">A New Category</p>
-          <h2>The future is a consolidated stack, not another disconnected application.</h2>
+          <h2>The future is not more tools. It is more coherence.</h2>
           <p>
             Most business software has been built in fragments. CRM lives in one place, reporting in
-            another, workflow somewhere else, industry-specific operations in yet another layer, and the
-            user experience becomes a patchwork of compromises across all of them. Stackemy is being built
-            toward the opposite outcome. The long-term vision is a consolidated stack — one protected core,
-            one extensible architecture, and one coherent experience that can support the full operating
-            reality of a modern business.
+            another, workflow somewhere else, industry-specific operations in another layer, and the
+            experience itself becomes a patchwork of disconnected surfaces. Stackemy is being built toward
+            the opposite outcome. The future vision is a consolidated stack — one protected core, one
+            extensible architecture, and one coherent product experience capable of supporting the full
+            operating reality of a modern business.
           </p>
         </div>
       </div>
@@ -401,37 +619,40 @@
 
     <section class="section">
       <div class="section-shell">
-        <div class="grid">
-          <article class="card">
-            <h3>Consolidated stack</h3>
+        <div class="pillar-grid">
+          <article class="pillar">
+            <span class="pillar-label">Consolidated Stack</span>
+            <h3>From software sprawl to one stronger environment.</h3>
             <p>
-              The goal is not to glue together separate categories forever. The goal is to collapse
-              unnecessary fragmentation and create one stronger operating environment across the layers that
-              matter most.
+              The direction is not to keep collecting categories forever. It is to bring the critical ones
+              together inside a more unified operating model.
             </p>
           </article>
 
-          <article class="card">
-            <h3>Industry meets CRM</h3>
+          <article class="pillar">
+            <span class="pillar-label">Industry Meets CRM</span>
+            <h3>Specialized operations without abandoning the core.</h3>
             <p>
-              Stackemy is designed so the core relationship system can remain protected while industry
-              capability grows around it. Specialized operating needs should not require abandoning the core.
+              Vertical capability should grow around the protected CRM center so specialized needs do not
+              force companies into fragmented systems.
             </p>
           </article>
 
-          <article class="card">
-            <h3>CRM meets experience</h3>
+          <article class="pillar">
+            <span class="pillar-label">CRM Meets Experience</span>
+            <h3>A product, not just a database with screens.</h3>
             <p>
-              The future system should not feel like a database with screens attached. It should feel like a
-              true product experience — clear, intelligent, navigable, and operationally unified.
+              The future system should feel clear, navigable, modern, and intentional because experience
+              itself becomes part of the architecture.
             </p>
           </article>
 
-          <article class="card">
-            <h3>Experience meets execution</h3>
+          <article class="pillar">
+            <span class="pillar-label">Experience Meets Execution</span>
+            <h3>Beauty backed by structural integrity.</h3>
             <p>
-              A beautiful interface is not enough. The experience must sit on top of real architectural
-              integrity so that visibility, action, and system behavior all stay aligned.
+              The interface only becomes powerful when it sits on top of real architectural coherence across
+              operations, intelligence, and visibility.
             </p>
           </article>
         </div>
@@ -440,49 +661,53 @@
 
     <section class="section">
       <div class="section-shell">
-        <div class="split-grid">
+        <div class="split-section">
           <div class="panel">
             <p class="eyebrow">What This Evolves Into</p>
             <h2>A future business environment built in layers that still feel like one product.</h2>
             <p>
-              Stackemy’s future is layered, but not fragmented. The architecture is meant to support
-              multiple operating dimensions without allowing them to drift apart into separate products that
-              happen to share a login. Everything should increasingly converge into one coherent environment.
+              Stackemy’s future is layered, but not fragmented. The system is meant to support multiple
+              operating dimensions without letting them drift apart into separate products that simply happen
+              to share a login.
             </p>
 
-            <div class="stack-list">
-              <div class="stack-item">
+            <div class="system-list">
+              <div class="system-item">
                 <strong>Protected CRM core</strong>
-                <span>The enduring center of the system where core relationship and operating entities remain stable.</span>
+                <span>The enduring center where core relationship and operating entities remain stable.</span>
               </div>
 
-              <div class="stack-item">
+              <div class="system-item">
                 <strong>Industry operating layers</strong>
-                <span>Specialized capability that adapts to vertical realities without mutating the core underneath.</span>
+                <span>Specialized capability extending around the core without mutating it.</span>
               </div>
 
-              <div class="stack-item">
+              <div class="system-item">
                 <strong>Intelligence and analytics</strong>
-                <span>Insight, visibility, reasoning, and reporting integrated into the platform rather than sitting outside it.</span>
+                <span>Insight, reasoning, reporting, and visibility integrated into the platform itself.</span>
               </div>
 
-              <div class="stack-item">
+              <div class="system-item">
                 <strong>Unified user experience</strong>
-                <span>A single product feel across all layers, so the system behaves like one environment rather than many tools.</span>
+                <span>A single product feel across all layers, so the system behaves like one environment.</span>
               </div>
             </div>
           </div>
 
-          <div class="quote-panel">
+          <div class="panel">
             <p class="eyebrow">The Direction</p>
-            <h3>The future of business systems is not more tabs. It is more coherence.</h3>
+            <h2>The future of business systems is not more tabs. It is more unity.</h2>
             <p>
               Stackemy is built around the belief that the categories businesses currently buy separately
-              should increasingly collapse into a more unified operating model. CRM should not be isolated
+              should increasingly collapse into a more coherent operating model. CRM should not be isolated
               from industry operations. Industry operations should not be isolated from intelligence.
               Intelligence should not be isolated from workflow. Workflow should not be isolated from the
-              experience itself. The future is a system where these boundaries still exist architecturally,
-              but feel unified to the people using it.
+              experience itself.
+            </p>
+            <p style="margin-top:16px;">
+              The future is a system where these boundaries still exist architecturally, but feel unified to
+              the people using it. That is the deeper direction of Stackemy: not a crowded menu of tools,
+              but a stronger environment where the consolidated stack actually behaves like one system.
             </p>
           </div>
         </div>
