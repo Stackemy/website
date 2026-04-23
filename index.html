@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stackemy</title>
-  <meta name="description" content="Stackemy — One Core. Limitless Possibilities.">
+  <meta name="description" content="Stackemy is building a unified operating environment for modern business — one protected core with limitless possibilities around it.">
   <style>
     :root {
+      --bg: #04060d;
       --panel: rgba(10, 14, 28, 0.82);
       --panel-strong: rgba(8, 11, 22, 0.94);
       --border: rgba(91, 118, 255, 0.28);
@@ -18,6 +19,8 @@
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
       --radius: 24px;
       --header-height: 98px;
+      --max: 1280px;
+      --content: 1200px;
     }
 
     * {
@@ -59,7 +62,7 @@
     }
 
     .header-shell {
-      width: min(1280px, calc(100% - 40px));
+      width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
       min-height: var(--header-height);
       display: flex;
@@ -168,15 +171,15 @@
       content: "";
       position: absolute;
       inset: auto 0 0 0;
-      height: 180px;
-      background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.94) 100%);
+      height: 200px;
+      background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.96) 100%);
       pointer-events: none;
     }
 
     .hero-inner {
       position: relative;
       z-index: 2;
-      width: min(1280px, calc(100% - 40px));
+      width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
       padding: 0 0 28px;
     }
@@ -196,21 +199,25 @@
     }
 
     .section-shell {
-      width: min(1200px, calc(100% - 32px));
+      width: min(var(--content), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .tagline-section {
+    .intro {
       padding: 26px 0 20px;
     }
 
-    .tagline-card {
-      text-align: center;
+    .intro-card,
+    .panel {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 40px 28px;
       box-shadow: var(--shadow);
+    }
+
+    .intro-card {
+      text-align: center;
+      padding: 42px 30px;
     }
 
     .eyebrow {
@@ -221,22 +228,22 @@
       color: var(--cyan);
     }
 
-    .tagline-card h1 {
-      margin: 0 0 14px;
+    .intro-card h1 {
+      margin: 0 0 16px;
       font-size: clamp(2.5rem, 5vw, 4.8rem);
       line-height: 0.98;
       letter-spacing: -0.05em;
     }
 
-    .tagline-card p {
+    .intro-card p {
       margin: 0 auto;
-      max-width: 860px;
+      max-width: 900px;
       color: var(--muted);
       line-height: 1.85;
-      font-size: 1.05rem;
+      font-size: 1.06rem;
     }
 
-    .tagline-actions {
+    .intro-actions {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
@@ -276,37 +283,33 @@
       padding: 10px 0 24px;
     }
 
-    .content-card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px;
-      box-shadow: var(--shadow);
+    .panel {
+      padding: 34px 30px;
     }
 
-    .content-card h2 {
+    .panel h2 {
       margin: 0 0 14px;
-      font-size: clamp(1.9rem, 4vw, 3rem);
+      font-size: clamp(2rem, 4vw, 3.2rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
     }
 
-    .content-card p {
+    .panel p {
       margin: 0;
       color: var(--muted);
       line-height: 1.85;
-      max-width: 920px;
+      max-width: 940px;
       font-size: 1.04rem;
     }
 
-    .info-grid {
+    .feature-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
       padding: 20px 0 24px;
     }
 
-    .card {
+    .feature-card {
       background: var(--panel);
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 20px;
@@ -314,92 +317,57 @@
       box-shadow: var(--shadow);
     }
 
-    .card h3 {
+    .feature-card h3 {
       margin: 0 0 10px;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
     }
 
-    .card p {
+    .feature-card p {
       margin: 0;
       color: var(--muted);
       line-height: 1.7;
     }
 
-    .form-section {
-      padding: 10px 0 56px;
+    .page-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding: 10px 0 40px;
     }
 
-    .form-panel {
+    .page-link {
+      display: block;
       background: linear-gradient(
         180deg,
-        rgba(10,14,28,0.90),
+        rgba(10,14,28,0.88),
         rgba(7,10,20,0.96)
       );
       border: 1px solid rgba(94,126,255,0.22);
-      border-radius: var(--radius);
-      padding: 34px 24px;
+      border-radius: 22px;
+      padding: 26px;
       box-shadow: var(--shadow);
     }
 
-    .form-panel h2 {
-      margin: 0 0 12px;
-      font-size: clamp(1.9rem, 3vw, 2.8rem);
-      line-height: 1.1;
+    .page-link .label {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.18em;
+      color: var(--cyan);
+      text-transform: uppercase;
     }
 
-    .form-panel p {
-      margin: 0 0 24px;
-      max-width: 760px;
+    .page-link h3 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .page-link p {
+      margin: 0;
       color: var(--muted);
       line-height: 1.75;
-    }
-
-    .contact-form {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .field.full {
-      grid-column: 1 / -1;
-    }
-
-    label {
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.9);
-    }
-
-    input,
-    textarea {
-      width: 100%;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.04);
-      color: #fff;
-      border-radius: 14px;
-      padding: 14px 16px;
-      font: inherit;
-      outline: none;
-    }
-
-    textarea {
-      min-height: 140px;
-      resize: vertical;
-    }
-
-    input:focus,
-    textarea:focus {
-      border-color: rgba(59,130,255,0.8);
-      box-shadow: 0 0 0 3px rgba(59,130,255,0.12);
-    }
-
-    .form-submit {
-      margin-top: 8px;
     }
 
     .footer {
@@ -411,7 +379,7 @@
 
     @media (max-width: 1180px) {
       .header-shell {
-        width: min(100% - 24px, 1280px);
+        width: min(100% - 24px, var(--max));
         gap: 18px;
       }
 
@@ -459,7 +427,8 @@
         padding-bottom: 22px;
       }
 
-      .contact-form {
+      .feature-grid,
+      .page-grid {
         grid-template-columns: 1fr;
       }
     }
@@ -477,14 +446,10 @@
         width: 100%;
       }
 
-      .tagline-card,
-      .content-card,
-      .form-panel {
+      .intro-card,
+      .panel,
+      .page-link {
         padding: 24px;
-      }
-
-      .info-grid {
-        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -492,95 +457,104 @@
 <body>
   <header class="site-header">
     <div class="header-shell">
-      <a class="brand" href="#top" aria-label="Stackemy home">
+      <a class="brand" href="index.html" aria-label="Stackemy home">
         <span class="brand-mark">S</span>
         <span class="brand-word">tackemy</span>
       </a>
 
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#core">The Core</a>
-        <a href="#future">Meet the Future</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#about">About</a>
+        <a href="core.html">The Core</a>
+        <a href="future.html">Meet the Future</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="about.html">About</a>
       </nav>
 
-      <a class="header-cta" href="#get-started">Get Started</a>
+      <a class="header-cta" href="get-started.html">Get Started</a>
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero">
       <div class="hero-inner">
-        <a class="hero-scroll" href="#future">Scroll to continue ↓</a>
+        <a class="hero-scroll" href="#intro">Scroll to continue ↓</a>
       </div>
     </section>
 
-    <section class="tagline-section" id="future">
+    <section class="intro" id="intro">
       <div class="section-shell">
-        <div class="tagline-card">
+        <div class="intro-card">
           <p class="eyebrow">TECHNOLOGICAL CHEMISTRY</p>
           <h1>One Core. Limitless Possibilities.</h1>
           <p>
-            Stackemy is designed to unify core systems, intelligence,
-            extensibility, and execution into a single operating environment
-            for modern business.
+            Stackemy is building a unified operating environment for modern business.
+            At the center is a protected core designed to remain stable, extensible,
+            and architecturally intact while future systems grow around it. CRM,
+            intelligence, analytics, workflow, oversight, and industry-specific
+            capability should not feel like disconnected tools. They should feel like
+            one system.
           </p>
 
-          <div class="tagline-actions">
-            <a class="button button-primary" href="#get-started">Get Started</a>
-            <a class="button button-secondary" href="#core">Learn More</a>
+          <div class="intro-actions">
+            <a class="button button-primary" href="get-started.html">Get Started</a>
+            <a class="button button-secondary" href="future.html">See the Vision</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" id="core">
+    <section class="section">
       <div class="section-shell">
-        <div class="content-card">
-          <p class="eyebrow">THE CORE</p>
-          <h2>A protected foundation designed to stay intact as the system expands.</h2>
+        <div class="panel">
+          <p class="eyebrow">WHY STACKEMY</p>
+          <h2>Most business systems are fragmented by design. Stackemy is not.</h2>
           <p>
-            Stackemy is built around a protected CRM core that remains stable
-            while future modules, intelligence layers, analytics, and industry
-            solutions extend around it. The core is not a temporary center of
-            gravity. It is the enduring foundation.
+            Companies are forced to operate across scattered software, duplicated
+            logic, brittle integrations, and disconnected reporting. The result is
+            operational drag, architectural drift, and decision-making built on
+            partial visibility. Stackemy exists to replace that fragmentation with a
+            more coherent model: one protected foundation, one extensible system,
+            and one long-term architecture strong enough to support everything built
+            above it.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section" id="solutions">
+    <section class="section">
       <div class="section-shell">
-        <div class="info-grid">
-          <article class="card">
+        <div class="feature-grid">
+          <article class="feature-card">
             <h3>Protected Core</h3>
             <p>
-              A stable CRM foundation designed to remain protected while future
-              modules extend around it.
+              The core is not a temporary starting point. It is the long-term
+              foundation. Stackemy is designed so future capabilities extend around
+              the core rather than mutate it.
             </p>
           </article>
 
-          <article class="card">
+          <article class="feature-card">
             <h3>Unified Experience</h3>
             <p>
-              One coherent system across customer operations, workflows,
-              analytics, and intelligence.
+              CRM, intelligence, analytics, workflow, and oversight should feel
+              like one coherent operating environment rather than a collection of
+              stitched-together tools.
             </p>
           </article>
 
-          <article class="card">
+          <article class="feature-card">
             <h3>Composable Growth</h3>
             <p>
-              Industry-specific capabilities can grow around the core without
-              breaking the system underneath.
+              Industry-specific solutions, future modules, and advanced capability
+              can be added without breaking the structural integrity of the system
+              underneath.
             </p>
           </article>
 
-          <article class="card" id="about">
-            <h3>Built for Scale</h3>
+          <article class="feature-card">
+            <h3>Built for Real Complexity</h3>
             <p>
-              Designed for multi-entity businesses, rollups, visibility layers,
-              and long-term platform expansion.
+              Stackemy is designed for organizations that need hierarchy, cross-entity
+              visibility, rollups, governance, and controlled expansion over time.
             </p>
           </article>
         </div>
@@ -589,55 +563,52 @@
 
     <section class="section">
       <div class="section-shell">
-        <div class="content-card">
-          <p class="eyebrow">ABOUT</p>
-          <h2>Building the next operating system for modern business.</h2>
+        <div class="panel">
+          <p class="eyebrow">EXPLORE THE PLATFORM</p>
+          <h2>Each page explains a different layer of the Stackemy vision.</h2>
           <p>
-            We are designing a platform where core systems, intelligence,
-            extensibility, and execution come together in one place. Stackemy
-            exists to create a more unified future for business systems — one
-            where the architecture underneath is strong enough to support
-            everything built above it.
+            The homepage introduces the system. The deeper pages explain the logic
+            underneath it — the protected core, the future-facing vision, the
+            solution landscape, and the philosophy driving the company forward.
           </p>
         </div>
-      </div>
-    </section>
 
-    <section class="form-section" id="get-started">
-      <div class="section-shell">
-        <div class="form-panel">
-          <p class="eyebrow">GET STARTED</p>
-          <h2>Tell us what you are building.</h2>
-          <p>
-            Share a little about your company, your goals, and what kind of
-            system you are looking to create.
-          </p>
+        <div class="page-grid">
+          <a class="page-link" href="core.html">
+            <span class="label">The Core</span>
+            <h3>The protected center of the system.</h3>
+            <p>
+              Why the CRM core must remain stable, why extension is better than
+              mutation, and why architectural integrity matters from day one.
+            </p>
+          </a>
 
-          <form class="contact-form" action="mailto:hello@stackemy.com" method="post" enctype="text/plain">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name">
-            </div>
+          <a class="page-link" href="future.html">
+            <span class="label">Meet the Future</span>
+            <h3>The larger operating environment Stackemy is building toward.</h3>
+            <p>
+              Unified systems, intelligence, analytics, extensibility, and the
+              next generation of business infrastructure.
+            </p>
+          </a>
 
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@company.com">
-            </div>
+          <a class="page-link" href="solutions.html">
+            <span class="label">Solutions</span>
+            <h3>What Stackemy can support across business systems.</h3>
+            <p>
+              CRM, oversight, analytics, workflows, cross-entity visibility,
+              industry modules, and the solution layers that can grow around the core.
+            </p>
+          </a>
 
-            <div class="field full">
-              <label for="company">Company</label>
-              <input id="company" name="company" type="text" placeholder="Company name">
-            </div>
-
-            <div class="field full">
-              <label for="message">What are you building?</label>
-              <textarea id="message" name="message" placeholder="Tell us about your vision, your current systems, and what you want to create."></textarea>
-            </div>
-
-            <div class="field full form-submit">
-              <button class="button button-primary" type="submit">Send Inquiry</button>
-            </div>
-          </form>
+          <a class="page-link" href="about.html">
+            <span class="label">About</span>
+            <h3>Why Stackemy exists.</h3>
+            <p>
+              The philosophy behind the company, the problem it is solving,
+              and the long-term belief that business systems should become one.
+            </p>
+          </a>
         </div>
       </div>
     </section>
