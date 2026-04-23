@@ -7,9 +7,10 @@
   <meta name="description" content="Stackemy solutions bring CRM, business intelligence, artificial intelligence, and industry-specific operating systems together inside one unified environment.">
   <style>
     :root {
+      --bg: #04060d;
       --panel: rgba(10, 14, 28, 0.84);
       --panel-strong: rgba(8, 11, 22, 0.96);
-      --border: rgba(91, 118, 255, 0.28);
+      --border: rgba(91, 118, 255, 0.24);
       --text: #f5f7ff;
       --muted: #a9b3ce;
       --blue: #3b82ff;
@@ -22,8 +23,13 @@
       --header-height: 98px;
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -36,7 +42,10 @@
         linear-gradient(180deg, #03050d 0%, #02040a 100%);
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .site-header {
       position: sticky;
@@ -118,35 +127,28 @@
       backdrop-filter: blur(10px);
     }
 
-    .hero {
-      position: relative;
-      min-height: 58vh;
-      background:
-        linear-gradient(180deg, rgba(3,5,13,0.34) 0%, rgba(3,5,13,0.78) 100%),
-        url("stackemy-hero.png") center center / cover no-repeat;
-      display: flex;
-      align-items: flex-end;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 180px;
-      background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.96) 100%);
-      pointer-events: none;
-    }
-
-    .hero-inner,
     .section-shell {
       width: min(var(--content), calc(100% - 32px));
       margin: 0 auto;
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      padding: 0 0 36px;
+    .hero {
+      padding: 34px 0 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 38px 34px;
     }
 
     .eyebrow {
@@ -158,97 +160,270 @@
       text-transform: uppercase;
     }
 
-    .hero h1 {
+    .hero-copy h1 {
       margin: 0 0 16px;
-      font-size: clamp(2.6rem, 5vw, 5.2rem);
-      line-height: 0.96;
+      font-size: clamp(2.7rem, 5vw, 5.1rem);
+      line-height: 0.94;
       letter-spacing: -0.05em;
-      max-width: 980px;
+      max-width: 760px;
     }
 
-    .hero p {
+    .hero-copy .gradient-line {
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy p {
       margin: 0;
-      max-width: 900px;
-      color: #d2dbf6;
-      line-height: 1.85;
-      font-size: 1.06rem;
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 1.05rem;
     }
 
-    .section { padding: 22px 0 0; }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
 
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+    .hero-badge {
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.04);
+      color: #dce6ff;
+      font-size: 0.92rem;
+    }
+
+    .solution-graphic {
+      position: relative;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(39,232,255,0.10), transparent 30%),
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
+      border: 1px solid rgba(94,126,255,0.24);
+      border-radius: 28px;
       box-shadow: var(--shadow);
+      padding: 30px;
+      overflow: hidden;
+    }
+
+    .solution-graphic::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .solution-graphic-inner {
+      position: relative;
+      z-index: 1;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .solution-hub {
+      position: relative;
+      width: min(100%, 540px);
+      min-height: 430px;
+    }
+
+    .hub-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 170px;
+      height: 170px;
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at center, rgba(39,232,255,0.18), rgba(59,130,255,0.12) 55%, rgba(162,45,255,0.12) 100%);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow:
+        0 0 26px rgba(39,232,255,0.16),
+        0 0 56px rgba(59,130,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px;
+      color: #ffffff;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+
+    .hub-ring {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow:
+        0 0 0 28px rgba(59,130,255,0.03),
+        0 0 0 64px rgba(211,45,255,0.02);
+    }
+
+    .hub-line {
+      position: absolute;
+      background: linear-gradient(90deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
+      box-shadow: 0 0 14px rgba(39,232,255,0.25);
+    }
+
+    .line-top {
+      width: 2px;
+      height: 76px;
+      left: 50%;
+      top: 38px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
+    }
+
+    .line-right {
+      width: 92px;
+      height: 2px;
+      right: 78px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .line-bottom {
+      width: 2px;
+      height: 76px;
+      left: 50%;
+      bottom: 38px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
+    }
+
+    .line-left {
+      width: 92px;
+      height: 2px;
+      left: 78px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .solution-node {
+      position: absolute;
+      width: 150px;
+      min-height: 98px;
+      padding: 14px 14px 12px;
+      border-radius: 20px;
+      background: rgba(9, 14, 28, 0.92);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.26);
+      text-align: center;
+    }
+
+    .solution-node .icon {
+      width: 46px;
+      height: 46px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.22rem;
+      color: #ffffff;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .solution-node strong {
+      display: block;
+      font-size: 0.92rem;
+      line-height: 1.35;
+      color: #eef4ff;
+      letter-spacing: -0.01em;
+    }
+
+    .node-top {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .node-right {
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .node-bottom {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .node-left {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .section {
+      padding: 24px 0 0;
+    }
+
+    .statement-band {
+      background: linear-gradient(
+        180deg,
+        rgba(10,14,28,0.90),
+        rgba(7,10,20,0.96)
+      );
+      border: 1px solid rgba(94,126,255,0.22);
+      border-radius: 24px;
       padding: 34px 30px;
+      box-shadow: var(--shadow);
     }
 
-    .panel h2 {
+    .statement-band h2 {
       margin: 0 0 14px;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.05;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.04;
       letter-spacing: -0.04em;
+      max-width: 960px;
     }
 
-    .panel p {
+    .statement-band p {
       margin: 0;
+      max-width: 980px;
       color: var(--muted);
       line-height: 1.85;
-      max-width: 980px;
       font-size: 1.04rem;
     }
 
-    .grid {
+    .pillar-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      padding: 20px 0 0;
     }
 
-    .card {
+    .pillar {
       background: var(--panel);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 20px;
+      border-radius: 22px;
       padding: 24px;
       box-shadow: var(--shadow);
     }
 
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 1.22rem;
-      letter-spacing: -0.02em;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .pillars {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      padding: 20px 0 0;
-    }
-
-    .pillar {
-      background: linear-gradient(
-        180deg,
-        rgba(10,14,28,0.88),
-        rgba(7,10,20,0.96)
-      );
-      border: 1px solid rgba(94,126,255,0.22);
-      border-radius: 22px;
-      padding: 26px;
-      box-shadow: var(--shadow);
-    }
-
-    .pillar .label {
+    .pillar-label {
       display: inline-block;
       margin-bottom: 10px;
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 800;
       letter-spacing: 0.18em;
       color: var(--cyan);
@@ -257,8 +432,8 @@
 
     .pillar h3 {
       margin: 0 0 10px;
-      font-size: 1.45rem;
-      letter-spacing: -0.03em;
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
     }
 
     .pillar p {
@@ -267,41 +442,34 @@
       line-height: 1.75;
     }
 
-    .solution-list {
+    .function-grid {
       display: grid;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .solution-item {
-      padding: 16px 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .solution-item strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1rem;
-      color: #ffffff;
-    }
-
-    .solution-item span {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.98rem;
-    }
-
-    .split-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
-      padding: 20px 0 0;
+    }
+
+    .function-card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .function-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+    }
+
+    .function-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
     }
 
     .closing {
-      padding: 20px 0 40px;
+      padding: 24px 0 40px;
     }
 
     .closing-panel {
@@ -338,8 +506,20 @@
       font-size: 0.92rem;
     }
 
-    @media (max-width: 980px) {
-      .pillars { grid-template-columns: 1fr; }
+    @media (max-width: 1180px) {
+      .pillar-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .solution-graphic-inner {
+        min-height: 560px;
+      }
     }
 
     @media (max-width: 920px) {
@@ -350,23 +530,77 @@
         align-items: flex-start;
       }
 
-      .brand-logo { height: 54px; }
-      .nav { flex-wrap: wrap; gap: 18px 24px; }
-      .grid,
-      .split-grid {
+      .brand-logo {
+        height: 54px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 18px 24px;
+      }
+
+      .function-grid {
         grid-template-columns: 1fr;
       }
     }
 
     @media (max-width: 760px) {
-      .brand-logo { height: 48px; }
-      .header-cta { width: 100%; }
-      .panel,
-      .card,
+      .brand-logo {
+        height: 48px;
+      }
+
+      .header-cta {
+        width: 100%;
+      }
+
+      .hero-copy,
+      .solution-graphic,
+      .statement-band,
       .pillar,
+      .function-card,
       .closing-panel {
         padding: 24px;
       }
+
+      .solution-hub {
+        min-height: 420px;
+      }
+
+      .hub-center {
+        width: 130px;
+        height: 130px;
+        font-size: 0.95rem;
+      }
+
+      .hub-ring {
+        width: 250px;
+        height: 250px;
+      }
+
+      .solution-node {
+        width: 112px;
+        min-height: 84px;
+      }
+
+      .solution-node strong {
+        font-size: 0.82rem;
+      }
+
+      .line-top,
+      .line-bottom {
+        height: 54px;
+      }
+
+      .line-top { top: 48px; }
+      .line-bottom { bottom: 48px; }
+
+      .line-left,
+      .line-right {
+        width: 50px;
+      }
+
+      .line-left { left: 58px; }
+      .line-right { right: 58px; }
     }
   </style>
 </head>
@@ -390,28 +624,73 @@
 
   <main>
     <section class="hero">
-      <div class="hero-inner">
-        <p class="eyebrow">Solutions</p>
-        <h1>The umbrella solution environment where CRM, analytics, AI, and industry systems come together.</h1>
-        <p>
-          Stackemy is not limited to one software category. It is being designed as a broader solution
-          environment where relationship management, business intelligence, artificial intelligence, and
-          industry-specific operating capability can live together inside one coherent architecture.
-        </p>
+      <div class="section-shell">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Solutions</p>
+            <h1>CRM, intelligence, analytics, and industry systems <span class="gradient-line">under one umbrella.</span></h1>
+            <p>
+              Stackemy is not a single-category product. It is a broader solution environment where CRM,
+              business intelligence, artificial intelligence, and industry-specific operating capability
+              come together inside one coherent architecture.
+            </p>
+
+            <div class="hero-badges">
+              <span class="hero-badge">CRM</span>
+              <span class="hero-badge">Business Intelligence</span>
+              <span class="hero-badge">Artificial Intelligence</span>
+              <span class="hero-badge">Industry Solutions</span>
+            </div>
+          </div>
+
+          <div class="solution-graphic">
+            <div class="solution-graphic-inner">
+              <div class="solution-hub">
+                <div class="hub-ring"></div>
+
+                <div class="hub-center">Stackemy<br>Solution<br>Environment</div>
+
+                <div class="hub-line line-top"></div>
+                <div class="hub-line line-right"></div>
+                <div class="hub-line line-bottom"></div>
+                <div class="hub-line line-left"></div>
+
+                <div class="solution-node node-top">
+                  <div class="icon">◎</div>
+                  <strong>CRM</strong>
+                </div>
+
+                <div class="solution-node node-right">
+                  <div class="icon">▥</div>
+                  <strong>Business<br>Intelligence</strong>
+                </div>
+
+                <div class="solution-node node-bottom">
+                  <div class="icon">◌</div>
+                  <strong>Artificial<br>Intelligence</strong>
+                </div>
+
+                <div class="solution-node node-left">
+                  <div class="icon">▣</div>
+                  <strong>Industry<br>Solutions</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-shell">
-        <div class="panel">
-          <p class="eyebrow">A Broader Solution Model</p>
-          <h2>CRM meets analytics. Analytics meets AI. AI meets industry. The system becomes more complete.</h2>
+        <div class="statement-band">
+          <p class="eyebrow">Umbrella Solution Model</p>
+          <h2>The categories businesses buy separately should increasingly work as one system.</h2>
           <p>
-            Most businesses are forced to assemble these categories separately. They buy a CRM, then add BI,
-            then layer on AI tools, then add industry-specific software, and over time they end up operating
-            across disconnected systems that never quite feel unified. Stackemy is built toward a different
-            outcome. The solution vision is an umbrella environment where these capabilities converge into one
-            operating model without losing architectural integrity underneath.
+            Most companies assemble these layers one by one. They buy a CRM, then add reporting, then layer
+            on AI tools, then adopt industry-specific systems, and over time they end up operating across a
+            stack that never quite feels unified. Stackemy is built toward a different model — one umbrella
+            environment where these capabilities reinforce one another inside one operating architecture.
           </p>
         </div>
       </div>
@@ -419,31 +698,31 @@
 
     <section class="section">
       <div class="section-shell">
-        <div class="pillars">
+        <div class="pillar-grid">
           <article class="pillar">
-            <span class="label">CRM</span>
-            <h3>The relationship and operational core.</h3>
+            <span class="pillar-label">CRM</span>
+            <h3>The relationship and operational foundation.</h3>
             <p>
-              The system begins with a protected CRM foundation that anchors customer relationships, core
-              records, workflows, activities, and the business context everything else needs.
+              Accounts, contacts, deals, activities, pipelines, and the protected core record system that
+              anchors the broader environment.
             </p>
           </article>
 
           <article class="pillar">
-            <span class="label">Business Intelligence</span>
+            <span class="pillar-label">Business Intelligence</span>
             <h3>Visibility that lives close to execution.</h3>
             <p>
-              Analytics should not be detached from the system that creates the data. Reporting, dashboards,
-              and executive visibility become more powerful when they are part of the operating environment.
+              Dashboards, reporting, trend analysis, cross-entity rollups, and executive visibility tied
+              directly to the system where the work actually happens.
             </p>
           </article>
 
           <article class="pillar">
-            <span class="label">Artificial Intelligence</span>
-            <h3>Intelligence integrated into the platform itself.</h3>
+            <span class="pillar-label">Artificial Intelligence</span>
+            <h3>Intelligence integrated into the platform.</h3>
             <p>
-              AI should not remain an external layer with shallow context. Over time it becomes a native part
-              of how the system reasons, surfaces insight, supports decision-making, and accelerates action.
+              Guidance, summarization, recommendations, pattern recognition, search, and reasoning that get
+              stronger because the AI has native system context.
             </p>
           </article>
         </div>
@@ -452,96 +731,42 @@
 
     <section class="section">
       <div class="section-shell">
-        <div class="grid">
-          <article class="card">
-            <h3>CRM functions</h3>
+        <div class="function-grid">
+          <article class="function-card">
+            <p class="eyebrow">CRM Functions</p>
+            <h3>Structured relationship infrastructure</h3>
             <p>
-              Accounts, contacts, deals, activities, pipelines, relationship history, operational movement,
-              and the structured record system that supports everything above it.
+              Customer records, deal management, activity history, operational workflow, ownership,
+              pipeline visibility, and the relationship system that everything else can build around.
             </p>
           </article>
 
-          <article class="card">
-            <h3>Business intelligence functions</h3>
+          <article class="function-card">
+            <p class="eyebrow">BI Functions</p>
+            <h3>Operational analytics and executive visibility</h3>
             <p>
-              Dashboards, executive reporting, performance visibility, cross-entity rollups, operational
-              trends, and analysis tied directly to the data and workflows inside the platform.
+              Performance dashboards, hierarchy-aware reporting, rollups, strategic health, operational
+              movement, and visibility layers tied directly to the system beneath them.
             </p>
           </article>
 
-          <article class="card">
-            <h3>Artificial intelligence functions</h3>
+          <article class="function-card">
+            <p class="eyebrow">AI Functions</p>
+            <h3>System-native intelligence</h3>
             <p>
-              Recommendations, summarization, predictive support, pattern detection, guided next actions,
-              intelligent search, and deeper system reasoning over time.
+              Suggested actions, intelligent summaries, contextual support, search, predictive assistance,
+              reasoning over connected data, and deeper decision support over time.
             </p>
           </article>
 
-          <article class="card">
-            <h3>Industry solution functions</h3>
+          <article class="function-card">
+            <p class="eyebrow">Industry Functions</p>
+            <h3>Vertical operating capability</h3>
             <p>
-              Vertical operating capability that can be layered around the core so specialized workflows and
-              domain-specific systems do not require abandoning the architecture underneath.
+              Specialized solution layers that extend around the core so industry workflows and domain-specific
+              systems do not require abandoning the architecture underneath.
             </p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-shell">
-        <div class="split-grid">
-          <div class="panel">
-            <p class="eyebrow">What the Umbrella Includes</p>
-            <h2>A solution set broad enough to support modern operating reality.</h2>
-            <p>
-              The solution vision is not one narrow product. It is a broader umbrella where multiple operating
-              categories can converge into one stronger environment while still remaining clear in their role.
-            </p>
-
-            <div class="solution-list">
-              <div class="solution-item">
-                <strong>Customer system infrastructure</strong>
-                <span>The protected relationship and workflow foundation that supports the operating system.</span>
-              </div>
-
-              <div class="solution-item">
-                <strong>Operational analytics</strong>
-                <span>Visibility into business performance, movement, bottlenecks, outcomes, and strategic health.</span>
-              </div>
-
-              <div class="solution-item">
-                <strong>Intelligence layer</strong>
-                <span>System-native AI that can interpret context, surface guidance, and support action.</span>
-              </div>
-
-              <div class="solution-item">
-                <strong>Industry operating modules</strong>
-                <span>Specialized solution layers that extend the platform into vertical-specific realities.</span>
-              </div>
-
-              <div class="solution-item">
-                <strong>Executive and multi-entity oversight</strong>
-                <span>Rollups, governance, hierarchy-aware visibility, and higher-level operating control.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="panel">
-            <p class="eyebrow">Why This Matters</p>
-            <h2>The categories businesses depend on should increasingly work as one system.</h2>
-            <p>
-              CRM by itself is too narrow. Analytics by itself is too detached. AI by itself is too shallow
-              without native system context. Industry software by itself often becomes isolated from the rest
-              of the business stack. The opportunity is to bring these together into an environment where each
-              category becomes more useful because it is connected to the others.
-            </p>
-            <p style="margin-top:16px;">
-              That is the direction of Stackemy solutions: not a crowded menu of unrelated products, but a
-              unified solution landscape where relationship systems, intelligence, visibility, and
-              industry-specific operations reinforce one another.
-            </p>
-          </div>
         </div>
       </div>
     </section>
@@ -549,14 +774,14 @@
     <section class="closing">
       <div class="section-shell">
         <div class="closing-panel">
-          <p class="eyebrow">The End State</p>
-          <h2>A unified solution environment that reflects how real businesses actually operate.</h2>
+          <p class="eyebrow">The Solution Direction</p>
+          <h2>Not a crowded product menu. A unified solution environment.</h2>
           <p>
             Businesses do not operate in isolated software categories. They operate across relationships,
-            operations, reporting, intelligence, and industry reality all at once. Stackemy solutions are
+            reporting, intelligence, workflows, and industry reality all at once. Stackemy solutions are
             built around that truth. The long-term aim is to create a platform where CRM, business
             intelligence, artificial intelligence, and industry-specific capability come together inside one
-            coherent operating environment strong enough to support the future.
+            coherent system strong enough to support the future.
           </p>
         </div>
       </div>
