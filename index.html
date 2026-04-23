@@ -9,7 +9,6 @@
     :root {
       --panel: rgba(10, 14, 28, 0.82);
       --border: rgba(91, 118, 255, 0.28);
-      --divider: rgba(255, 255, 255, 0.10);
       --text: #f5f7ff;
       --muted: #a9b3ce;
       --blue: #3b82ff;
@@ -17,6 +16,7 @@
       --magenta: #d32dff;
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
       --radius: 24px;
+      --header-height: 98px;
     }
 
     * {
@@ -40,52 +40,205 @@
 
     a {
       color: inherit;
+      text-decoration: none;
     }
 
     .site-header {
-      position: sticky;
+      position: absolute;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 20;
-      background: rgba(3, 5, 13, 0.92);
-      backdrop-filter: blur(12px);
+      background: linear-gradient(
+        180deg,
+        rgba(2, 4, 10, 0.90) 0%,
+        rgba(2, 4, 10, 0.70) 55%,
+        rgba(2, 4, 10, 0.00) 100%
+      );
     }
 
     .header-shell {
-      width: min(1200px, calc(100% - 32px));
+      width: min(1280px, calc(100% - 40px));
       margin: 0 auto;
-      min-height: 84px;
+      min-height: var(--header-height);
       display: flex;
+      align-items: center;
       justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0 20px;
+    }
+
+    .brand {
+      display: inline-flex;
       align-items: center;
       gap: 16px;
     }
 
-    .header-divider {
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        rgba(59,130,255,0.10),
-        rgba(255,255,255,0.18),
-        rgba(211,45,255,0.10)
-      );
-    }
-
-    .brand {
-      font-size: clamp(1.8rem, 3vw, 2.4rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      text-decoration: none;
-    }
-
-    .brand .stack {
-      color: #f4f5f7;
-    }
-
-    .brand .emy {
-      background: linear-gradient(90deg, var(--blue), var(--magenta), var(--cyan));
+    .brand-mark {
+      font-size: clamp(2.3rem, 4vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      background: linear-gradient(180deg, #58d7ff 0%, #2773ff 45%, #a22dff 100%);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      text-shadow:
+        0 0 10px rgba(67, 165, 255, 0.7),
+        0 0 22px rgba(109, 54, 255, 0.55);
+      transform: translateY(-1px);
+    }
+
+    .brand-word {
+      font-size: clamp(2rem, 3vw, 3.1rem);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      color: #ffffff;
+      text-shadow: 0 0 18px rgba(255,255,255,0.12);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 46px;
+    }
+
+    .nav a {
+      position: relative;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.94);
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -12px;
+      width: 42px;
+      height: 2px;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), transparent);
+      opacity: 0.75;
+      border-radius: 999px;
+      box-shadow: 0 0 10px rgba(59,130,255,.5);
+    }
+
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 185px;
+      padding: 16px 26px;
+      border-radius: 18px;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
+      background: rgba(20, 16, 48, 0.82);
+      border: 1px solid rgba(117, 126, 255, 0.65);
+      box-shadow:
+        0 0 0 1px rgba(0, 212, 255, 0.10) inset,
+        0 0 18px rgba(96, 88, 255, 0.35),
+        0 0 28px rgba(211, 45, 255, 0.18);
+      backdrop-filter: blur(10px);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(3,5,13,0.20) 0%,
+          rgba(3,5,13,0.08) 20%,
+          rgba(3,5,13,0.12) 55%,
+          rgba(3,5,13,0.75) 100%
+        ),
+        url("stackemy-hero.png") center center / cover no-repeat;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 180px;
+      background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.94) 100%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1280px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 0 0 28px;
+    }
+
+    .hero-scroll {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.92);
+      background: rgba(7, 10, 20, 0.42);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 999px;
+      padding: 11px 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+    }
+
+    .section-shell {
+      width: min(1200px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .tagline-section {
+      padding: 26px 0 20px;
+    }
+
+    .tagline-card {
+      text-align: center;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      color: var(--cyan);
+    }
+
+    .tagline-card h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.5rem, 5vw, 4.8rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .tagline-card p {
+      margin: 0 auto;
+      max-width: 860px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.05rem;
+    }
+
+    .tagline-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
     }
 
     .button {
@@ -115,102 +268,6 @@
       background: rgba(255,255,255,.05);
       border-color: rgba(255,255,255,.14);
       backdrop-filter: blur(8px);
-    }
-
-    .hero-wrap {
-      padding-top: 34px;
-    }
-
-    .hero {
-      position: relative;
-      width: min(1200px, calc(100% - 32px));
-      margin: 0 auto;
-      min-height: 78vh;
-      border-radius: 28px;
-      background:
-        linear-gradient(
-          180deg,
-          rgba(3,5,13,0.04) 0%,
-          rgba(3,5,13,0.10) 45%,
-          rgba(3,5,13,0.44) 100%
-        ),
-        url("stackemy-hero.png") center center / cover no-repeat;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 160px;
-      background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.92) 100%);
-      pointer-events: none;
-    }
-
-    .hero-bottom-link {
-      position: absolute;
-      z-index: 2;
-      left: 28px;
-      bottom: 24px;
-      font-size: 0.92rem;
-      color: #dbe4ff;
-      text-decoration: none;
-      background: rgba(7, 10, 20, 0.42);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 999px;
-      padding: 10px 14px;
-      backdrop-filter: blur(10px);
-    }
-
-    .section-shell {
-      width: min(1200px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .tagline-section {
-      padding: 30px 0 20px;
-    }
-
-    .tagline-card {
-      text-align: center;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 40px 28px;
-      box-shadow: var(--shadow);
-    }
-
-    .eyebrow {
-      margin: 0 0 10px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.20em;
-      color: var(--cyan);
-    }
-
-    .tagline-card h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2.4rem, 5vw, 4.6rem);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
-    }
-
-    .tagline-card p {
-      margin: 0 auto;
-      max-width: 860px;
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 1.05rem;
-    }
-
-    .tagline-actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 24px;
     }
 
     .intro {
@@ -311,7 +368,36 @@
       font-size: 0.92rem;
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 1180px) {
+      .header-shell {
+        width: min(100% - 24px, 1280px);
+        gap: 18px;
+      }
+
+      .brand-word {
+        font-size: 2.4rem;
+      }
+
+      .nav {
+        gap: 26px;
+      }
+
+      .nav a {
+        font-size: 1rem;
+      }
+
+      .header-cta {
+        min-width: 160px;
+        padding: 14px 20px;
+      }
+    }
+
+    @media (max-width: 920px) {
+      .site-header {
+        position: relative;
+        background: rgba(3, 5, 13, 0.95);
+      }
+
       .header-shell {
         min-height: auto;
         padding: 18px 0;
@@ -319,18 +405,35 @@
         align-items: flex-start;
       }
 
-      .hero-wrap {
-        padding-top: 24px;
+      .nav {
+        flex-wrap: wrap;
+        gap: 18px 24px;
       }
 
       .hero {
-        min-height: 58vh;
-        border-radius: 22px;
+        min-height: 78vh;
       }
 
-      .hero-bottom-link {
-        left: 18px;
-        bottom: 18px;
+      .hero-inner {
+        padding-bottom: 22px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .brand {
+        gap: 12px;
+      }
+
+      .brand-mark {
+        font-size: 2.4rem;
+      }
+
+      .brand-word {
+        font-size: 2rem;
+      }
+
+      .header-cta {
+        width: 100%;
       }
 
       .tagline-card,
@@ -352,24 +455,31 @@
   <header class="site-header">
     <div class="header-shell">
       <a class="brand" href="#top" aria-label="Stackemy home">
-        <span class="stack">stack</span><span class="emy">emy</span>
+        <span class="brand-mark">S</span>
+        <span class="brand-word">stackemy</span>
       </a>
 
-      <a class="button button-secondary" href="mailto:hello@stackemy.com">Contact</a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#solutions">Solutions</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#foundation">Foundation</a>
+        <a href="#mission">Mission</a>
+      </nav>
+
+      <a class="header-cta" href="mailto:hello@stackemy.com">Get Started</a>
     </div>
-    <div class="header-divider"></div>
   </header>
 
   <main id="top">
-    <section class="hero-wrap">
-      <div class="hero">
-        <a class="hero-bottom-link" href="#overview">Scroll to continue ↓</a>
+    <section class="hero">
+      <div class="hero-inner">
+        <a class="hero-scroll" href="#overview">Scroll to continue ↓</a>
       </div>
     </section>
 
-    <section class="tagline-section">
+    <section class="tagline-section" id="overview">
       <div class="section-shell">
-        <div class="tagline-card" id="overview">
+        <div class="tagline-card">
           <p class="eyebrow">TECHNOLOGICAL CHEMISTRY</p>
           <h1>One Core. Limitless Possibilities.</h1>
           <p>
@@ -386,7 +496,7 @@
       </div>
     </section>
 
-    <section class="intro">
+    <section class="intro" id="solutions">
       <div class="section-shell">
         <div class="intro-card" id="details">
           <p class="eyebrow">STACKEMY OVERVIEW</p>
@@ -401,7 +511,7 @@
       </div>
     </section>
 
-    <section>
+    <section id="how-it-works">
       <div class="section-shell">
         <div class="info-grid">
           <article class="card">
@@ -420,7 +530,7 @@
             </p>
           </article>
 
-          <article class="card">
+          <article class="card" id="foundation">
             <h3>Composable Growth</h3>
             <p>
               Industry-specific capabilities can grow around the core without
@@ -428,7 +538,7 @@
             </p>
           </article>
 
-          <article class="card">
+          <article class="card" id="mission">
             <h3>Built for Scale</h3>
             <p>
               Designed for multi-entity businesses, rollups, visibility layers,
