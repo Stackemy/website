@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,8 +7,10 @@
   <meta name="description" content="Why Stackemy exists, what it is building, and the philosophy behind a more unified business operating environment.">
   <style>
     :root {
+      --bg: #04060d;
       --panel: rgba(10, 14, 28, 0.84);
-      --border: rgba(91, 118, 255, 0.28);
+      --panel-strong: rgba(8, 11, 22, 0.96);
+      --border: rgba(91, 118, 255, 0.24);
       --text: #f5f7ff;
       --muted: #a9b3ce;
       --blue: #3b82ff;
@@ -22,7 +23,13 @@
       --header-height: 98px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -35,7 +42,10 @@
         linear-gradient(180deg, #03050d 0%, #02040a 100%);
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .site-header {
       position: sticky;
@@ -50,11 +60,11 @@
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
       min-height: var(--header-height);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-      padding:18px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0 20px;
     }
 
     .brand {
@@ -69,148 +79,558 @@
       width: auto;
     }
 
-    .nav { display:flex; align-items:center; gap:38px; }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
 
     .nav a {
-      position:relative;
-      font-size:1.08rem;
-      font-weight:500;
-      color:rgba(255,255,255,0.94);
-      white-space:nowrap;
+      position: relative;
+      font-size: 1.08rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.94);
+      white-space: nowrap;
     }
 
     .nav a.active::after,
     .nav a:hover::after {
-      content:"";
-      position:absolute;
-      left:50%;
-      bottom:-12px;
-      width:42px;
-      height:2px;
-      transform:translateX(-50%);
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -12px;
+      width: 42px;
+      height: 2px;
+      transform: translateX(-50%);
       background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), transparent);
-      opacity:.85;
-      border-radius:999px;
-      box-shadow:0 0 10px rgba(59,130,255,.5);
+      opacity: 0.85;
+      border-radius: 999px;
+      box-shadow: 0 0 10px rgba(59,130,255,.5);
     }
 
     .header-cta {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:185px;
-      padding:16px 26px;
-      border-radius:18px;
-      color:#fff;
-      font-size:1.1rem;
-      font-weight:700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 185px;
+      padding: 16px 26px;
+      border-radius: 18px;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
       background: rgba(20, 16, 48, 0.82);
-      border:1px solid rgba(117,126,255,.65);
-      box-shadow: 0 0 0 1px rgba(0,212,255,.10) inset, 0 0 18px rgba(96,88,255,.35), 0 0 28px rgba(211,45,255,.18);
+      border: 1px solid rgba(117, 126, 255, 0.65);
+      box-shadow:
+        0 0 0 1px rgba(0, 212, 255, 0.10) inset,
+        0 0 18px rgba(96, 88, 255, 0.35),
+        0 0 28px rgba(211, 45, 255, 0.18);
       backdrop-filter: blur(10px);
     }
 
-    .hero {
-      min-height: 50vh;
-      background:
-        linear-gradient(180deg, rgba(3,5,13,0.38) 0%, rgba(3,5,13,0.78) 100%),
-        url("stackemy-hero.png") center center / cover no-repeat;
-      display:flex;
-      align-items:flex-end;
-    }
-
-    .hero-inner,
     .section-shell {
-      width:min(var(--content), calc(100% - 32px));
-      margin:0 auto;
+      width: min(var(--content), calc(100% - 32px));
+      margin: 0 auto;
     }
 
-    .hero-inner { padding:0 0 34px; }
+    .hero {
+      padding: 34px 0 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 38px 34px;
+    }
 
     .eyebrow {
-      margin:0 0 10px;
-      font-size:.82rem;
-      font-weight:800;
-      letter-spacing:.20em;
-      color:var(--cyan);
-      text-transform:uppercase;
+      margin: 0 0 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      color: var(--cyan);
+      text-transform: uppercase;
     }
 
-    .hero h1 {
-      margin:0 0 14px;
-      font-size:clamp(2.5rem, 5vw, 5rem);
-      line-height:.98;
-      letter-spacing:-.05em;
-      max-width:920px;
+    .hero-copy h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.7rem, 5vw, 5.1rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 760px;
     }
 
-    .hero p {
-      margin:0;
-      max-width:860px;
-      color:#d2dbf6;
-      line-height:1.8;
-      font-size:1.05rem;
+    .hero-copy .gradient-line {
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .section { padding:22px 0 0; }
+    .hero-copy p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 1.05rem;
+    }
+
+    .hero-quote {
+      margin-top: 24px;
+      padding-left: 18px;
+      border-left: 2px solid rgba(39,232,255,0.45);
+      color: #dce7ff;
+      font-size: 1.02rem;
+      line-height: 1.8;
+    }
+
+    .about-graphic {
+      position: relative;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(39,232,255,0.08), transparent 30%),
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
+      border: 1px solid rgba(94,126,255,0.24);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .about-graphic::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .about-graphic-inner {
+      position: relative;
+      z-index: 1;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .belief-system {
+      position: relative;
+      width: min(100%, 520px);
+      min-height: 430px;
+    }
+
+    .belief-core {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, rgba(39,232,255,0.16), rgba(59,130,255,0.12) 55%, rgba(162,45,255,0.12) 100%);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow:
+        0 0 28px rgba(39,232,255,0.14),
+        0 0 56px rgba(59,130,255,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px;
+      color: #ffffff;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+
+    .belief-ring {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow:
+        0 0 0 26px rgba(59,130,255,0.03),
+        0 0 0 60px rgba(211,45,255,0.02);
+    }
+
+    .belief-line {
+      position: absolute;
+      background: linear-gradient(90deg, rgba(39,232,255,0.88), rgba(211,45,255,0.78));
+      box-shadow: 0 0 14px rgba(39,232,255,0.22);
+    }
+
+    .belief-line-top,
+    .belief-line-bottom {
+      width: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(39,232,255,0.88), rgba(211,45,255,0.78));
+    }
+
+    .belief-line-top {
+      top: 50px;
+      height: 64px;
+    }
+
+    .belief-line-bottom {
+      bottom: 50px;
+      height: 64px;
+    }
+
+    .belief-line-left,
+    .belief-line-right {
+      height: 2px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .belief-line-left {
+      left: 58px;
+      width: 64px;
+    }
+
+    .belief-line-right {
+      right: 58px;
+      width: 64px;
+    }
+
+    .belief-node {
+      position: absolute;
+      width: 138px;
+      min-height: 94px;
+      padding: 14px 12px 12px;
+      border-radius: 20px;
+      background: rgba(9, 14, 28, 0.92);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.26);
+      text-align: center;
+    }
+
+    .belief-node .icon {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: #ffffff;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .belief-node strong {
+      display: block;
+      font-size: 0.9rem;
+      line-height: 1.35;
+      color: #eef4ff;
+      letter-spacing: -0.01em;
+    }
+
+    .node-top {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .node-right {
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .node-bottom {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .node-left {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .section {
+      padding: 24px 0 0;
+    }
+
+    .statement-band {
+      background: linear-gradient(
+        180deg,
+        rgba(10,14,28,0.90),
+        rgba(7,10,20,0.96)
+      );
+      border: 1px solid rgba(94,126,255,0.22);
+      border-radius: 24px;
+      padding: 34px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .statement-band h2 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
+      max-width: 980px;
+    }
+
+    .statement-band p {
+      margin: 0;
+      max-width: 980px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.04rem;
+    }
+
+    .belief-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .belief-card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .belief-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+    }
+
+    .belief-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .split-section {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 18px;
+    }
 
     .panel {
-      background:var(--panel);
-      border:1px solid var(--border);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:34px 30px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 34px 30px;
     }
 
     .panel h2 {
-      margin:0 0 14px;
-      font-size:clamp(1.9rem, 4vw, 3rem);
-      line-height:1.05;
-      letter-spacing:-.04em;
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.04;
+      letter-spacing: -0.04em;
     }
 
     .panel p {
-      margin:0;
-      color:var(--muted);
-      line-height:1.85;
-      max-width:960px;
-      font-size:1.04rem;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.04rem;
+    }
+
+    .principles {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .principle {
+      padding: 16px 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .principle strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    .principle span {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.98rem;
+    }
+
+    .closing {
+      padding: 24px 0 40px;
+    }
+
+    .closing-panel {
+      background: linear-gradient(
+        180deg,
+        rgba(10,14,28,0.90),
+        rgba(7,10,20,0.96)
+      );
+      border: 1px solid rgba(94,126,255,0.22);
+      border-radius: 24px;
+      padding: 34px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .closing-panel h2 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .closing-panel p {
+      margin: 0;
+      max-width: 940px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.04rem;
     }
 
     .footer {
-      padding:32px 0;
-      text-align:center;
-      color:#8892b2;
-      font-size:.92rem;
+      padding: 8px 0 32px;
+      text-align: center;
+      color: #8892b2;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1180px) {
+      .belief-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .split-section {
+        grid-template-columns: 1fr;
+      }
+
+      .about-graphic-inner {
+        min-height: 560px;
+      }
     }
 
     @media (max-width: 920px) {
       .header-shell {
-        min-height:auto;
-        padding:18px 0;
-        flex-direction:column;
-        align-items:flex-start;
+        min-height: auto;
+        padding: 18px 0;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .brand-logo { height: 54px; }
-      .nav { flex-wrap:wrap; gap:18px 24px; }
+      .brand-logo {
+        height: 54px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 18px 24px;
+      }
     }
 
     @media (max-width: 760px) {
-      .brand-logo { height: 48px; }
-      .header-cta { width:100%; }
-      .panel { padding:24px; }
+      .brand-logo {
+        height: 48px;
+      }
+
+      .header-cta {
+        width: 100%;
+      }
+
+      .hero-copy,
+      .about-graphic,
+      .statement-band,
+      .belief-card,
+      .panel,
+      .closing-panel {
+        padding: 24px;
+      }
+
+      .belief-system {
+        min-height: 420px;
+      }
+
+      .belief-core {
+        width: 132px;
+        height: 132px;
+        font-size: 0.95rem;
+      }
+
+      .belief-ring {
+        width: 250px;
+        height: 250px;
+      }
+
+      .belief-node {
+        width: 110px;
+        min-height: 84px;
+      }
+
+      .belief-node strong {
+        font-size: 0.82rem;
+      }
+
+      .belief-line-left,
+      .belief-line-right {
+        width: 48px;
+      }
+
+      .belief-line-left {
+        left: 58px;
+      }
+
+      .belief-line-right {
+        right: 58px;
+      }
+
+      .belief-line-top,
+      .belief-line-bottom {
+        height: 48px;
+      }
+
+      .belief-line-top {
+        top: 56px;
+      }
+
+      .belief-line-bottom {
+        bottom: 56px;
+      }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="header-shell">
-      <a class="brand" href="index.html">
+      <a class="brand" href="index.html" aria-label="Stackemy home">
         <img src="stackemy-header-logo.png" alt="Stackemy logo" class="brand-logo">
       </a>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary navigation">
         <a href="core.html">The Core</a>
         <a href="future.html">Meet the Future</a>
         <a href="solutions.html">Solutions</a>
@@ -223,28 +643,71 @@
 
   <main>
     <section class="hero">
-      <div class="hero-inner">
-        <p class="eyebrow">About</p>
-        <h1>Stackemy exists to replace fragmented systems with a more coherent future.</h1>
-        <p>
-          The company is being built around a simple conviction: business systems should not feel
-          structurally disconnected from one another. Over time, they should become one.
-        </p>
+      <div class="section-shell">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">About</p>
+            <h1>Stackemy exists to replace fragmented systems with <span class="gradient-line">a more coherent future.</span></h1>
+            <p>
+              The company is being built around a simple conviction: business systems should not feel
+              structurally disconnected from one another. Over time, they should become one.
+            </p>
+
+            <div class="hero-quote">
+              Most organizations are not suffering from a lack of software. They are suffering from too
+              much fragmentation across the systems they already depend on.
+            </div>
+          </div>
+
+          <div class="about-graphic">
+            <div class="about-graphic-inner">
+              <div class="belief-system">
+                <div class="belief-ring"></div>
+                <div class="belief-core">Why<br>Stackemy<br>Exists</div>
+
+                <div class="belief-line belief-line-top"></div>
+                <div class="belief-line belief-line-right"></div>
+                <div class="belief-line belief-line-bottom"></div>
+                <div class="belief-line belief-line-left"></div>
+
+                <div class="belief-node node-top">
+                  <div class="icon">◎</div>
+                  <strong>Coherence</strong>
+                </div>
+
+                <div class="belief-node node-right">
+                  <div class="icon">◌</div>
+                  <strong>Integrity</strong>
+                </div>
+
+                <div class="belief-node node-bottom">
+                  <div class="icon">▣</div>
+                  <strong>Expansion</strong>
+                </div>
+
+                <div class="belief-node node-left">
+                  <div class="icon">▥</div>
+                  <strong>Unity</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="section-shell">
-        <div class="panel">
+        <div class="statement-band">
           <p class="eyebrow">Why This Company Exists</p>
           <h2>Modern businesses are asked to operate across too many disconnected layers.</h2>
           <p>
             Most organizations are forced to navigate scattered platforms, overlapping logic, duplicated
-            data, brittle integrations, and reporting that never quite feels connected to execution.
-            The result is complexity without coherence. Stackemy exists to challenge that pattern. The
-            company is being built to create a stronger operating foundation — one where core systems,
-            oversight, analytics, workflows, and future intelligence can increasingly live inside a more
-            unified architecture.
+            data, brittle integrations, and reporting that never quite feels connected to execution. The
+            result is complexity without coherence. Stackemy exists to challenge that pattern. The company
+            is being built to create a stronger operating foundation — one where core systems, oversight,
+            analytics, workflows, and future intelligence can increasingly live inside a more unified
+            architecture.
           </p>
         </div>
       </div>
@@ -252,14 +715,85 @@
 
     <section class="section">
       <div class="section-shell">
-        <div class="panel">
-          <p class="eyebrow">The Philosophy</p>
-          <h2>Choose the stronger long-term architecture from the beginning.</h2>
+        <div class="belief-grid">
+          <article class="belief-card">
+            <p class="eyebrow">Belief 01</p>
+            <h3>Business systems should not feel structurally disconnected.</h3>
+            <p>
+              The future is not a larger pile of tools. It is a stronger system where critical layers begin
+              to work together as one environment.
+            </p>
+          </article>
+
+          <article class="belief-card">
+            <p class="eyebrow">Belief 02</p>
+            <h3>Architecture matters more than surface-level polish.</h3>
+            <p>
+              A platform only becomes durable when the structure underneath it is strong enough to support
+              complexity without collapsing into fragmentation.
+            </p>
+          </article>
+
+          <article class="belief-card">
+            <p class="eyebrow">Belief 03</p>
+            <h3>The center must stay protected as the system expands.</h3>
+            <p>
+              Coherence is only possible when the foundation remains stable while future capability grows
+              around it.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="split-section">
+          <div class="panel">
+            <p class="eyebrow">The Philosophy</p>
+            <h2>Choose the stronger long-term architecture from the beginning.</h2>
+            <p>
+              Stackemy is grounded in a long-term view. That means resisting shortcuts that create hidden
+              instability later. The objective is not simply to make software that looks modern on the
+              surface. It is to build an architecture capable of supporting real growth, real complexity,
+              and future capability without collapsing into fragmentation underneath.
+            </p>
+          </div>
+
+          <div class="panel">
+            <p class="eyebrow">What That Means in Practice</p>
+            <div class="principles">
+              <div class="principle">
+                <strong>Build for structural integrity</strong>
+                <span>The architecture underneath has to be strong enough to support years of expansion without drift.</span>
+              </div>
+
+              <div class="principle">
+                <strong>Prefer coherence over convenience</strong>
+                <span>Shortcuts that weaken the system later are not a foundation for the future.</span>
+              </div>
+
+              <div class="principle">
+                <strong>Think in systems, not isolated features</strong>
+                <span>Every major decision should reinforce the larger operating environment the company is building toward.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="section-shell">
+        <div class="closing-panel">
+          <p class="eyebrow">The Purpose</p>
+          <h2>Build a more unified operating future for modern business.</h2>
           <p>
-            Stackemy is grounded in a long-term view. That means resisting shortcuts that create hidden
-            instability later. The objective is not simply to make software that looks modern on the
-            surface. It is to build an architecture capable of supporting real growth, real complexity,
-            and future capability without collapsing into fragmentation underneath.
+            Stackemy exists because software fragmentation has become normal, and it should not be. The
+            company is being built around the belief that business systems can become more coherent, more
+            connected, and more structurally sound over time. That is the deeper purpose behind the
+            platform: not simply to add one more product, but to help define a stronger operating model for
+            what comes next.
           </p>
         </div>
       </div>
