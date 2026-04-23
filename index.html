@@ -8,6 +8,7 @@
   <style>
     :root {
       --panel: rgba(10, 14, 28, 0.82);
+      --panel-strong: rgba(8, 11, 22, 0.94);
       --border: rgba(91, 118, 255, 0.28);
       --text: #f5f7ff;
       --muted: #a9b3ce;
@@ -70,45 +71,47 @@
 
     .brand {
       display: inline-flex;
-      align-items: center;
-      gap: 16px;
+      align-items: baseline;
+      gap: 2px;
+      color: #ffffff;
+      line-height: 1;
+      white-space: nowrap;
     }
 
     .brand-mark {
-      font-size: clamp(2.3rem, 4vw, 3.2rem);
+      font-size: clamp(2.9rem, 4.4vw, 4rem);
       font-weight: 900;
-      line-height: 1;
-      letter-spacing: -0.06em;
-      background: linear-gradient(180deg, #58d7ff 0%, #2773ff 45%, #a22dff 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      letter-spacing: -0.08em;
+      color: #ffffff;
+      line-height: 0.9;
       text-shadow:
-        0 0 10px rgba(67, 165, 255, 0.7),
-        0 0 22px rgba(109, 54, 255, 0.55);
-      transform: translateY(-1px);
+        0 0 12px rgba(255,255,255,0.10),
+        0 0 24px rgba(255,255,255,0.06);
+      transform: translateY(1px);
     }
 
     .brand-word {
-      font-size: clamp(2rem, 3vw, 3.1rem);
-      font-weight: 800;
-      line-height: 1;
-      letter-spacing: -0.05em;
+      font-size: clamp(2rem, 3vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.055em;
       color: #ffffff;
-      text-shadow: 0 0 18px rgba(255,255,255,0.12);
+      text-shadow:
+        0 0 12px rgba(255,255,255,0.08),
+        0 0 20px rgba(255,255,255,0.04);
     }
 
     .nav {
       display: flex;
       align-items: center;
-      gap: 46px;
+      gap: 38px;
     }
 
     .nav a {
       position: relative;
-      font-size: 1.2rem;
+      font-size: 1.08rem;
       font-weight: 500;
       color: rgba(255,255,255,0.94);
+      white-space: nowrap;
     }
 
     .nav a::after {
@@ -245,7 +248,6 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
       border-radius: 12px;
       padding: 12px 18px;
       font-weight: 700;
@@ -270,11 +272,11 @@
       backdrop-filter: blur(8px);
     }
 
-    .intro {
-      padding: 8px 0 24px;
+    .section {
+      padding: 10px 0 24px;
     }
 
-    .intro-card {
+    .content-card {
       background: var(--panel);
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -282,14 +284,14 @@
       box-shadow: var(--shadow);
     }
 
-    .intro-card h2 {
+    .content-card h2 {
       margin: 0 0 14px;
       font-size: clamp(1.9rem, 4vw, 3rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
     }
 
-    .intro-card p {
+    .content-card p {
       margin: 0;
       color: var(--muted);
       line-height: 1.85;
@@ -323,42 +325,81 @@
       line-height: 1.7;
     }
 
-    .closing {
+    .form-section {
       padding: 10px 0 56px;
     }
 
-    .closing-panel {
+    .form-panel {
       background: linear-gradient(
         180deg,
-        rgba(10,14,28,0.86),
-        rgba(7,10,20,0.94)
+        rgba(10,14,28,0.90),
+        rgba(7,10,20,0.96)
       );
       border: 1px solid rgba(94,126,255,0.22);
       border-radius: var(--radius);
       padding: 34px 24px;
-      text-align: center;
       box-shadow: var(--shadow);
     }
 
-    .closing-kicker {
-      margin: 0 0 10px;
-      color: var(--cyan);
-      font-size: 0.8rem;
-      letter-spacing: 0.22em;
-      font-weight: 800;
-    }
-
-    .closing-panel h2 {
-      margin: 0 0 14px;
+    .form-panel h2 {
+      margin: 0 0 12px;
       font-size: clamp(1.9rem, 3vw, 2.8rem);
       line-height: 1.1;
     }
 
-    .closing-panel p {
-      margin: 0 auto 22px;
-      color: var(--muted);
+    .form-panel p {
+      margin: 0 0 24px;
       max-width: 760px;
+      color: var(--muted);
       line-height: 1.75;
+    }
+
+    .contact-form {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.9);
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font: inherit;
+      outline: none;
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(59,130,255,0.8);
+      box-shadow: 0 0 0 3px rgba(59,130,255,0.12);
+    }
+
+    .form-submit {
+      margin-top: 8px;
     }
 
     .footer {
@@ -417,15 +458,15 @@
       .hero-inner {
         padding-bottom: 22px;
       }
+
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 760px) {
-      .brand {
-        gap: 12px;
-      }
-
       .brand-mark {
-        font-size: 2.4rem;
+        font-size: 3rem;
       }
 
       .brand-word {
@@ -437,16 +478,13 @@
       }
 
       .tagline-card,
-      .intro-card {
+      .content-card,
+      .form-panel {
         padding: 24px;
       }
 
       .info-grid {
         grid-template-columns: 1fr;
-      }
-
-      .closing-panel {
-        padding: 28px 18px;
       }
     }
   </style>
@@ -456,28 +494,28 @@
     <div class="header-shell">
       <a class="brand" href="#top" aria-label="Stackemy home">
         <span class="brand-mark">S</span>
-        <span class="brand-word">stackemy</span>
+        <span class="brand-word">tackemy</span>
       </a>
 
       <nav class="nav" aria-label="Primary navigation">
+        <a href="#core">The Core</a>
+        <a href="#future">Meet the Future</a>
         <a href="#solutions">Solutions</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#foundation">Foundation</a>
-        <a href="#mission">Mission</a>
+        <a href="#about">About</a>
       </nav>
 
-      <a class="header-cta" href="mailto:hello@stackemy.com">Get Started</a>
+      <a class="header-cta" href="#get-started">Get Started</a>
     </div>
   </header>
 
   <main id="top">
     <section class="hero">
       <div class="hero-inner">
-        <a class="hero-scroll" href="#overview">Scroll to continue ↓</a>
+        <a class="hero-scroll" href="#future">Scroll to continue ↓</a>
       </div>
     </section>
 
-    <section class="tagline-section" id="overview">
+    <section class="tagline-section" id="future">
       <div class="section-shell">
         <div class="tagline-card">
           <p class="eyebrow">TECHNOLOGICAL CHEMISTRY</p>
@@ -489,29 +527,29 @@
           </p>
 
           <div class="tagline-actions">
-            <a class="button button-primary" href="mailto:hello@stackemy.com">Get in Touch</a>
-            <a class="button button-secondary" href="#details">Learn More</a>
+            <a class="button button-primary" href="#get-started">Get Started</a>
+            <a class="button button-secondary" href="#core">Learn More</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="intro" id="solutions">
+    <section class="section" id="core">
       <div class="section-shell">
-        <div class="intro-card" id="details">
-          <p class="eyebrow">STACKEMY OVERVIEW</p>
-          <h2>Building the next operating system for modern business.</h2>
+        <div class="content-card">
+          <p class="eyebrow">THE CORE</p>
+          <h2>A protected foundation designed to stay intact as the system expands.</h2>
           <p>
-            We are designing a platform where core systems, intelligence,
-            extensibility, and execution come together in one place. Stackemy
-            is designed around a protected CRM core, with future modules and
-            capabilities extending around that foundation without breaking it.
+            Stackemy is built around a protected CRM core that remains stable
+            while future modules, intelligence layers, analytics, and industry
+            solutions extend around it. The core is not a temporary center of
+            gravity. It is the enduring foundation.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="how-it-works">
+    <section class="section" id="solutions">
       <div class="section-shell">
         <div class="info-grid">
           <article class="card">
@@ -530,7 +568,7 @@
             </p>
           </article>
 
-          <article class="card" id="foundation">
+          <article class="card">
             <h3>Composable Growth</h3>
             <p>
               Industry-specific capabilities can grow around the core without
@@ -538,7 +576,7 @@
             </p>
           </article>
 
-          <article class="card" id="mission">
+          <article class="card" id="about">
             <h3>Built for Scale</h3>
             <p>
               Designed for multi-entity businesses, rollups, visibility layers,
@@ -549,16 +587,57 @@
       </div>
     </section>
 
-    <section class="closing">
+    <section class="section">
       <div class="section-shell">
-        <div class="closing-panel">
-          <p class="closing-kicker">STACKEMY</p>
+        <div class="content-card">
+          <p class="eyebrow">ABOUT</p>
           <h2>Building the next operating system for modern business.</h2>
           <p>
             We are designing a platform where core systems, intelligence,
-            extensibility, and execution come together in one place.
+            extensibility, and execution come together in one place. Stackemy
+            exists to create a more unified future for business systems — one
+            where the architecture underneath is strong enough to support
+            everything built above it.
           </p>
-          <a class="button button-primary" href="mailto:hello@stackemy.com">Contact Stackemy</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-section" id="get-started">
+      <div class="section-shell">
+        <div class="form-panel">
+          <p class="eyebrow">GET STARTED</p>
+          <h2>Tell us what you are building.</h2>
+          <p>
+            Share a little about your company, your goals, and what kind of
+            system you are looking to create.
+          </p>
+
+          <form class="contact-form" action="mailto:hello@stackemy.com" method="post" enctype="text/plain">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your name">
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@company.com">
+            </div>
+
+            <div class="field full">
+              <label for="company">Company</label>
+              <input id="company" name="company" type="text" placeholder="Company name">
+            </div>
+
+            <div class="field full">
+              <label for="message">What are you building?</label>
+              <textarea id="message" name="message" placeholder="Tell us about your vision, your current systems, and what you want to create."></textarea>
+            </div>
+
+            <div class="field full form-submit">
+              <button class="button button-primary" type="submit">Send Inquiry</button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
