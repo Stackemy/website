@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,9 +7,10 @@
   <meta name="description" content="Start a conversation with Stackemy about your business, your systems, and what you want to build.">
   <style>
     :root {
+      --bg: #04060d;
       --panel: rgba(10, 14, 28, 0.84);
       --panel-strong: rgba(8, 11, 22, 0.96);
-      --border: rgba(91, 118, 255, 0.28);
+      --border: rgba(91, 118, 255, 0.24);
       --text: #f5f7ff;
       --muted: #a9b3ce;
       --blue: #3b82ff;
@@ -23,7 +23,13 @@
       --header-height: 98px;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
@@ -36,7 +42,10 @@
         linear-gradient(180deg, #03050d 0%, #02040a 100%);
     }
 
-    a { color: inherit; text-decoration: none; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
     .site-header {
       position: sticky;
@@ -51,11 +60,11 @@
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
       min-height: var(--header-height);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:24px;
-      padding:18px 0 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0 20px;
     }
 
     .brand {
@@ -70,200 +79,385 @@
       width: auto;
     }
 
-    .nav { display:flex; align-items:center; gap:38px; }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
 
     .nav a {
-      position:relative;
-      font-size:1.08rem;
-      font-weight:500;
-      color:rgba(255,255,255,0.94);
-      white-space:nowrap;
+      position: relative;
+      font-size: 1.08rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.94);
+      white-space: nowrap;
     }
 
     .nav a:hover::after {
-      content:"";
-      position:absolute;
-      left:50%;
-      bottom:-12px;
-      width:42px;
-      height:2px;
-      transform:translateX(-50%);
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -12px;
+      width: 42px;
+      height: 2px;
+      transform: translateX(-50%);
       background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), transparent);
-      opacity:.85;
-      border-radius:999px;
-      box-shadow:0 0 10px rgba(59,130,255,.5);
+      opacity: 0.85;
+      border-radius: 999px;
+      box-shadow: 0 0 10px rgba(59,130,255,.5);
     }
 
     .header-cta {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:185px;
-      padding:16px 26px;
-      border-radius:18px;
-      color:#fff;
-      font-size:1.1rem;
-      font-weight:700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 185px;
+      padding: 16px 26px;
+      border-radius: 18px;
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 700;
       background: rgba(20, 16, 48, 0.82);
-      border:1px solid rgba(117,126,255,.65);
-      box-shadow: 0 0 0 1px rgba(0,212,255,.10) inset, 0 0 18px rgba(96,88,255,.35), 0 0 28px rgba(211,45,255,.18);
+      border: 1px solid rgba(117, 126, 255, 0.65);
+      box-shadow:
+        0 0 0 1px rgba(0, 212, 255, 0.10) inset,
+        0 0 18px rgba(96, 88, 255, 0.35),
+        0 0 28px rgba(211, 45, 255, 0.18);
       backdrop-filter: blur(10px);
     }
 
-    .hero {
-      min-height: 44vh;
-      background:
-        linear-gradient(180deg, rgba(3,5,13,0.38) 0%, rgba(3,5,13,0.82) 100%),
-        url("stackemy-hero.png") center center / cover no-repeat;
-      display:flex;
-      align-items:flex-end;
-    }
-
-    .hero-inner,
     .section-shell {
-      width:min(var(--content), calc(100% - 32px));
-      margin:0 auto;
+      width: min(var(--content), calc(100% - 32px));
+      margin: 0 auto;
     }
 
-    .hero-inner { padding:0 0 34px; }
+    .hero {
+      padding: 34px 0 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.94fr 1.06fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 38px 34px;
+    }
 
     .eyebrow {
-      margin:0 0 10px;
-      font-size:.82rem;
-      font-weight:800;
-      letter-spacing:.20em;
-      color:var(--cyan);
-      text-transform:uppercase;
+      margin: 0 0 10px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.20em;
+      color: var(--cyan);
+      text-transform: uppercase;
     }
 
-    .hero h1 {
-      margin:0 0 14px;
-      font-size:clamp(2.4rem, 5vw, 4.8rem);
-      line-height:.98;
-      letter-spacing:-.05em;
-      max-width:920px;
+    .hero-copy h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.7rem, 5vw, 5rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      max-width: 760px;
     }
 
-    .hero p {
-      margin:0;
-      max-width:860px;
-      color:#d2dbf6;
-      line-height:1.8;
-      font-size:1.05rem;
+    .hero-copy .gradient-line {
+      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .form-section { padding:24px 0 56px; }
-
-    .form-panel {
-      background: linear-gradient(180deg, rgba(10,14,28,0.90), rgba(7,10,20,0.96));
-      border:1px solid rgba(94,126,255,0.22);
-      border-radius:var(--radius);
-      padding:34px 24px;
-      box-shadow:var(--shadow);
+    .hero-copy p {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+      line-height: 1.9;
+      font-size: 1.05rem;
     }
 
-    .form-panel h2 {
-      margin:0 0 12px;
-      font-size:clamp(1.9rem, 3vw, 2.8rem);
-      line-height:1.1;
+    .hero-steps {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
     }
 
-    .form-panel p {
-      margin:0 0 24px;
-      max-width:760px;
-      color:var(--muted);
-      line-height:1.75;
+    .hero-step {
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      color: #d8e1fb;
+      line-height: 1.65;
+    }
+
+    .form-shell {
+      background:
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
+      border: 1px solid rgba(94,126,255,0.24);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.42;
+      pointer-events: none;
+    }
+
+    .form-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-title {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+    }
+
+    .form-subtitle {
+      margin: 0 0 24px;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+      max-width: 760px;
     }
 
     .contact-form {
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-      gap:16px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .field {
-      display:flex;
-      flex-direction:column;
-      gap:8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .field.full { grid-column:1 / -1; }
+    .field.full {
+      grid-column: 1 / -1;
+    }
 
     label {
-      font-size:.95rem;
-      color:rgba(255,255,255,.9);
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.92);
     }
 
-    input, textarea {
-      width:100%;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(255,255,255,.04);
-      color:#fff;
-      border-radius:14px;
-      padding:14px 16px;
-      font:inherit;
-      outline:none;
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: #fff;
+      border-radius: 14px;
+      padding: 14px 16px;
+      font: inherit;
+      outline: none;
+      appearance: none;
+    }
+
+    option {
+      color: #000;
     }
 
     textarea {
-      min-height:140px;
-      resize:vertical;
+      min-height: 150px;
+      resize: vertical;
     }
 
-    input:focus, textarea:focus {
+    input:focus,
+    textarea:focus,
+    select:focus {
       border-color: rgba(59,130,255,0.8);
       box-shadow: 0 0 0 3px rgba(59,130,255,0.12);
     }
 
+    .submit-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+
+    .submit-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
     .button {
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:12px;
-      padding:12px 18px;
-      font-weight:700;
-      border:1px solid transparent;
-      color:white;
-      background:linear-gradient(90deg, var(--blue), var(--magenta));
-      box-shadow:0 0 24px rgba(72,118,255,.34);
-      cursor:pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      padding: 12px 18px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      color: white;
+      background: linear-gradient(90deg, var(--blue), var(--magenta));
+      box-shadow: 0 0 24px rgba(72,118,255,.34);
+      cursor: pointer;
+      min-width: 180px;
+    }
+
+    .section {
+      padding: 24px 0 0;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .info-card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .info-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.16rem;
+      letter-spacing: -0.02em;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .closing {
+      padding: 24px 0 40px;
+    }
+
+    .closing-panel {
+      background: linear-gradient(
+        180deg,
+        rgba(10,14,28,0.90),
+        rgba(7,10,20,0.96)
+      );
+      border: 1px solid rgba(94,126,255,0.22);
+      border-radius: 24px;
+      padding: 34px 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .closing-panel h2 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .closing-panel p {
+      margin: 0;
+      max-width: 940px;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.04rem;
     }
 
     .footer {
-      padding:0 0 32px;
-      text-align:center;
-      color:#8892b2;
-      font-size:.92rem;
+      padding: 8px 0 32px;
+      text-align: center;
+      color: #8892b2;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 1180px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 920px) {
       .header-shell {
-        min-height:auto;
-        padding:18px 0;
-        flex-direction:column;
-        align-items:flex-start;
+        min-height: auto;
+        padding: 18px 0;
+        flex-direction: column;
+        align-items: flex-start;
       }
 
-      .brand-logo { height: 54px; }
-      .nav { flex-wrap:wrap; gap:18px 24px; }
-      .contact-form { grid-template-columns:1fr; }
+      .brand-logo {
+        height: 54px;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        gap: 18px 24px;
+      }
+
+      .contact-form {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 760px) {
-      .brand-logo { height: 48px; }
-      .header-cta { width:100%; }
-      .form-panel { padding:24px; }
+      .brand-logo {
+        height: 48px;
+      }
+
+      .header-cta {
+        width: 100%;
+      }
+
+      .hero-copy,
+      .form-shell,
+      .info-card,
+      .closing-panel {
+        padding: 24px;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .submit-row {
+        align-items: stretch;
+      }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="header-shell">
-      <a class="brand" href="index.html">
+      <a class="brand" href="index.html" aria-label="Stackemy home">
         <img src="stackemy-header-logo.png" alt="Stackemy logo" class="brand-logo">
       </a>
 
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary navigation">
         <a href="core.html">The Core</a>
         <a href="future.html">Meet the Future</a>
         <a href="solutions.html">Solutions</a>
@@ -276,51 +470,125 @@
 
   <main>
     <section class="hero">
-      <div class="hero-inner">
-        <p class="eyebrow">Get Started</p>
-        <h1>Tell us what you are building.</h1>
-        <p>
-          Share a little about your company, your current systems, and the kind of operating environment
-          you want to create.
-        </p>
+      <div class="section-shell">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Get Started</p>
+            <h1>Tell us what you’re building and <span class="gradient-line">where you want to go next.</span></h1>
+            <p>
+              Stackemy is built for companies thinking beyond disconnected software. Share a little about
+              your business, your current systems, and the kind of operating environment you want to create.
+            </p>
+
+            <div class="hero-steps">
+              <div class="hero-step">Tell us about your company and current environment.</div>
+              <div class="hero-step">Describe the systems, fragmentation, or complexity you are dealing with.</div>
+              <div class="hero-step">Share the future state you want to build toward.</div>
+            </div>
+          </div>
+
+          <div class="form-shell">
+            <div class="form-inner">
+              <p class="eyebrow">Start the Conversation</p>
+              <h2 class="form-title">We want to understand the system you are trying to build.</h2>
+              <p class="form-subtitle">
+                This can be a simple introduction or a deeper inquiry. The more context you share, the more
+                clearly we can understand where Stackemy may fit.
+              </p>
+
+              <form class="contact-form" action="mailto:hello@stackemy.com" method="post" enctype="text/plain">
+                <div class="field">
+                  <label for="name">Name</label>
+                  <input id="name" name="name" type="text" placeholder="Your name">
+                </div>
+
+                <div class="field">
+                  <label for="email">Email</label>
+                  <input id="email" name="email" type="email" placeholder="you@company.com">
+                </div>
+
+                <div class="field">
+                  <label for="company">Company</label>
+                  <input id="company" name="company" type="text" placeholder="Company name">
+                </div>
+
+                <div class="field">
+                  <label for="focus">Primary focus</label>
+                  <select id="focus" name="focus">
+                    <option value="">Select one</option>
+                    <option>CRM foundation</option>
+                    <option>Analytics / BI</option>
+                    <option>Artificial intelligence</option>
+                    <option>Industry-specific operating system</option>
+                    <option>Multi-system consolidation</option>
+                  </select>
+                </div>
+
+                <div class="field full">
+                  <label for="message">What are you building?</label>
+                  <textarea id="message" name="message" placeholder="Tell us about your business, your current systems, what feels fragmented today, and what future you want to create."></textarea>
+                </div>
+
+                <div class="field full">
+                  <div class="submit-row">
+                    <div class="submit-note">
+                      This form currently opens your email app when submitted. That is fine for now while the
+                      site is in its early phase.
+                    </div>
+                    <button class="button" type="submit">Send Inquiry</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section class="form-section">
+    <section class="section">
       <div class="section-shell">
-        <div class="form-panel">
-          <p class="eyebrow">Start the Conversation</p>
-          <h2>We want to understand the system you are trying to build.</h2>
+        <div class="info-grid">
+          <article class="info-card">
+            <p class="eyebrow">What to Share</p>
+            <h3>Your current system reality</h3>
+            <p>
+              The more clearly you describe your current environment, the easier it is to understand where
+              fragmentation, operational drag, or visibility gaps may exist.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <p class="eyebrow">What Helps Most</p>
+            <h3>Your future operating model</h3>
+            <p>
+              It is useful to know not just what hurts today, but what kind of company architecture or
+              operating environment you want to build toward over time.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <p class="eyebrow">What Matters</p>
+            <h3>Clarity over formality</h3>
+            <p>
+              This does not need to be polished. A direct description of your systems, your challenges, and
+              your ambitions is more useful than a perfect summary.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="section-shell">
+        <div class="closing-panel">
+          <p class="eyebrow">Next Step</p>
+          <h2>The first conversation is about understanding the shape of your future.</h2>
           <p>
-            This can be a simple introduction or a deeper inquiry. The more context you share, the more
-            clearly we can understand where Stackemy may fit.
+            Stackemy is built for businesses thinking beyond disconnected software categories. The goal of
+            getting started is not simply to request a demo. It is to begin a conversation about the
+            operating environment you want to create — and whether the path ahead should become more unified,
+            more intelligent, and more structurally sound over time.
           </p>
-
-          <form class="contact-form" action="mailto:hello@stackemy.com" method="post" enctype="text/plain">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your name">
-            </div>
-
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" name="email" type="email" placeholder="you@company.com">
-            </div>
-
-            <div class="field full">
-              <label for="company">Company</label>
-              <input id="company" name="company" type="text" placeholder="Company name">
-            </div>
-
-            <div class="field full">
-              <label for="message">What are you building?</label>
-              <textarea id="message" name="message" placeholder="Tell us about your business, your current systems, and where you want to go."></textarea>
-            </div>
-
-            <div class="field full">
-              <button class="button" type="submit">Send Inquiry</button>
-            </div>
-          </form>
         </div>
       </div>
     </section>
