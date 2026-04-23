@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Stackemy</title>
-  <meta name="description" content="About Stackemy — where technology meets science. A modern, magical platform blending business technology, innovation, alchemy, and white-labeled industry solutions.">
+  <meta name="description" content="About Stackemy — where technology meets science. An established technology company delivering core and tailored systems through modern engineering, industry customization, and white-labeled solutions.">
   <style>
     :root {
       --bg: #03050d;
       --bg-soft: #060a16;
-      --panel: rgba(9, 14, 28, 0.78);
-      --panel-strong: rgba(8, 12, 24, 0.92);
-      --border: rgba(107, 123, 255, 0.24);
+      --panel: rgba(10, 14, 28, 0.84);
+      --panel-strong: rgba(8, 12, 24, 0.96);
+      --border: rgba(91, 118, 255, 0.24);
       --border-soft: rgba(255, 255, 255, 0.08);
       --text: #f5f7ff;
-      --muted: #a8b3d3;
+      --muted: #a9b3ce;
       --blue: #4da1ff;
       --cyan: #29ebff;
       --magenta: #d33dff;
@@ -39,9 +39,9 @@
       font-family: Inter, Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top center, rgba(77,161,255,0.14), transparent 26%),
-        radial-gradient(circle at 85% 18%, rgba(211,61,255,0.10), transparent 22%),
-        radial-gradient(circle at 15% 78%, rgba(41,235,255,0.08), transparent 22%),
+        radial-gradient(circle at top center, rgba(77,161,255,0.12), transparent 26%),
+        radial-gradient(circle at 84% 18%, rgba(211,61,255,0.10), transparent 22%),
+        radial-gradient(circle at 16% 78%, rgba(41,235,255,0.08), transparent 22%),
         linear-gradient(180deg, #02040a 0%, #040814 100%);
       overflow-x: hidden;
     }
@@ -159,8 +159,9 @@
       align-items: center;
       overflow: hidden;
       background:
-        linear-gradient(180deg, rgba(3,5,13,0.26) 0%, rgba(3,5,13,0.12) 20%, rgba(3,5,13,0.30) 66%, rgba(3,5,13,0.92) 100%),
-        url("stackemy-hero.png") center center / cover no-repeat;
+        radial-gradient(circle at 24% 38%, rgba(41,235,255,0.08), transparent 24%),
+        radial-gradient(circle at 76% 24%, rgba(211,61,255,0.08), transparent 20%),
+        linear-gradient(180deg, rgba(3,5,13,0.92) 0%, rgba(4,8,20,0.98) 100%);
     }
 
     .hero::before {
@@ -168,9 +169,10 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 26% 36%, rgba(41,235,255,0.10), transparent 24%),
-        radial-gradient(circle at 74% 30%, rgba(211,61,255,0.10), transparent 22%),
-        linear-gradient(90deg, rgba(2,4,10,0.72) 0%, rgba(2,4,10,0.46) 46%, rgba(2,4,10,0.70) 100%);
+        linear-gradient(rgba(255,255,255,0.026) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.22;
       pointer-events: none;
     }
 
@@ -185,6 +187,38 @@
       pointer-events: none;
     }
 
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(2px);
+      opacity: 0.9;
+    }
+
+    .hero-orb.one {
+      width: 420px;
+      height: 420px;
+      left: -100px;
+      top: 120px;
+      background: radial-gradient(circle, rgba(41,235,255,0.18) 0%, rgba(41,235,255,0.04) 42%, transparent 68%);
+    }
+
+    .hero-orb.two {
+      width: 520px;
+      height: 520px;
+      right: -120px;
+      top: 60px;
+      background: radial-gradient(circle, rgba(211,61,255,0.16) 0%, rgba(211,61,255,0.04) 42%, transparent 72%);
+    }
+
+    .hero-orb.three {
+      width: 380px;
+      height: 380px;
+      right: 22%;
+      bottom: -120px;
+      background: radial-gradient(circle, rgba(77,161,255,0.14) 0%, rgba(77,161,255,0.03) 44%, transparent 72%);
+    }
+
     .hero-inner {
       position: relative;
       z-index: 2;
@@ -193,18 +227,25 @@
       padding: 52px 0 42px;
     }
 
-    .hero-content {
-      width: min(780px, 100%);
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .hero-copy {
+      width: 100%;
       padding: 34px 34px 30px;
       border-radius: 28px;
       background:
-        linear-gradient(180deg, rgba(9, 13, 26, 0.60), rgba(8, 11, 22, 0.82));
-      border: 1px solid rgba(103, 122, 255, 0.22);
+        linear-gradient(180deg, rgba(9, 13, 26, 0.62), rgba(7, 10, 20, 0.84));
+      border: 1px solid rgba(95, 125, 255, 0.22);
       box-shadow: var(--shadow);
       backdrop-filter: blur(12px);
     }
 
-    .hero h1 {
+    .hero-copy h1 {
       margin: 0 0 18px;
       max-width: 760px;
       font-size: clamp(3rem, 5.9vw, 6rem);
@@ -214,7 +255,7 @@
 
     .hero-intro {
       margin: 0;
-      max-width: 740px;
+      max-width: 720px;
       color: #dbe5ff;
       font-size: 1.08rem;
       line-height: 1.9;
@@ -258,34 +299,245 @@
       transform: translateY(-1px);
     }
 
-    .hero-pillars {
+    .hero-points {
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 26px;
+      gap: 12px;
+      margin-top: 24px;
     }
 
-    .hero-pillar {
-      padding: 14px 14px 16px;
+    .hero-point {
+      padding: 14px 16px;
       border-radius: 18px;
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(8px);
+      color: #d6e1fb;
+      line-height: 1.66;
+      font-size: 0.97rem;
     }
 
-    .hero-pillar strong {
-      display: block;
-      font-size: 0.92rem;
+    .hero-graphic {
+      position: relative;
+      min-height: 640px;
+      border-radius: 30px;
+      border: 1px solid rgba(95, 125, 255, 0.22);
+      background:
+        radial-gradient(circle at 50% 16%, rgba(41,235,255,0.10), transparent 16%),
+        radial-gradient(circle at 62% 72%, rgba(211,61,255,0.10), transparent 18%),
+        linear-gradient(180deg, rgba(8,12,24,0.94), rgba(6,9,18,0.98));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-graphic::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.32;
+      pointer-events: none;
+    }
+
+    .hero-graphic::after {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow:
+        inset 0 0 80px rgba(255,255,255,0.02),
+        inset 0 0 140px rgba(59,130,255,0.04);
+      pointer-events: none;
+    }
+
+    .graphic-stage {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      min-height: 640px;
+    }
+
+    .halo {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(255,255,255,0.08);
+      pointer-events: none;
+    }
+
+    .halo.one {
+      width: 220px;
+      height: 220px;
+      box-shadow: 0 0 24px rgba(41,235,255,0.10);
+    }
+
+    .halo.two {
+      width: 360px;
+      height: 360px;
+      border-color: rgba(255,255,255,0.05);
+      box-shadow: 0 0 30px rgba(77,161,255,0.08);
+    }
+
+    .halo.three {
+      width: 520px;
+      height: 520px;
+      border-color: rgba(255,255,255,0.04);
+      box-shadow: 0 0 34px rgba(211,61,255,0.07);
+    }
+
+    .axis {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(90deg, rgba(41,235,255,0), rgba(41,235,255,0.75), rgba(211,61,255,0.75), rgba(41,235,255,0));
+      box-shadow: 0 0 14px rgba(41,235,255,0.16);
+      opacity: 0.86;
+      pointer-events: none;
+    }
+
+    .axis.horizontal {
+      width: 430px;
+      height: 2px;
+    }
+
+    .axis.vertical {
+      width: 2px;
+      height: 430px;
+      background: linear-gradient(180deg, rgba(41,235,255,0), rgba(41,235,255,0.75), rgba(211,61,255,0.75), rgba(41,235,255,0));
+    }
+
+    .axis.diag-a,
+    .axis.diag-b {
+      width: 330px;
+      height: 2px;
+    }
+
+    .axis.diag-a {
+      transform: translate(-50%, -50%) rotate(36deg);
+    }
+
+    .axis.diag-b {
+      transform: translate(-50%, -50%) rotate(-36deg);
+    }
+
+    .core-sphere {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 176px;
+      height: 176px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 46% 38%, rgba(41,235,255,0.72), rgba(77,161,255,0.48) 50%, rgba(211,61,255,0.52) 100%);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow:
+        0 0 26px rgba(41,235,255,0.20),
+        0 0 52px rgba(77,161,255,0.16),
+        inset 0 0 34px rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
       color: #ffffff;
-      margin-bottom: 6px;
+      font-weight: 800;
+      line-height: 1.28;
+      letter-spacing: -0.02em;
+      z-index: 3;
     }
 
-    .hero-pillar span {
-      display: block;
-      color: #c5d1ee;
-      font-size: 0.88rem;
-      line-height: 1.55;
+    .core-sphere::before,
+    .core-sphere::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.08);
     }
+
+    .core-sphere::before {
+      inset: -18px;
+    }
+
+    .core-sphere::after {
+      inset: 12px;
+      opacity: 0.5;
+    }
+
+    .magic-node {
+      position: absolute;
+      width: 170px;
+      min-height: 112px;
+      padding: 16px 14px 14px;
+      border-radius: 22px;
+      background: rgba(9, 14, 28, 0.94);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow:
+        0 16px 34px rgba(0,0,0,0.26),
+        inset 0 0 24px rgba(255,255,255,0.02);
+      text-align: center;
+      z-index: 4;
+    }
+
+    .magic-node::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border-radius: 16px;
+      border: 1px solid rgba(41,235,255,0.08);
+      pointer-events: none;
+    }
+
+    .magic-node strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #eef4ff;
+      font-size: 0.95rem;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    .magic-node span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.84rem;
+      line-height: 1.52;
+    }
+
+    .node-top { left: 50%; top: 28px; transform: translateX(-50%); }
+    .node-right { right: 44px; top: 50%; transform: translateY(-50%); }
+    .node-bottom { left: 50%; bottom: 28px; transform: translateX(-50%); }
+    .node-left { left: 44px; top: 50%; transform: translateY(-50%); }
+
+    .magic-pillars {
+      position: absolute;
+      left: 50%;
+      bottom: 34px;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 18px;
+      z-index: 2;
+    }
+
+    .magic-pillars span {
+      display: block;
+      width: 10px;
+      border-radius: 999px;
+      background: linear-gradient(180deg, rgba(41,235,255,0.18), rgba(77,161,255,0.82), rgba(211,61,255,0.38));
+      box-shadow: 0 0 16px rgba(77,161,255,0.14);
+    }
+
+    .magic-pillars span:nth-child(1) { height: 74px; }
+    .magic-pillars span:nth-child(2) { height: 108px; }
+    .magic-pillars span:nth-child(3) { height: 138px; }
+    .magic-pillars span:nth-child(4) { height: 92px; }
+    .magic-pillars span:nth-child(5) { height: 58px; }
 
     .section {
       padding: 24px 0 0;
@@ -518,35 +770,36 @@
     }
 
     @media (max-width: 1180px) {
-      .hero-pillars,
-      .value-grid,
+      .hero-layout,
       .split-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .value-grid {
         grid-template-columns: 1fr 1fr;
       }
 
-      .hero-pillars .hero-pillar:last-child {
-        grid-column: span 2;
-      }
-
-      .split-layout {
-        grid-template-columns: 1fr;
+      .hero-graphic {
+        min-height: 560px;
       }
     }
 
     @media (max-width: 980px) {
       .value-grid,
-      .hero-pillars,
       .formula-grid {
         grid-template-columns: 1fr;
       }
 
-      .hero-pillars .hero-pillar:last-child {
-        grid-column: auto;
-      }
-
       .hero {
         min-height: 88vh;
-        background-position: 56% center;
+      }
+
+      .node-left {
+        left: 18px;
+      }
+
+      .node-right {
+        right: 18px;
       }
     }
 
@@ -579,6 +832,44 @@
       .closing-panel {
         padding: 24px;
       }
+
+      .hero-graphic {
+        min-height: 620px;
+      }
+
+      .halo.three {
+        width: 440px;
+        height: 440px;
+      }
+
+      .axis.horizontal {
+        width: 320px;
+      }
+
+      .axis.vertical {
+        height: 320px;
+      }
+
+      .axis.diag-a,
+      .axis.diag-b {
+        width: 250px;
+      }
+
+      .node-left,
+      .node-right {
+        top: auto;
+        transform: none;
+      }
+
+      .node-left {
+        left: 26px;
+        bottom: 126px;
+      }
+
+      .node-right {
+        right: 26px;
+        top: 120px;
+      }
     }
 
     @media (max-width: 760px) {
@@ -591,8 +882,7 @@
       }
 
       .hero {
-        min-height: 80vh;
-        background-position: 62% center;
+        min-height: auto;
       }
 
       .hero-inner {
@@ -611,6 +901,59 @@
       .btn-primary,
       .btn-secondary {
         width: 100%;
+      }
+
+      .hero-graphic {
+        min-height: 720px;
+      }
+
+      .magic-node {
+        width: min(100%, 220px);
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+      }
+
+      .node-top {
+        top: 28px;
+      }
+
+      .node-right {
+        top: 164px;
+      }
+
+      .node-left {
+        top: auto;
+        bottom: 164px;
+      }
+
+      .node-bottom {
+        bottom: 28px;
+      }
+
+      .halo.two,
+      .halo.three,
+      .axis.diag-a,
+      .axis.diag-b {
+        display: none;
+      }
+
+      .axis.horizontal {
+        width: 240px;
+      }
+
+      .axis.vertical {
+        height: 240px;
+      }
+
+      .core-sphere {
+        width: 154px;
+        height: 154px;
+        font-size: 0.96rem;
+      }
+
+      .magic-pillars {
+        display: none;
       }
     }
   </style>
@@ -635,38 +978,74 @@
 
   <main>
     <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-content">
-          <p class="eyebrow">About Stackemy</p>
-          <h1>Stackemy is where <span class="gradient-line">Technology meets Science.</span></h1>
-          <p class="hero-intro">
-            Innovation and the art of alchemy combine common business technology with tailored
-            technology for industries, agencies, and products through white labeling. Engineered by
-            custom-building from a strong core, Stackemy is designed to transform complexity into a
-            more unified, magical, and modern operating experience.
-          </p>
+      <div class="hero-orb one"></div>
+      <div class="hero-orb two"></div>
+      <div class="hero-orb three"></div>
 
-          <div class="hero-actions">
-            <a class="btn-primary" href="solutions.html">Explore Solutions</a>
-            <a class="btn-secondary" href="get-started.html">Start the Conversation</a>
+      <div class="hero-inner">
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <p class="eyebrow">About Stackemy</p>
+            <h1>Where <span class="gradient-line">Technology meets Science.</span></h1>
+            <p class="hero-intro">
+              Stackemy delivers modern business technology with the rigor of science and the creativity of
+              alchemy. We combine core business systems with tailored custom technology for industries,
+              agencies, and products, including white-labeled delivery models designed for organizations
+              that need branded, differentiated solutions.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn-primary" href="solutions.html">View Solutions</a>
+              <a class="btn-secondary" href="get-started.html">Get Started</a>
+            </div>
+
+            <div class="hero-points">
+              <div class="hero-point">We build and deliver real technology — not concept decks, not disconnected tools, and not temporary fixes.</div>
+              <div class="hero-point">Our work combines strong business foundations with tailored systems shaped for specific industries, agencies, and product environments.</div>
+              <div class="hero-point">The alchemy is in the mix: core technology, custom engineering, and brand-ready white-label capability working together in one modern platform.</div>
+            </div>
           </div>
 
-          <div class="hero-pillars">
-            <div class="hero-pillar">
-              <strong>Core Technology</strong>
-              <span>Foundational business capability brought together into one modern system.</span>
-            </div>
-            <div class="hero-pillar">
-              <strong>Tailored Solutions</strong>
-              <span>Industry, agency, and product-specific experiences built with precision.</span>
-            </div>
-            <div class="hero-pillar">
-              <strong>White Label Ready</strong>
-              <span>Branded and adaptable delivery for organizations building under their own identity.</span>
-            </div>
-            <div class="hero-pillar">
-              <strong>Engineered to Last</strong>
-              <span>Custom-built with long-horizon thinking, extensibility, and modern design discipline.</span>
+          <div class="hero-graphic">
+            <div class="graphic-stage">
+              <div class="halo one"></div>
+              <div class="halo two"></div>
+              <div class="halo three"></div>
+
+              <div class="axis horizontal"></div>
+              <div class="axis vertical"></div>
+              <div class="axis diag-a"></div>
+              <div class="axis diag-b"></div>
+
+              <div class="core-sphere">Stackemy<br>Technology<br>System</div>
+
+              <div class="magic-node node-top">
+                <strong>Core Business Technology</strong>
+                <span>Operational foundations built to anchor the broader platform.</span>
+              </div>
+
+              <div class="magic-node node-right">
+                <strong>Tailored Industry Technology</strong>
+                <span>Custom capability shaped to real vertical and market-specific needs.</span>
+              </div>
+
+              <div class="magic-node node-bottom">
+                <strong>White-Labeled Products</strong>
+                <span>Brand-ready delivery models for agencies, partners, and productized systems.</span>
+              </div>
+
+              <div class="magic-node node-left">
+                <strong>Engineered Modern Experience</strong>
+                <span>Elegant, intelligent, and magical interfaces built on serious architecture.</span>
+              </div>
+
+              <div class="magic-pillars">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </div>
           </div>
         </div>
@@ -676,14 +1055,14 @@
     <section class="section">
       <div class="section-shell">
         <div class="wide-band">
-          <p class="eyebrow">The Stackemy Idea</p>
-          <h2>Where science, engineering, and alchemy come together to create something more powerful than ordinary software.</h2>
+          <p class="eyebrow">The Company</p>
+          <h2>Established technology, delivered with scientific discipline and the art of alchemy.</h2>
           <p>
-            Stackemy is built around the belief that modern technology should feel more coherent,
-            more intelligent, and more transformative than the fragmented tools most businesses are
-            forced to work with today. The name reflects that philosophy: part technology, part
-            science, part alchemy — a deliberate combination of structure, innovation, and imagination
-            used to turn business complexity into elegant operating systems.
+            Stackemy exists to build technology that is both structurally strong and highly adaptable.
+            The scientific side is the engineering discipline, architecture, and repeatable quality. The
+            alchemy is the way those systems are combined, refined, and tailored into something that feels
+            more powerful than standard business software. That is how we approach modern solution building:
+            grounded, authoritative, and designed to endure.
           </p>
         </div>
       </div>
@@ -694,28 +1073,28 @@
         <div class="value-grid">
           <article class="value-card">
             <div class="value-icon"></div>
-            <h3>Common business technology</h3>
+            <h3>Core technology</h3>
             <p>
-              Stackemy brings the essential layers of modern business technology into one connected
-              foundation, reducing fragmentation and creating a cleaner, more powerful operating core.
+              We create strong foundational business systems that support operational clarity, connected
+              workflows, and scalable growth across the platform.
             </p>
           </article>
 
           <article class="value-card">
             <div class="value-icon"></div>
-            <h3>Tailored technology by context</h3>
+            <h3>Tailored custom technology</h3>
             <p>
-              The platform extends beyond generic software by supporting customized experiences for
-              industries, agencies, and specialized products — shaped around real operating needs.
+              We extend beyond generic software by building technology shaped around industry needs,
+              agency models, and specialized product environments.
             </p>
           </article>
 
           <article class="value-card">
             <div class="value-icon"></div>
-            <h3>White-labeled by design</h3>
+            <h3>White-labeled delivery</h3>
             <p>
-              Stackemy is built with the flexibility to power branded solutions, allowing organizations
-              to deliver modern technology under their own identity without sacrificing quality or cohesion.
+              We support branded solution models that allow organizations to deliver modern technology
+              under their own identity without losing architectural quality.
             </p>
           </article>
         </div>
@@ -726,69 +1105,69 @@
       <div class="section-shell">
         <div class="split-layout">
           <div class="panel">
-            <p class="eyebrow">How We Think</p>
-            <h2>Engineered by custom building, not by stitching together compromises.</h2>
+            <p class="eyebrow">How We Build</p>
+            <h2>Custom engineered systems with authority, flexibility, and long-horizon intent.</h2>
             <p>
-              Stackemy is guided by the idea that the strongest platforms are intentionally designed
-              from the ground up. Instead of relying on a patchwork of disconnected tools, the system
-              is shaped around coherence, extensibility, and long-term usefulness. That is where the
-              science comes in — disciplined engineering, strong architecture, and thoughtful system design.
+              Stackemy is built through modern engineering, not by stitching together weak compromises.
+              Our approach is to create technology that can serve as a stable core while also supporting
+              tailored solutions above it. That combination allows us to serve common business needs and
+              more specialized operating models at the same time.
             </p>
 
             <div class="belief-list">
               <div class="belief-item">
-                <strong>Technology with structure</strong>
-                <span>Every strong experience begins with a strong foundation underneath it.</span>
+                <strong>Scientific discipline</strong>
+                <span>Strong engineering, clean architecture, and precision in how systems are designed and delivered.</span>
               </div>
               <div class="belief-item">
-                <strong>Science with rigor</strong>
-                <span>Designing modern systems requires precision, reasoning, and repeatable quality.</span>
+                <strong>Practical innovation</strong>
+                <span>Technology that solves real business needs while remaining modern, extensible, and differentiated.</span>
               </div>
               <div class="belief-item">
-                <strong>Alchemy with imagination</strong>
-                <span>The most powerful outcomes come from combining disciplines into something greater.</span>
+                <strong>Technical alchemy</strong>
+                <span>The ability to mix core systems, custom capability, and branded delivery into one cohesive solution model.</span>
               </div>
               <div class="belief-item">
-                <strong>Brandable by intent</strong>
-                <span>White labeling is not an afterthought — it is part of how the vision expands.</span>
+                <strong>Authoritative execution</strong>
+                <span>We are building and delivering technology now, with systems meant to remain relevant well into the future.</span>
               </div>
             </div>
           </div>
 
           <div class="formula-grid">
             <article class="formula-card">
-              <span class="formula-step">Formula 01</span>
-              <h3>Start with a strong core</h3>
+              <span class="formula-step">Capability 01</span>
+              <h3>Common business technology</h3>
               <p>
-                A modern system needs a unified foundation that can anchor the rest of the experience.
-                Stackemy begins there — with core business technology that creates order and consistency.
+                Core platform capabilities provide the stable operating base that businesses need to run,
+                scale, and coordinate work with greater clarity.
               </p>
             </article>
 
             <article class="formula-card">
-              <span class="formula-step">Formula 02</span>
-              <h3>Extend into tailored domains</h3>
+              <span class="formula-step">Capability 02</span>
+              <h3>Industry and agency adaptation</h3>
               <p>
-                Different industries, agencies, and products need different layers of capability.
-                Stackemy is designed to expand into those layers without losing its center.
+                Tailored custom technology allows Stackemy to serve more specific environments without
+                losing the power of the broader system underneath.
               </p>
             </article>
 
             <article class="formula-card">
-              <span class="formula-step">Formula 03</span>
-              <h3>Package for white-labeled growth</h3>
+              <span class="formula-step">Capability 03</span>
+              <h3>White-label platform delivery</h3>
               <p>
-                Great platforms should be able to serve multiple brands and market contexts.
-                White labeling allows Stackemy’s system power to become a platform for others too.
+                We support models where branded solutions matter, giving organizations the ability to
+                deliver sophisticated technology under their own name and market presence.
               </p>
             </article>
 
             <article class="formula-card">
-              <span class="formula-step">Formula 04</span>
-              <h3>Deliver a magical experience</h3>
+              <span class="formula-step">Capability 04</span>
+              <h3>Magical modern experience</h3>
               <p>
-                The final outcome should not feel mechanical. It should feel elegant, modern, and
-                almost transformative — the point where engineering excellence becomes something memorable.
+                The result should not feel ordinary. It should feel elevated, intuitive, and distinctive —
+                where powerful engineering becomes a memorable product experience.
               </p>
             </article>
           </div>
@@ -799,13 +1178,13 @@
     <section class="closing">
       <div class="section-shell">
         <div class="closing-panel">
-          <p class="eyebrow">The Long-Horizon Vision</p>
-          <h2>Stackemy exists to turn modern business technology into a more unified, tailored, and magical system for the future.</h2>
+          <p class="eyebrow">The Stackemy Standard</p>
+          <h2>Modern technology, tailored intelligently, and engineered to endure.</h2>
           <p>
-            It is where technology meets science, and where innovation meets the art of alchemy.
-            By combining common business technology with custom-built, white-labeled solutions for
-            industries, agencies, and products, Stackemy is being shaped into a platform that feels
-            both powerful and imaginative — engineered for modern needs, and designed to endure.
+            Stackemy is where technology meets science, and where science meets the art of alchemy.
+            We combine core business technology with tailored custom systems for industries, agencies,
+            and white-labeled products — delivering established, authoritative technology that is built
+            for real use, real scale, and long-term relevance.
           </p>
         </div>
       </div>
