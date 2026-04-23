@@ -4,12 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Stackemy</title>
-  <meta name="description" content="About Stackemy — inspired by technology and alchemy, built to create next-generation operating systems through modern engineering, intelligence, and long-horizon innovation.">
+  <meta name="description" content="About Stackemy — inspired by technology and alchemy, built to deliver next-generation business systems through modern engineering, intelligence, and long-horizon innovation.">
   <style>
     :root {
       --bg: #04060d;
       --panel: rgba(10, 14, 28, 0.84);
-      --panel-strong: rgba(8, 11, 22, 0.96);
       --border: rgba(91, 118, 255, 0.24);
       --text: #f5f7ff;
       --muted: #a9b3ce;
@@ -138,13 +137,13 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 0.92fr 1.08fr;
+      grid-template-columns: 0.94fr 1.06fr;
       gap: 18px;
       align-items: stretch;
     }
 
     .hero-copy,
-    .alchemy-graphic,
+    .graphic-panel,
     .statement-band,
     .panel,
     .principle-card,
@@ -169,7 +168,7 @@
     }
 
     .hero-copy::before,
-    .alchemy-graphic::before {
+    .graphic-panel::before {
       content: "";
       position: absolute;
       inset: 0;
@@ -182,7 +181,7 @@
     }
 
     .hero-copy > *,
-    .alchemy-graphic > * {
+    .graphic-panel > * {
       position: relative;
       z-index: 1;
     }
@@ -198,7 +197,7 @@
 
     .hero-copy h1 {
       margin: 0;
-      font-size: clamp(2.8rem, 5vw, 5.1rem);
+      font-size: clamp(2.8rem, 5vw, 5rem);
       line-height: 0.94;
       letter-spacing: -0.06em;
       max-width: 640px;
@@ -214,38 +213,38 @@
     .hero-copy p {
       margin: 0;
       color: var(--muted);
-      line-height: 1.9;
+      line-height: 1.88;
       font-size: 1.03rem;
     }
 
-    .origin-note {
+    .origin-card {
       padding: 16px 18px;
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.03);
     }
 
-    .origin-note strong {
+    .origin-card strong {
       display: block;
       margin-bottom: 6px;
       color: #fff;
       font-size: 0.98rem;
     }
 
-    .origin-note span {
+    .origin-card span {
       display: block;
       color: var(--muted);
       line-height: 1.72;
       font-size: 0.95rem;
     }
 
-    .hero-chips {
+    .hero-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
     }
 
-    .hero-chip {
+    .hero-tag {
       padding: 10px 14px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.10);
@@ -254,19 +253,19 @@
       font-size: 0.9rem;
     }
 
-    .alchemy-graphic {
+    .graphic-panel {
       border-radius: 28px;
       padding: 28px;
       position: relative;
       overflow: hidden;
       min-height: 720px;
       background:
-        radial-gradient(circle at 50% 20%, rgba(39,232,255,0.10), transparent 18%),
-        radial-gradient(circle at 66% 78%, rgba(211,45,255,0.08), transparent 20%),
+        radial-gradient(circle at 50% 18%, rgba(39,232,255,0.10), transparent 18%),
+        radial-gradient(circle at 70% 78%, rgba(211,45,255,0.08), transparent 20%),
         linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
     }
 
-    .alchemy-graphic::after {
+    .graphic-panel::after {
       content: "";
       position: absolute;
       inset: 18px;
@@ -278,19 +277,19 @@
       pointer-events: none;
     }
 
-    .graphic-caption {
+    .graphic-title {
       text-align: center;
       margin-bottom: 20px;
     }
 
-    .graphic-caption h2 {
+    .graphic-title h2 {
       margin: 8px 0 10px;
-      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-size: clamp(2rem, 4vw, 3.15rem);
       line-height: 1.03;
       letter-spacing: -0.04em;
     }
 
-    .graphic-caption p {
+    .graphic-title p {
       margin: 0 auto;
       max-width: 720px;
       color: var(--muted);
@@ -298,18 +297,18 @@
       font-size: 1rem;
     }
 
-    .alchemy-scene {
+    .innovation-scene {
       position: relative;
       min-height: 570px;
     }
 
-    .head-orb {
+    .ai-head {
       position: absolute;
-      left: 24px;
-      top: 38px;
-      width: 280px;
-      height: 360px;
-      border-radius: 44% 44% 40% 40% / 40% 40% 46% 46%;
+      left: 18px;
+      top: 36px;
+      width: 286px;
+      height: 366px;
+      border-radius: 46% 46% 40% 40% / 40% 40% 48% 48%;
       background:
         radial-gradient(circle at 42% 28%, rgba(39,232,255,0.22), rgba(59,130,255,0.14) 48%, rgba(211,45,255,0.10) 100%);
       border: 1px solid rgba(255,255,255,0.12);
@@ -319,13 +318,13 @@
         inset 0 0 44px rgba(255,255,255,0.04);
     }
 
-    .head-orb::before {
+    .ai-head::before {
       content: "";
       position: absolute;
       left: 50%;
       top: 52px;
-      width: 172px;
-      height: 172px;
+      width: 174px;
+      height: 174px;
       transform: translateX(-50%);
       border-radius: 50%;
       border: 1px solid rgba(255,255,255,0.10);
@@ -334,13 +333,13 @@
         inset 0 0 18px rgba(255,255,255,0.03);
     }
 
-    .head-orb::after {
+    .ai-head::after {
       content: "";
       position: absolute;
       left: 50%;
       bottom: 34px;
-      width: 126px;
-      height: 86px;
+      width: 128px;
+      height: 88px;
       transform: translateX(-50%);
       border-radius: 0 0 60px 60px;
       border: 1px solid rgba(255,255,255,0.08);
@@ -348,20 +347,20 @@
       box-shadow: inset 0 -12px 20px rgba(59,130,255,0.06);
     }
 
-    .head-grid {
+    .head-network {
       position: absolute;
       left: 50%;
       top: 72px;
-      width: 136px;
-      height: 136px;
+      width: 138px;
+      height: 138px;
       transform: translateX(-50%);
       border-radius: 50%;
       border: 1px solid rgba(39,232,255,0.10);
       overflow: hidden;
     }
 
-    .head-grid::before,
-    .head-grid::after {
+    .head-network::before,
+    .head-network::after {
       content: "";
       position: absolute;
       inset: 0;
@@ -375,9 +374,9 @@
     .head-core {
       position: absolute;
       left: 50%;
-      top: 140px;
-      width: 74px;
-      height: 74px;
+      top: 142px;
+      width: 76px;
+      height: 76px;
       transform: translateX(-50%);
       border-radius: 50%;
       background:
@@ -387,7 +386,7 @@
         0 0 42px rgba(59,130,255,0.20);
     }
 
-    .head-lines span {
+    .head-signals span {
       position: absolute;
       display: block;
       height: 2px;
@@ -395,36 +394,36 @@
       box-shadow: 0 0 10px rgba(39,232,255,0.18);
     }
 
-    .head-lines span:nth-child(1) {
-      width: 112px;
+    .head-signals span:nth-child(1) {
+      width: 114px;
       left: 50%;
-      top: 158px;
+      top: 160px;
       transform: translateX(-50%);
     }
 
-    .head-lines span:nth-child(2) {
-      width: 82px;
+    .head-signals span:nth-child(2) {
+      width: 84px;
       left: 50%;
-      top: 184px;
+      top: 186px;
       transform: translateX(-50%);
     }
 
-    .head-lines span:nth-child(3) {
-      width: 64px;
+    .head-signals span:nth-child(3) {
+      width: 66px;
       left: 50%;
-      top: 210px;
+      top: 212px;
       transform: translateX(-50%);
     }
 
-    .chem-rig {
+    .chemistry-rig {
       position: absolute;
       right: 18px;
-      bottom: 12px;
-      width: 360px;
-      height: 470px;
+      bottom: 14px;
+      width: 366px;
+      height: 474px;
     }
 
-    .platform {
+    .chem-platform {
       position: absolute;
       left: 34px;
       right: 34px;
@@ -439,7 +438,7 @@
 
     .flask-neck {
       position: absolute;
-      left: 198px;
+      left: 202px;
       top: 46px;
       width: 22px;
       height: 96px;
@@ -450,10 +449,10 @@
 
     .flask-body {
       position: absolute;
-      left: 112px;
+      left: 114px;
       top: 124px;
-      width: 194px;
-      height: 240px;
+      width: 196px;
+      height: 242px;
       clip-path: polygon(32% 0%, 68% 0%, 88% 20%, 100% 88%, 0% 88%, 12% 20%);
       border: 1px solid rgba(255,255,255,0.12);
       background:
@@ -464,12 +463,12 @@
         0 0 26px rgba(59,130,255,0.08);
     }
 
-    .liquid {
+    .flask-liquid {
       position: absolute;
-      left: 128px;
-      top: 212px;
-      width: 162px;
-      height: 122px;
+      left: 130px;
+      top: 214px;
+      width: 164px;
+      height: 124px;
       clip-path: polygon(4% 18%, 96% 12%, 100% 100%, 0% 100%);
       background:
         linear-gradient(180deg, rgba(39,232,255,0.65), rgba(59,130,255,0.55) 50%, rgba(211,45,255,0.50));
@@ -486,10 +485,10 @@
       box-shadow: 0 0 12px rgba(255,255,255,0.18);
     }
 
-    .bubble.b1 { width: 10px; height: 10px; left: 182px; top: 196px; }
-    .bubble.b2 { width: 14px; height: 14px; left: 214px; top: 174px; background: rgba(39,232,255,0.95); }
-    .bubble.b3 { width: 8px; height: 8px; left: 236px; top: 202px; background: rgba(211,45,255,0.95); }
-    .bubble.b4 { width: 12px; height: 12px; left: 170px; top: 232px; background: rgba(59,130,255,0.95); }
+    .bubble.b1 { width: 10px; height: 10px; left: 184px; top: 196px; }
+    .bubble.b2 { width: 14px; height: 14px; left: 216px; top: 174px; background: rgba(39,232,255,0.95); }
+    .bubble.b3 { width: 8px; height: 8px; left: 238px; top: 202px; background: rgba(211,45,255,0.95); }
+    .bubble.b4 { width: 12px; height: 12px; left: 172px; top: 234px; background: rgba(59,130,255,0.95); }
 
     .tube {
       position: absolute;
@@ -514,7 +513,7 @@
       border-radius: 0 0 22px 0;
     }
 
-    .data-orbs span {
+    .data-sparks span {
       position: absolute;
       display: block;
       border-radius: 50%;
@@ -525,21 +524,21 @@
         0 0 28px rgba(59,130,255,0.14);
     }
 
-    .data-orbs span:nth-child(1) {
+    .data-sparks span:nth-child(1) {
       width: 26px;
       height: 26px;
       left: 34px;
       top: 62px;
     }
 
-    .data-orbs span:nth-child(2) {
+    .data-sparks span:nth-child(2) {
       width: 18px;
       height: 18px;
       left: 78px;
       top: 98px;
     }
 
-    .data-orbs span:nth-child(3) {
+    .data-sparks span:nth-child(3) {
       width: 14px;
       height: 14px;
       left: 116px;
@@ -550,7 +549,7 @@
       position: absolute;
       right: 18px;
       top: 34px;
-      width: 232px;
+      width: 236px;
       display: grid;
       gap: 12px;
     }
@@ -727,7 +726,7 @@
         grid-template-columns: 1fr;
       }
 
-      .alchemy-graphic {
+      .graphic-panel {
         min-height: 760px;
       }
     }
@@ -740,23 +739,22 @@
       .graphic-notes {
         position: relative;
         width: 100%;
-        max-width: none;
         right: auto;
         top: auto;
         margin-top: 18px;
       }
 
-      .alchemy-scene {
+      .innovation-scene {
         min-height: 780px;
       }
 
-      .head-orb {
+      .ai-head {
         left: 50%;
         transform: translateX(-50%);
         top: 34px;
       }
 
-      .chem-rig {
+      .chemistry-rig {
         left: 50%;
         right: auto;
         transform: translateX(-50%);
@@ -792,7 +790,7 @@
       }
 
       .hero-copy,
-      .alchemy-graphic,
+      .graphic-panel,
       .statement-band,
       .panel,
       .principle-card,
@@ -800,20 +798,20 @@
         padding: 24px;
       }
 
-      .alchemy-graphic {
+      .graphic-panel {
         min-height: 860px;
       }
 
-      .alchemy-scene {
+      .innovation-scene {
         min-height: 700px;
       }
 
-      .head-orb {
+      .ai-head {
         width: 228px;
         height: 300px;
       }
 
-      .head-grid {
+      .head-network {
         width: 112px;
         height: 112px;
         top: 58px;
@@ -825,7 +823,7 @@
         top: 116px;
       }
 
-      .chem-rig {
+      .chemistry-rig {
         width: 300px;
         height: 390px;
       }
@@ -840,7 +838,7 @@
         height: 204px;
       }
 
-      .liquid {
+      .flask-liquid {
         left: 102px;
         width: 138px;
         height: 98px;
@@ -876,58 +874,56 @@
       <div class="section-shell">
         <div class="hero-grid">
           <div class="hero-copy">
-            <p class="eyebrow">About Stackemy</p>
-            <h1>Built from <span class="gradient-line">technology and alchemy.</span></h1>
+            <p class="eyebrow">About</p>
+            <h1>Stackemy was inspired by <span class="gradient-line">technology and alchemy.</span></h1>
             <p>
-              The name Stackemy is inspired by the fusion of advanced technology and alchemy —
-              the idea that next-generation systems are not created through ordinary software thinking,
-              but through a deeper form of technical transformation. The mission is to build modern
-              operating environments that feel elegant, intelligent, and strong enough to endure for decades.
+              The name Stackemy comes from the idea that building next-generation systems is a kind of
+              technical alchemy — the deliberate blending of modern engineering, intelligence, architecture,
+              and innovation into something stronger than ordinary software.
             </p>
 
-            <div class="origin-note">
-              <strong>Why the name matters</strong>
+            <div class="origin-card">
+              <strong>Why the name fits</strong>
               <span>
-                Stackemy represents technological chemistry: the deliberate blending of architecture,
-                engineering, intelligence, systems design, and long-horizon vision into something more powerful
-                than a disconnected collection of tools.
+                Stackemy represents technological chemistry: combining deep system design, AI, analytics,
+                workflow, and long-horizon product thinking into one coherent operating environment built to last.
               </span>
             </div>
 
-            <div class="hero-chips">
-              <span class="hero-chip">Technology</span>
-              <span class="hero-chip">Alchemy</span>
-              <span class="hero-chip">Innovation</span>
-              <span class="hero-chip">Modern Engineering</span>
-              <span class="hero-chip">AI</span>
-              <span class="hero-chip">Long-Horizon Systems</span>
+            <div class="hero-tags">
+              <span class="hero-tag">Technology</span>
+              <span class="hero-tag">Alchemy</span>
+              <span class="hero-tag">Innovation</span>
+              <span class="hero-tag">Modern Engineering</span>
+              <span class="hero-tag">AI</span>
+              <span class="hero-tag">Long-Horizon Systems</span>
             </div>
 
-            <div class="origin-note">
-              <strong>The belief underneath the company</strong>
+            <div class="origin-card">
+              <strong>The deeper company idea</strong>
               <span>
-                Delivering next-generation business systems requires more than feature development. It requires
-                technical alchemy — turning complexity into coherence, intelligence into utility, and architecture
-                into an enduring competitive advantage.
+                Delivering modern solutions for many decades to come requires more than feature building.
+                It requires turning complexity into coherence, intelligence into utility, and architecture
+                into enduring business infrastructure.
               </span>
             </div>
           </div>
 
-          <div class="alchemy-graphic">
-            <div class="graphic-caption">
+          <div class="graphic-panel">
+            <div class="graphic-title">
               <p class="eyebrow">Technology Meets Alchemy</p>
-              <h2>Intelligence, engineering, and transformation in one visual language.</h2>
+              <h2>The AI head and chemistry set define the company metaphor.</h2>
               <p>
-                The AI head and chemistry set represent the core idea behind Stackemy: modern systems are built
-                through a blend of deep technical intelligence, precise engineering, and transformational design.
+                Together they represent the Stackemy philosophy: intelligent engineering, technical synthesis,
+                and next-generation system creation through deliberate design.
               </p>
             </div>
 
-            <div class="alchemy-scene">
-              <div class="head-orb">
-                <div class="head-grid"></div>
+            <div class="innovation-scene">
+              <div class="ai-head">
+                <div class="head-network"></div>
                 <div class="head-core"></div>
-                <div class="head-lines">
+                <div class="head-signals">
                   <span></span>
                   <span></span>
                   <span></span>
@@ -937,23 +933,23 @@
               <div class="graphic-notes">
                 <div class="graphic-note">
                   <strong>AI head</strong>
-                  <span>Represents intelligence, reasoning, foresight, and the future-facing mindset needed to build modern systems well.</span>
+                  <span>Represents intelligence, reasoning, foresight, and the future-facing mindset behind modern system design.</span>
                 </div>
 
                 <div class="graphic-note">
                   <strong>Chemistry set</strong>
-                  <span>Represents synthesis, experimentation, precision, and the idea of combining distinct technical elements into one stronger result.</span>
+                  <span>Represents synthesis, experimentation, and precision — combining technical elements into one stronger result.</span>
                 </div>
 
                 <div class="graphic-note">
                   <strong>Technical alchemy</strong>
-                  <span>Represents the company belief that next-generation solutions come from deliberate system design, not from stacking disconnected software.</span>
+                  <span>Represents the belief that real innovation comes from designing coherent systems, not stacking disconnected tools.</span>
                 </div>
               </div>
 
-              <div class="chem-rig">
+              <div class="chemistry-rig">
                 <div class="tube"></div>
-                <div class="data-orbs">
+                <div class="data-sparks">
                   <span></span>
                   <span></span>
                   <span></span>
@@ -961,14 +957,14 @@
 
                 <div class="flask-neck"></div>
                 <div class="flask-body"></div>
-                <div class="liquid"></div>
+                <div class="flask-liquid"></div>
 
                 <div class="bubble b1"></div>
                 <div class="bubble b2"></div>
                 <div class="bubble b3"></div>
                 <div class="bubble b4"></div>
 
-                <div class="platform"></div>
+                <div class="chem-platform"></div>
               </div>
             </div>
           </div>
@@ -980,12 +976,12 @@
       <div class="section-shell">
         <div class="statement-band">
           <p class="eyebrow">What We Believe</p>
-          <h2>Innovation is not novelty. It is the disciplined creation of systems that remain powerful for decades.</h2>
+          <h2>Innovation is not novelty. It is building systems strong enough to matter for decades.</h2>
           <p>
-            Stackemy is rooted in the belief that modern business software should be more coherent, more intelligent,
-            and more durable than what most companies are forced to operate today. Real innovation comes from combining
-            architecture, engineering, product design, and intelligence in a way that produces lasting systems rather
-            than short-lived software trends.
+            Stackemy is built on the belief that modern business software should be more intelligent, more
+            coherent, and more durable than the fragmented tools most companies are forced to operate today.
+            Real innovation comes from combining architecture, engineering, product design, and intelligence
+            into systems that endure.
           </p>
         </div>
       </div>
@@ -998,30 +994,31 @@
             <p class="eyebrow">Our Direction</p>
             <h2>Building next-generation solutions through modern engineering.</h2>
             <p>
-              Stackemy is not being built around temporary convenience. It is being built around technical quality,
-              structural clarity, and long-horizon engineering discipline. The goal is to create systems that can support
-              modern business complexity while still remaining elegant, extensible, and architecturally sound over time.
+              Stackemy is not being shaped around temporary convenience. It is being shaped around technical
+              quality, structural clarity, and long-horizon engineering discipline. The goal is to build
+              systems that can support modern business complexity while remaining elegant, extensible, and
+              relevant for many decades to come.
             </p>
 
             <div class="belief-list">
               <div class="belief-item">
                 <strong>Innovation with structure</strong>
-                <span>The future belongs to systems that are imaginative in vision and disciplined in execution.</span>
+                <span>The future belongs to systems that are ambitious in vision and disciplined in execution.</span>
               </div>
 
               <div class="belief-item">
                 <strong>Engineering with longevity</strong>
-                <span>Solutions should be designed to remain relevant, extensible, and stable for many decades to come.</span>
+                <span>Solutions should be designed to remain stable, extensible, and useful over the long term.</span>
               </div>
 
               <div class="belief-item">
                 <strong>Intelligence with context</strong>
-                <span>AI becomes more valuable when it lives inside a coherent architecture instead of floating outside it.</span>
+                <span>AI becomes more powerful when it lives inside a coherent operating architecture.</span>
               </div>
 
               <div class="belief-item">
                 <strong>Transformation with purpose</strong>
-                <span>Technical alchemy means turning fragmented categories into one stronger operating model.</span>
+                <span>Technical alchemy means turning fragmented categories into one stronger system model.</span>
               </div>
             </div>
           </div>
@@ -1029,11 +1026,10 @@
           <div class="principles-grid">
             <article class="principle-card">
               <span class="label">Technology</span>
-              <h3>Modern systems demand more than ordinary software assembly.</h3>
+              <h3>Modern systems require more than ordinary software assembly.</h3>
               <p>
-                Stackemy is built from the belief that serious operating environments require deep architecture,
-                not just surface functionality. The technology has to be coherent underneath in order to feel
-                powerful above the surface.
+                Stackemy is built from the belief that serious operating environments require strong architecture,
+                not just surface functionality. The system has to be coherent underneath to feel powerful above.
               </p>
             </article>
 
@@ -1041,8 +1037,8 @@
               <span class="label">Alchemy</span>
               <h3>The strongest solutions come from synthesis.</h3>
               <p>
-                Alchemy is the metaphor for combining intelligence, engineering, analytics, workflow, and
-                design into something more valuable than the individual parts alone.
+                Alchemy is the metaphor for combining intelligence, engineering, analytics, workflow, and design
+                into something more valuable than the individual parts alone.
               </p>
             </article>
 
@@ -1050,8 +1046,8 @@
               <span class="label">Innovation</span>
               <h3>Next-generation products require long-horizon thinking.</h3>
               <p>
-                The aim is not to chase a trend cycle. It is to create modern systems that are forward-looking
-                enough to lead now and durable enough to matter far into the future.
+                The aim is not to chase short trends. It is to create modern systems that can lead now and
+                remain relevant far into the future.
               </p>
             </article>
 
@@ -1059,8 +1055,8 @@
               <span class="label">Engineering</span>
               <h3>Durability is part of the product.</h3>
               <p>
-                Stackemy is being shaped with the understanding that good engineering is not invisible. It is
-                what makes a product stable, extensible, intelligent, and capable of supporting decades of growth.
+                Good engineering is what makes a platform stable, extensible, intelligent, and capable of
+                supporting decades of growth without losing its architectural center.
               </p>
             </article>
           </div>
@@ -1072,12 +1068,12 @@
       <div class="section-shell">
         <div class="closing-panel">
           <p class="eyebrow">The Company Idea</p>
-          <h2>Stackemy exists to turn modern technical complexity into enduring business advantage.</h2>
+          <h2>Stackemy exists to turn technical complexity into enduring business infrastructure.</h2>
           <p>
-            The name, the philosophy, and the product direction all point to the same belief: the future will belong
-            to companies that can combine intelligence, engineering, architecture, and innovation into one coherent
-            operating environment. That is the technical alchemy Stackemy is built to deliver — not just for today,
-            but for many decades to come.
+            The name, the philosophy, and the product direction all point to the same belief: the future
+            belongs to companies that can combine intelligence, engineering, architecture, and innovation
+            into one coherent operating environment. That is the technical alchemy Stackemy is built to
+            deliver — not just for today, but for many decades to come.
           </p>
         </div>
       </div>
