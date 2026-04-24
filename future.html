@@ -9,7 +9,8 @@
     :root {
       --bg: #04060d;
       --panel: rgba(10, 14, 28, 0.84);
-      --border: rgba(91, 118, 255, 0.28);
+      --panel-strong: rgba(8, 11, 22, 0.96);
+      --border: rgba(91, 118, 255, 0.24);
       --text: #f5f7ff;
       --muted: #a9b3ce;
       --blue: #3b82ff;
@@ -21,13 +22,8 @@
       --content: 1200px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -40,10 +36,7 @@
         linear-gradient(180deg, #03050d 0%, #02040a 100%);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .site-header {
       position: absolute;
@@ -148,43 +141,28 @@
       backdrop-filter: blur(10px);
     }
 
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      overflow: hidden;
-      background:
-        linear-gradient(90deg, rgba(3,5,13,0.86) 0%, rgba(3,5,13,0.66) 26%, rgba(3,5,13,0.18) 58%, rgba(3,5,13,0.10) 100%),
-        linear-gradient(180deg, rgba(3,5,13,0.18) 0%, rgba(3,5,13,0.08) 24%, rgba(3,5,13,0.84) 100%),
-        url("stackemy-hero.png") center center / cover no-repeat;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: auto 0 0 0;
-      height: 180px;
-      background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.96) 100%);
-      pointer-events: none;
-    }
-
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      width: min(var(--content), calc(100% - 40px));
+    .section-shell {
+      width: min(var(--content), calc(100% - 32px));
       margin: 0 auto;
+    }
+
+    .hero {
+      padding: 34px 0 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 22px;
+      align-items: stretch;
       padding-top: calc(var(--header-height) + 24px);
-      padding-bottom: 72px;
     }
 
     .hero-copy {
-      width: min(640px, 100%);
-      background: rgba(10, 14, 28, 0.58);
-      border: 1px solid rgba(91, 118, 255, 0.22);
+      background: var(--panel);
+      border: 1px solid var(--border);
       border-radius: 28px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
       padding: 38px 34px;
     }
 
@@ -202,10 +180,9 @@
       font-size: clamp(2.7rem, 5vw, 5.1rem);
       line-height: 0.94;
       letter-spacing: -0.05em;
-      max-width: 760px;
     }
 
-    .gradient-line {
+    .hero-copy .gradient-line {
       background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta));
       -webkit-background-clip: text;
       background-clip: text;
@@ -214,42 +191,232 @@
 
     .hero-copy p {
       margin: 0;
-      max-width: 760px;
       color: var(--muted);
       line-height: 1.9;
       font-size: 1.05rem;
     }
 
-    .hero-points {
-      display: grid;
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
       gap: 12px;
-      margin-top: 24px;
+      margin-top: 28px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--cyan);
+      text-transform: uppercase;
     }
 
-    .hero-point {
-      padding: 14px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-      color: #d8e1fb;
-      line-height: 1.65;
+    .hero-link::after {
+      content: "→";
+      font-size: 1.1rem;
     }
 
-    .section-shell {
-      width: min(var(--content), calc(100% - 32px));
-      margin: 0 auto;
+    .future-graphic {
+      position: relative;
+      background:
+        radial-gradient(circle at 50% 50%, rgba(39,232,255,0.10), transparent 30%),
+        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
+      border: 1px solid rgba(94,126,255,0.24);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      overflow: hidden;
     }
+
+    .future-graphic::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .future-graphic-inner {
+      position: relative;
+      z-index: 1;
+      min-height: 540px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .future-stage {
+      position: relative;
+      width: min(100%, 560px);
+      min-height: 470px;
+    }
+
+    .pulse-rings {
+      position: absolute;
+      left: 50%;
+      bottom: 22px;
+      transform: translateX(-50%);
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      border: 2px solid rgba(59,130,255,0.22);
+      box-shadow:
+        0 0 0 28px rgba(59,130,255,0.04),
+        0 0 0 64px rgba(211,45,255,0.03);
+    }
+
+    .pulse-rings::before,
+    .pulse-rings::after {
+      content: "";
+      position: absolute;
+      inset: 9%;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .pulse-rings::after {
+      inset: 21%;
+      border-color: rgba(255,255,255,0.07);
+    }
+
+    .layer {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 250px;
+      height: 80px;
+      clip-path: polygon(50% 0%, 100% 24%, 50% 100%, 0% 24%);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow:
+        0 0 24px rgba(39,232,255,0.12),
+        0 0 48px rgba(59,130,255,0.10);
+    }
+
+    .layer.layer-1 {
+      bottom: 88px;
+      background: linear-gradient(180deg, rgba(12,170,255,0.16), rgba(211,45,255,0.16));
+    }
+
+    .layer.layer-2 {
+      bottom: 132px;
+      width: 220px;
+      background: linear-gradient(180deg, rgba(59,130,255,0.18), rgba(39,232,255,0.14));
+    }
+
+    .layer.layer-3 {
+      bottom: 176px;
+      width: 190px;
+      background: linear-gradient(180deg, rgba(162,45,255,0.16), rgba(59,130,255,0.16));
+    }
+
+    .stack-core {
+      position: absolute;
+      left: 50%;
+      bottom: 214px;
+      transform: translateX(-50%);
+      width: 142px;
+      height: 142px;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at center, rgba(39,232,255,0.18), rgba(59,130,255,0.14) 55%, rgba(162,45,255,0.14) 100%);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow:
+        0 0 26px rgba(39,232,255,0.16),
+        0 0 56px rgba(59,130,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4.2rem;
+      font-weight: 900;
+      color: #8fdcff;
+      text-shadow:
+        0 0 18px rgba(39,232,255,0.28),
+        0 0 38px rgba(59,130,255,0.22);
+    }
+
+    .connector {
+      position: absolute;
+      background: linear-gradient(90deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
+      height: 2px;
+      box-shadow: 0 0 14px rgba(39,232,255,0.32);
+    }
+
+    .connector-left {
+      width: 88px;
+      left: 90px;
+      top: 178px;
+    }
+
+    .connector-right {
+      width: 88px;
+      right: 90px;
+      top: 178px;
+    }
+
+    .connector-top {
+      width: 2px;
+      height: 74px;
+      left: 50%;
+      top: 72px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
+    }
+
+    .connector-bottom {
+      width: 2px;
+      height: 86px;
+      left: 50%;
+      bottom: 94px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
+    }
+
+    .future-node {
+      position: absolute;
+      width: 142px;
+      min-height: 92px;
+      padding: 14px 14px 12px;
+      border-radius: 20px;
+      background: rgba(9, 14, 28, 0.92);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.26);
+      text-align: center;
+    }
+
+    .future-node .icon {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      color: #ffffff;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .future-node strong {
+      display: block;
+      font-size: 0.92rem;
+      line-height: 1.35;
+      color: #eef4ff;
+      letter-spacing: -0.01em;
+    }
+
+    .node-top { top: 18px; left: 50%; transform: translateX(-50%); }
+    .node-left { top: 132px; left: 8px; }
+    .node-right { top: 132px; right: 8px; }
+    .node-bottom { left: 50%; bottom: 6px; transform: translateX(-50%); }
 
     .section {
       padding: 24px 0 0;
     }
 
     .statement-band {
-      background: linear-gradient(
-        180deg,
-        rgba(10,14,28,0.90),
-        rgba(7,10,20,0.96)
-      );
+      background: linear-gradient(180deg, rgba(10,14,28,0.90), rgba(7,10,20,0.96));
       border: 1px solid rgba(94,126,255,0.22);
       border-radius: 24px;
       padding: 34px 30px;
@@ -367,11 +534,7 @@
     }
 
     .closing-panel {
-      background: linear-gradient(
-        180deg,
-        rgba(10,14,28,0.90),
-        rgba(7,10,20,0.96)
-      );
+      background: linear-gradient(180deg, rgba(10,14,28,0.90), rgba(7,10,20,0.96));
       border: 1px solid rgba(94,126,255,0.22);
       border-radius: 24px;
       padding: 34px 30px;
@@ -401,26 +564,11 @@
     }
 
     @media (max-width: 1180px) {
-      .brand-logo {
-        height: 54px;
-      }
-
-      .nav {
-        gap: 26px;
-      }
-
-      .nav a {
-        font-size: 1rem;
-      }
-
-      .header-cta {
-        min-width: 160px;
-        padding: 14px 20px;
-      }
-
-      .pillar-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+      .brand-logo { height: 54px; }
+      .nav { gap: 26px; }
+      .nav a { font-size: 1rem; }
+      .header-cta { min-width: 160px; padding: 14px 20px; }
+      .pillar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
 
     @media (max-width: 980px) {
@@ -445,13 +593,8 @@
         gap: 18px;
       }
 
-      .header-left {
-        order: 1;
-      }
-
-      .header-right {
-        order: 3;
-      }
+      .header-left { order: 1; }
+      .header-right { order: 3; }
 
       .nav {
         flex-wrap: wrap;
@@ -459,16 +602,7 @@
         gap: 18px 24px;
       }
 
-      .hero {
-        background:
-          linear-gradient(180deg, rgba(3,5,13,0.82) 0%, rgba(3,5,13,0.42) 45%, rgba(3,5,13,0.82) 100%),
-          url("stackemy-hero.png") center center / cover no-repeat;
-      }
-
-      .hero-copy {
-        width: 100%;
-      }
-
+      .hero-grid,
       .split-section {
         grid-template-columns: 1fr;
       }
@@ -496,13 +630,8 @@
         justify-content: flex-start;
       }
 
-      .hero {
-        min-height: 78vh;
-      }
-
-      .hero-inner {
+      .hero-grid {
         padding-top: 32px;
-        padding-bottom: 40px;
       }
 
       .pillar-grid {
@@ -511,21 +640,70 @@
     }
 
     @media (max-width: 760px) {
-      .brand-logo {
-        height: 48px;
-      }
-
-      .header-cta {
-        width: 100%;
-      }
+      .brand-logo { height: 48px; }
+      .header-cta { width: 100%; }
 
       .hero-copy,
+      .future-graphic,
       .statement-band,
       .pillar,
       .panel,
       .closing-panel {
         padding: 24px;
       }
+
+      .future-stage {
+        min-height: 430px;
+      }
+
+      .pulse-rings {
+        width: 250px;
+        height: 250px;
+        bottom: 56px;
+      }
+
+      .layer.layer-1 {
+        width: 180px;
+        height: 62px;
+        bottom: 104px;
+      }
+
+      .layer.layer-2 {
+        width: 158px;
+        height: 56px;
+        bottom: 140px;
+      }
+
+      .layer.layer-3 {
+        width: 136px;
+        height: 50px;
+        bottom: 176px;
+      }
+
+      .stack-core {
+        width: 110px;
+        height: 110px;
+        bottom: 210px;
+        font-size: 3rem;
+      }
+
+      .future-node {
+        width: 110px;
+        min-height: 84px;
+        padding: 12px 10px 10px;
+      }
+
+      .future-node strong {
+        font-size: 0.82rem;
+      }
+
+      .connector-left { left: 58px; width: 58px; }
+      .connector-right { right: 58px; width: 58px; }
+      .connector-top { top: 84px; height: 52px; }
+      .connector-bottom { bottom: 108px; height: 54px; }
+
+      .node-left { left: -2px; }
+      .node-right { right: -2px; }
     }
   </style>
 </head>
@@ -555,20 +733,56 @@
 
   <main>
     <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-copy">
-          <p class="eyebrow">Meet the Future</p>
-          <h1>The future isn’t more software. <span class="gradient-line">It’s one system that works as one.</span></h1>
-          <p>
-            Stackemy brings the consolidated stack, the industry layer, the protected CRM core,
-            intelligence, analytics, and experience together — in one unified operating environment
-            built for what comes next.
-          </p>
+      <div class="section-shell">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Meet the Future</p>
+            <h1>The future isn’t more software. <span class="gradient-line">It’s one system that works as one.</span></h1>
+            <p>
+              Stackemy brings the consolidated stack, the industry layer, the protected CRM core,
+              intelligence, analytics, and experience together — in one unified operating environment
+              built for what comes next.
+            </p>
 
-          <div class="hero-points">
-            <div class="hero-point">Consolidated stack instead of endless disconnected applications.</div>
-            <div class="hero-point">Industry systems extending around the CRM rather than replacing it.</div>
-            <div class="hero-point">A product experience that feels unified because the architecture is unified.</div>
+            <a href="solutions.html" class="hero-link">Explore the future</a>
+          </div>
+
+          <div class="future-graphic">
+            <div class="future-graphic-inner">
+              <div class="future-stage">
+                <div class="pulse-rings"></div>
+
+                <div class="layer layer-1"></div>
+                <div class="layer layer-2"></div>
+                <div class="layer layer-3"></div>
+                <div class="stack-core">S</div>
+
+                <div class="connector connector-left"></div>
+                <div class="connector connector-right"></div>
+                <div class="connector connector-top"></div>
+                <div class="connector connector-bottom"></div>
+
+                <div class="future-node node-top">
+                  <div class="icon">▣</div>
+                  <strong>Industry<br>Capability</strong>
+                </div>
+
+                <div class="future-node node-left">
+                  <div class="icon">◌</div>
+                  <strong>Intelligence<br>& AI</strong>
+                </div>
+
+                <div class="future-node node-right">
+                  <div class="icon">▥</div>
+                  <strong>Analytics &<br>Insight</strong>
+                </div>
+
+                <div class="future-node node-bottom">
+                  <div class="icon">◍</div>
+                  <strong>Protected<br>CRM Core</strong>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
