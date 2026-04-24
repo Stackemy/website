@@ -18,7 +18,6 @@
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
       --radius: 24px;
       --header-height: 98px;
-      --max: 1280px;
       --content: 1200px;
     }
 
@@ -51,7 +50,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 30;
+      z-index: 20;
       background: linear-gradient(
         180deg,
         rgba(2, 4, 10, 0.90) 0%,
@@ -61,21 +60,32 @@
     }
 
     .header-shell {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
+      position: relative;
+      width: 100%;
       min-height: var(--header-height);
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
+      display: flex;
       align-items: center;
-      gap: 24px;
-      padding: 18px 0 20px;
+      justify-content: space-between;
+      padding: 18px 24px 20px;
     }
 
-    .brand-wrap {
+    .header-left,
+    .header-right {
       display: flex;
-      justify-content: flex-start;
       align-items: center;
-      min-width: 0;
+      flex: 0 0 auto;
+      z-index: 2;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
     }
 
     .brand {
@@ -88,13 +98,6 @@
       display: block;
       height: 60px;
       width: auto;
-    }
-
-    .nav-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-width: 0;
     }
 
     .nav {
@@ -124,13 +127,6 @@
       opacity: 0.75;
       border-radius: 999px;
       box-shadow: 0 0 10px rgba(59,130,255,.5);
-    }
-
-    .cta-wrap {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      min-width: 0;
     }
 
     .header-cta {
@@ -176,7 +172,7 @@
     .hero-inner {
       position: relative;
       z-index: 2;
-      width: min(var(--max), calc(100% - 40px));
+      width: min(var(--content), calc(100% - 40px));
       margin: 0 auto;
       padding-top: calc(var(--header-height) + 24px);
       padding-bottom: 72px;
@@ -387,9 +383,59 @@
       font-size: 0.92rem;
     }
 
-    @media (max-width: 1100px) {
-      .split-section {
-        grid-template-columns: 1fr;
+    @media (max-width: 1180px) {
+      .brand-logo {
+        height: 54px;
+      }
+
+      .nav {
+        gap: 26px;
+      }
+
+      .nav a {
+        font-size: 1rem;
+      }
+
+      .header-cta {
+        min-width: 160px;
+        padding: 14px 20px;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .header-shell {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .header-center {
+        position: static;
+        transform: none;
+        width: 100%;
+        order: 2;
+        justify-content: flex-start;
+      }
+
+      .header-shell {
+        flex-wrap: wrap;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+      }
+
+      .header-left {
+        order: 1;
+      }
+
+      .header-right {
+        order: 3;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 18px 24px;
       }
 
       .hero {
@@ -398,14 +444,12 @@
           url("core-system-graphic.png") center center / cover no-repeat;
       }
 
-      .hero-inner {
-        display: flex;
-        align-items: flex-end;
-        min-height: 100vh;
-      }
-
       .hero-copy {
         width: 100%;
+      }
+
+      .split-section {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -416,47 +460,32 @@
       }
 
       .header-shell {
-        min-height: auto;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        padding: 18px 0;
+        min-height: auto;
+        padding: 18px;
         gap: 18px;
       }
 
-      .brand-wrap,
-      .nav-wrap,
-      .cta-wrap {
+      .header-left,
+      .header-center,
+      .header-right {
         width: 100%;
-      }
-
-      .brand-logo {
-        height: 54px;
-      }
-
-      .nav {
-        flex-wrap: wrap;
         justify-content: flex-start;
-        gap: 18px 24px;
-      }
-
-      .cta-wrap {
-        justify-content: flex-start;
-      }
-
-      .hero {
-        min-height: 72vh;
-      }
-
-      .hero-inner {
-        width: min(var(--max), calc(100% - 24px));
-        padding-top: 32px;
-        padding-bottom: 40px;
-        min-height: auto;
       }
 
       .grid {
         grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+
+      .hero-inner {
+        padding-top: 32px;
+        padding-bottom: 40px;
       }
     }
 
@@ -482,13 +511,13 @@
 <body>
   <header class="site-header">
     <div class="header-shell">
-      <div class="brand-wrap">
+      <div class="header-left">
         <a class="brand" href="index.html" aria-label="Stackemy home">
           <img src="stackemy-header-logo.png" alt="Stackemy logo" class="brand-logo">
         </a>
       </div>
 
-      <div class="nav-wrap">
+      <div class="header-center">
         <nav class="nav" aria-label="Primary navigation">
           <a href="core.html">The Core</a>
           <a href="future.html">Meet the Future</a>
@@ -497,7 +526,7 @@
         </nav>
       </div>
 
-      <div class="cta-wrap">
+      <div class="header-right">
         <a class="header-cta" href="get-started.html">Get Started</a>
       </div>
     </div>
