@@ -174,28 +174,6 @@
       pointer-events: none;
     }
 
-    .hero-inner {
-      position: relative;
-      z-index: 2;
-      width: min(var(--content), calc(100% - 40px));
-      margin: 0 auto;
-      padding: 0 0 28px;
-    }
-
-    .hero-scroll {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.95rem;
-      color: rgba(255,255,255,0.92);
-      background: rgba(7, 10, 20, 0.42);
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 999px;
-      padding: 11px 16px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 10px 30px rgba(0,0,0,.25);
-    }
-
     .section-shell {
       width: min(var(--content), calc(100% - 32px));
       margin: 0 auto;
@@ -457,10 +435,6 @@
         min-height: 78vh;
       }
 
-      .hero-inner {
-        padding-bottom: 22px;
-      }
-
       .feature-grid,
       .page-grid {
         grid-template-columns: 1fr;
@@ -509,11 +483,7 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="hero-inner">
-        <a class="hero-scroll" href="#intro">Scroll to continue ↓</a>
-      </div>
-    </section>
+    <section class="hero"></section>
 
     <section class="intro" id="intro">
       <div class="section-shell">
