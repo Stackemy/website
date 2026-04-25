@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solutions | Stackemy</title>
-  <meta name="description" content="Stackemy solutions unify CRM, analytics, AI, workflow, governance, hierarchy, and industry capability inside one operating environment.">
+  <meta name="description" content="Stackemy solutions bring CRM, business intelligence, artificial intelligence, and industry-specific operating systems together inside one unified environment.">
   <style>
     :root {
       --bg: #04060d;
@@ -48,23 +48,46 @@
     }
 
     .site-header {
-      position: sticky;
+      position: absolute;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 20;
-      background: rgba(2, 4, 10, 0.90);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(
+        180deg,
+        rgba(2, 4, 10, 0.90) 0%,
+        rgba(2, 4, 10, 0.70) 55%,
+        rgba(2, 4, 10, 0.00) 100%
+      );
     }
 
     .header-shell {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
+      position: relative;
+      width: 100%;
       min-height: var(--header-height);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      padding: 18px 0 20px;
+      padding: 18px 24px 20px;
+    }
+
+    .header-left,
+    .header-right {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      z-index: 2;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
     }
 
     .brand {
@@ -82,6 +105,7 @@
     .nav {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 38px;
     }
 
@@ -94,7 +118,8 @@
     }
 
     .nav a.active::after,
-    .nav a:hover::after {
+    .nav a:hover::after,
+    .nav a::after {
       content: "";
       position: absolute;
       left: 50%;
@@ -103,7 +128,7 @@
       height: 2px;
       transform: translateX(-50%);
       background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), transparent);
-      opacity: 0.85;
+      opacity: 0.75;
       border-radius: 999px;
       box-shadow: 0 0 10px rgba(59,130,255,.5);
     }
@@ -133,63 +158,26 @@
     }
 
     .hero {
-      padding: 34px 0 0;
+      padding: calc(var(--header-height) + 34px) 0 0;
     }
 
-    .hero-layout {
+    .hero-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 18px;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
       align-items: stretch;
     }
 
-    .intro-rail,
-    .canvas-panel,
-    .statement-band,
-    .panel,
-    .feature-card,
-    .closing-panel {
+    .hero-copy {
       background: var(--panel);
       border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .intro-rail {
       border-radius: 28px;
-      padding: 34px 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 22px;
-      min-height: 720px;
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(circle at 16% 16%, rgba(39,232,255,0.10), transparent 24%),
-        radial-gradient(circle at 82% 18%, rgba(211,45,255,0.10), transparent 22%),
-        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
-    }
-
-    .intro-rail::before,
-    .canvas-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.026) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px);
-      background-size: 34px 34px;
-      opacity: 0.42;
-      pointer-events: none;
-    }
-
-    .intro-rail > *,
-    .canvas-panel > * {
-      position: relative;
-      z-index: 1;
+      box-shadow: var(--shadow);
+      padding: 38px 34px;
     }
 
     .eyebrow {
-      margin: 0;
+      margin: 0 0 10px;
       font-size: 0.82rem;
       font-weight: 800;
       letter-spacing: 0.20em;
@@ -197,448 +185,218 @@
       text-transform: uppercase;
     }
 
-    .intro-rail h1 {
-      margin: 0;
-      font-size: clamp(2.8rem, 5vw, 5rem);
+    .hero-copy h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.7rem, 5vw, 5.1rem);
       line-height: 0.94;
-      letter-spacing: -0.06em;
-      max-width: 620px;
+      letter-spacing: -0.05em;
+      max-width: 760px;
     }
 
-    .gradient-line {
+    .hero-copy .gradient-line {
       background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .intro-rail p {
+    .hero-copy p {
       margin: 0;
+      max-width: 760px;
       color: var(--muted);
-      line-height: 1.88;
-      font-size: 1.03rem;
+      line-height: 1.9;
+      font-size: 1.05rem;
     }
 
-    .intro-chips {
+    .hero-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-top: 24px;
     }
 
-    .intro-chip {
+    .hero-badge {
       padding: 10px 14px;
       border-radius: 999px;
       border: 1px solid rgba(255,255,255,0.10);
       background: rgba(255,255,255,0.04);
       color: #dce6ff;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
     }
 
-    .value-stack {
-      display: grid;
-      gap: 12px;
-      margin-top: auto;
-    }
-
-    .value-card {
-      padding: 16px 18px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .value-card strong {
-      display: block;
-      margin-bottom: 6px;
-      color: #fff;
-      font-size: 0.98rem;
-    }
-
-    .value-card span {
-      display: block;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.95rem;
-    }
-
-    .canvas-panel {
-      border-radius: 28px;
-      padding: 28px;
+    .solution-graphic {
       position: relative;
-      overflow: hidden;
-      min-height: 720px;
       background:
-        radial-gradient(circle at 50% 14%, rgba(39,232,255,0.08), transparent 16%),
-        radial-gradient(circle at 50% 86%, rgba(211,45,255,0.08), transparent 18%),
+        radial-gradient(circle at 50% 50%, rgba(39,232,255,0.10), transparent 30%),
         linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
-    }
-
-    .canvas-panel::after {
-      content: "";
-      position: absolute;
-      inset: 18px;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.05);
-      box-shadow:
-        inset 0 0 80px rgba(255,255,255,0.02),
-        inset 0 0 140px rgba(59,130,255,0.04);
-      pointer-events: none;
-    }
-
-    .canvas-title {
-      text-align: center;
-      margin-bottom: 24px;
-    }
-
-    .canvas-title h2 {
-      margin: 8px 0 10px;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.03;
-      letter-spacing: -0.04em;
-    }
-
-    .canvas-title p {
-      margin: 0 auto;
-      max-width: 700px;
-      color: var(--muted);
-      line-height: 1.8;
-      font-size: 1rem;
-    }
-
-    .system-board {
-      position: relative;
-      min-height: 570px;
-      display: grid;
-      grid-template-rows: auto auto auto;
-      gap: 26px;
-      align-items: center;
-    }
-
-    .board-row {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 14px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .board-row.top::after,
-    .board-row.bottom::after {
-      content: "";
-      position: absolute;
-      left: 10%;
-      right: 10%;
-      top: calc(100% + 12px);
-      height: 2px;
-      background: linear-gradient(90deg, rgba(39,232,255,0), rgba(39,232,255,0.8), rgba(211,45,255,0.8), rgba(39,232,255,0));
-      box-shadow: 0 0 14px rgba(39,232,255,0.18);
-      opacity: 0.9;
-    }
-
-    .board-row.middle {
-      grid-template-columns: 1fr;
-    }
-
-    .feature-tile {
-      min-height: 134px;
-      border-radius: 20px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(8, 13, 26, 0.94);
-      padding: 16px 14px 14px;
-      text-align: center;
-      box-shadow:
-        0 16px 34px rgba(0,0,0,0.22),
-        inset 0 0 24px rgba(255,255,255,0.02);
-      position: relative;
+      border: 1px solid rgba(94,126,255,0.24);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 30px;
       overflow: hidden;
     }
 
-    .feature-tile::before {
+    .solution-graphic::before {
       content: "";
       position: absolute;
-      inset: 8px;
-      border-radius: 14px;
-      border: 1px solid rgba(39,232,255,0.08);
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.5;
       pointer-events: none;
     }
 
-    .feature-icon {
-      width: 48px;
-      height: 48px;
+    .solution-graphic-inner {
+      position: relative;
+      z-index: 1;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .solution-hub {
+      position: relative;
+      width: min(100%, 540px);
+      min-height: 430px;
+    }
+
+    .hub-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 170px;
+      height: 170px;
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at center, rgba(39,232,255,0.18), rgba(59,130,255,0.12) 55%, rgba(162,45,255,0.12) 100%);
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow:
+        0 0 26px rgba(39,232,255,0.16),
+        0 0 56px rgba(59,130,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 18px;
+      color: #ffffff;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: -0.02em;
+    }
+
+    .hub-ring {
+      position: absolute;
+      inset: 50% auto auto 50%;
+      transform: translate(-50%, -50%);
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow:
+        0 0 0 28px rgba(59,130,255,0.03),
+        0 0 0 64px rgba(211,45,255,0.02);
+    }
+
+    .hub-line {
+      position: absolute;
+      background: linear-gradient(90deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
+      box-shadow: 0 0 14px rgba(39,232,255,0.25);
+    }
+
+    .line-top {
+      width: 2px;
+      height: 76px;
+      left: 50%;
+      top: 38px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
+    }
+
+    .line-right {
+      width: 92px;
+      height: 2px;
+      right: 78px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .line-bottom {
+      width: 2px;
+      height: 76px;
+      left: 50%;
+      bottom: 38px;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
+    }
+
+    .line-left {
+      width: 92px;
+      height: 2px;
+      left: 78px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .solution-node {
+      position: absolute;
+      width: 150px;
+      min-height: 98px;
+      padding: 14px 14px 12px;
+      border-radius: 20px;
+      background: rgba(9, 14, 28, 0.92);
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.26);
+      text-align: center;
+    }
+
+    .solution-node .icon {
+      width: 46px;
+      height: 46px;
       margin: 0 auto 10px;
       border-radius: 50%;
       border: 1px solid rgba(255,255,255,0.12);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.03);
-      position: relative;
-      overflow: hidden;
+      font-size: 1.22rem;
+      color: #ffffff;
+      background: rgba(255,255,255,0.02);
     }
 
-    .feature-tile strong {
+    .solution-node strong {
       display: block;
-      margin-bottom: 6px;
+      font-size: 0.92rem;
+      line-height: 1.35;
       color: #eef4ff;
-      font-size: 0.95rem;
-      line-height: 1.25;
       letter-spacing: -0.01em;
     }
 
-    .feature-tile span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.52;
+    .node-top {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
-    .solution-spine {
-      position: relative;
-      min-height: 160px;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background:
-        radial-gradient(circle at 50% 50%, rgba(39,232,255,0.12), transparent 28%),
-        linear-gradient(90deg, rgba(8,13,26,0.98), rgba(12,18,34,0.94), rgba(8,13,26,0.98));
-      box-shadow:
-        0 20px 40px rgba(0,0,0,0.22),
-        inset 0 0 40px rgba(255,255,255,0.02);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 28px 30px;
-      overflow: hidden;
-    }
-
-    .solution-spine::before {
-      content: "";
-      position: absolute;
-      inset: 10px;
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .solution-spine::after {
-      content: "";
-      position: absolute;
-      left: 6%;
-      right: 6%;
+    .node-right {
+      right: 0;
       top: 50%;
-      height: 2px;
       transform: translateY(-50%);
-      background: linear-gradient(90deg, rgba(39,232,255,0), rgba(39,232,255,0.88), rgba(59,130,255,0.92), rgba(211,45,255,0.9), rgba(39,232,255,0));
-      box-shadow: 0 0 18px rgba(39,232,255,0.22);
-      opacity: 0.9;
     }
 
-    .spine-content {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-    }
-
-    .spine-content .mini-label {
-      display: inline-block;
-      margin-bottom: 10px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-      font-size: 0.74rem;
-      letter-spacing: 0.16em;
-      font-weight: 800;
-      color: var(--cyan);
-      text-transform: uppercase;
-    }
-
-    .spine-content h3 {
-      margin: 0 0 10px;
-      font-size: clamp(1.5rem, 3vw, 2.2rem);
-      line-height: 1.04;
-      letter-spacing: -0.03em;
-    }
-
-    .spine-content p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.74;
-      font-size: 0.98rem;
-    }
-
-    .icon-crm::before,
-    .icon-crm::after,
-    .icon-bi::before,
-    .icon-bi::after,
-    .icon-ai::before,
-    .icon-ai::after,
-    .icon-industry::before,
-    .icon-industry::after,
-    .icon-workflow::before,
-    .icon-workflow::after,
-    .icon-governance::before,
-    .icon-governance::after,
-    .icon-hierarchy::before,
-    .icon-hierarchy::after,
-    .icon-experience::before,
-    .icon-experience::after {
-      content: "";
-      position: absolute;
-    }
-
-    .icon-crm::before {
-      width: 24px;
-      height: 16px;
-      border: 1px solid rgba(39,232,255,0.9);
-      border-radius: 8px;
-      top: 11px;
-      left: 13px;
-      box-shadow: 0 0 10px rgba(39,232,255,0.18);
-    }
-
-    .icon-crm::after {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(211,45,255,0.95);
-      bottom: 12px;
+    .node-bottom {
+      bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      box-shadow: -12px 0 0 rgba(39,232,255,0.9), 12px 0 0 rgba(59,130,255,0.95);
     }
 
-    .icon-bi::before {
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      height: 1px;
-      background: rgba(255,255,255,0.14);
-    }
-
-    .icon-bi::after {
-      left: 13px;
-      top: 28px;
-      width: 22px;
-      height: 10px;
-      border-left: 2px solid rgba(39,232,255,0.95);
-      border-bottom: 2px solid rgba(39,232,255,0.95);
-      transform: skewX(-34deg) rotate(-10deg);
-      box-shadow:
-        9px -9px 0 -1px rgba(59,130,255,0.95),
-        18px -2px 0 -1px rgba(211,45,255,0.95);
-    }
-
-    .icon-ai::before {
-      inset: 10px;
-      border-radius: 50%;
-      border: 1px solid rgba(59,130,255,0.9);
-      box-shadow: 0 0 10px rgba(59,130,255,0.16);
-    }
-
-    .icon-ai::after {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #fff;
-      left: 50%;
-      top: 10px;
-      transform: translateX(-50%);
-      box-shadow:
-        -12px 20px 0 rgba(39,232,255,0.95),
-        12px 20px 0 rgba(211,45,255,0.95),
-        0 20px 0 rgba(59,130,255,0.95);
-    }
-
-    .icon-industry::before {
-      inset: 11px;
-      border-radius: 10px;
-      border: 1px solid rgba(39,232,255,0.9);
-      transform: rotate(45deg);
-      box-shadow: 0 0 10px rgba(39,232,255,0.18);
-    }
-
-    .icon-industry::after {
-      inset: 18px;
-      border-radius: 8px;
-      border: 1px solid rgba(211,45,255,0.9);
-      transform: rotate(45deg);
-    }
-
-    .icon-workflow::before {
-      width: 24px;
-      height: 2px;
-      background: rgba(39,232,255,0.95);
-      left: 13px;
-      top: 16px;
-      box-shadow: 0 0 10px rgba(39,232,255,0.18);
-    }
-
-    .icon-workflow::after {
-      width: 24px;
-      height: 2px;
-      background: rgba(211,45,255,0.95);
-      left: 13px;
-      bottom: 16px;
-      box-shadow:
-        10px -9px 0 rgba(59,130,255,0.95),
-        0 0 10px rgba(211,45,255,0.18);
-    }
-
-    .icon-governance::before {
-      width: 22px;
-      height: 22px;
-      left: 14px;
-      top: 10px;
-      border: 1px solid rgba(39,232,255,0.95);
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(39,232,255,0.18);
-    }
-
-    .icon-governance::after {
-      width: 2px;
-      height: 16px;
-      background: rgba(211,45,255,0.95);
-      left: 24px;
-      bottom: 10px;
-      box-shadow: -8px 4px 0 rgba(59,130,255,0.95), 8px 4px 0 rgba(39,232,255,0.95);
-    }
-
-    .icon-hierarchy::before {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(39,232,255,0.95);
-      left: 21px;
-      top: 10px;
-      box-shadow:
-        -12px 22px 0 rgba(59,130,255,0.95),
-        12px 22px 0 rgba(211,45,255,0.95),
-        0 22px 0 rgba(255,255,255,0.95);
-    }
-
-    .icon-hierarchy::after {
-      width: 2px;
-      height: 18px;
-      background: rgba(255,255,255,0.14);
-      left: 24px;
-      top: 18px;
-      box-shadow: -12px 18px 0 rgba(255,255,255,0.14), 12px 18px 0 rgba(255,255,255,0.14);
-    }
-
-    .icon-experience::before {
-      inset: 10px;
-      border-radius: 14px;
-      border: 1px solid rgba(39,232,255,0.9);
-      box-shadow: inset 0 0 10px rgba(39,232,255,0.12);
-    }
-
-    .icon-experience::after {
-      left: 14px;
-      right: 14px;
-      top: 17px;
-      height: 2px;
-      background: rgba(211,45,255,0.95);
-      box-shadow: 0 8px 0 rgba(59,130,255,0.95), 0 16px 0 rgba(39,232,255,0.95);
+    .node-left {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
     .section {
@@ -646,91 +404,48 @@
     }
 
     .statement-band {
+      background: linear-gradient(
+        180deg,
+        rgba(10,14,28,0.90),
+        rgba(7,10,20,0.96)
+      );
+      border: 1px solid rgba(94,126,255,0.22);
       border-radius: 24px;
       padding: 34px 30px;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(10,14,28,0.90), rgba(7,10,20,0.96));
+      box-shadow: var(--shadow);
     }
 
     .statement-band h2 {
-      margin: 8px auto 14px;
-      max-width: 980px;
+      margin: 0 0 14px;
       font-size: clamp(2rem, 4vw, 3rem);
       line-height: 1.04;
       letter-spacing: -0.04em;
+      max-width: 960px;
     }
 
     .statement-band p {
-      margin: 0 auto;
+      margin: 0;
       max-width: 980px;
       color: var(--muted);
       line-height: 1.85;
       font-size: 1.04rem;
     }
 
-    .solution-columns {
+    .pillar-grid {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
     }
 
-    .panel {
-      border-radius: var(--radius);
-      padding: 34px 30px;
-    }
-
-    .panel h2 {
-      margin: 8px 0 14px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.04;
-      letter-spacing: -0.04em;
-    }
-
-    .panel p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 1.04rem;
-    }
-
-    .solution-list {
-      display: grid;
-      gap: 14px;
-      margin-top: 22px;
-    }
-
-    .solution-item {
-      padding: 16px 18px;
-      border-radius: 18px;
+    .pillar {
+      background: var(--panel);
       border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-    }
-
-    .solution-item strong {
-      display: block;
-      margin-bottom: 6px;
-      color: #fff;
-      font-size: 1rem;
-    }
-
-    .solution-item span {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.98rem;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .feature-card {
       border-radius: 22px;
       padding: 24px;
+      box-shadow: var(--shadow);
     }
 
-    .feature-card .label {
+    .pillar-label {
       display: inline-block;
       margin-bottom: 10px;
       font-size: 0.76rem;
@@ -740,13 +455,39 @@
       text-transform: uppercase;
     }
 
-    .feature-card h3 {
+    .pillar h3 {
       margin: 0 0 10px;
       font-size: 1.18rem;
       letter-spacing: -0.02em;
     }
 
-    .feature-card p {
+    .pillar p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .function-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .function-card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .function-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+      letter-spacing: -0.02em;
+    }
+
+    .function-card p {
       margin: 0;
       color: var(--muted);
       line-height: 1.75;
@@ -757,21 +498,26 @@
     }
 
     .closing-panel {
+      background: linear-gradient(
+        180deg,
+        rgba(10,14,28,0.90),
+        rgba(7,10,20,0.96)
+      );
+      border: 1px solid rgba(94,126,255,0.22);
       border-radius: 24px;
       padding: 34px 30px;
-      text-align: center;
-      background: linear-gradient(180deg, rgba(10,14,28,0.90), rgba(7,10,20,0.96));
+      box-shadow: var(--shadow);
     }
 
     .closing-panel h2 {
-      margin: 8px 0 14px;
+      margin: 0 0 14px;
       font-size: clamp(2rem, 4vw, 3rem);
       line-height: 1.05;
       letter-spacing: -0.04em;
     }
 
     .closing-panel p {
-      margin: 0 auto;
+      margin: 0;
       max-width: 940px;
       color: var(--muted);
       line-height: 1.85;
@@ -786,52 +532,82 @@
     }
 
     @media (max-width: 1180px) {
-      .hero-layout,
-      .solution-columns {
+      .pillar-grid {
         grid-template-columns: 1fr;
       }
 
-      .intro-rail,
-      .canvas-panel {
-        min-height: auto;
+      .brand-logo { height: 54px; }
+      .nav { gap: 26px; }
+      .nav a { font-size: 1rem; }
+      .header-cta { min-width: 160px; padding: 14px 20px; }
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .solution-graphic-inner {
+        min-height: 560px;
       }
     }
 
     @media (max-width: 980px) {
-      .board-row {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+      .header-shell {
+        padding-left: 18px;
+        padding-right: 18px;
       }
 
-      .system-board {
-        gap: 20px;
+      .header-center {
+        position: static;
+        transform: none;
+        width: 100%;
+        order: 2;
+        justify-content: flex-start;
       }
 
-      .board-row.top::after,
-      .board-row.bottom::after {
-        left: 14%;
-        right: 14%;
+      .header-shell {
+        flex-wrap: wrap;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
       }
 
-      .feature-grid {
-        grid-template-columns: 1fr;
+      .header-left { order: 1; }
+      .header-right { order: 3; }
+
+      .nav {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 18px 24px;
       }
     }
 
     @media (max-width: 920px) {
+      .site-header {
+        position: relative;
+        background: rgba(3, 5, 13, 0.95);
+      }
+
       .header-shell {
-        min-height: auto;
-        padding: 18px 0;
+        display: flex;
         flex-direction: column;
         align-items: flex-start;
+        min-height: auto;
+        padding: 18px;
+        gap: 18px;
       }
 
-      .brand-logo {
-        height: 54px;
+      .header-left,
+      .header-center,
+      .header-right {
+        width: 100%;
+        justify-content: flex-start;
       }
 
-      .nav {
-        flex-wrap: wrap;
-        gap: 18px 24px;
+      .function-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -844,167 +620,132 @@
         width: 100%;
       }
 
-      .intro-rail,
-      .canvas-panel,
+      .hero-copy,
+      .solution-graphic,
       .statement-band,
-      .panel,
-      .feature-card,
+      .pillar,
+      .function-card,
       .closing-panel {
         padding: 24px;
       }
 
-      .board-row {
-        grid-template-columns: 1fr;
+      .solution-hub {
+        min-height: 420px;
       }
 
-      .board-row.top::after,
-      .board-row.bottom::after {
-        display: none;
+      .hub-center {
+        width: 130px;
+        height: 130px;
+        font-size: 0.95rem;
       }
 
-      .system-board {
-        min-height: auto;
+      .hub-ring {
+        width: 250px;
+        height: 250px;
       }
 
-      .solution-spine {
-        min-height: 190px;
+      .solution-node {
+        width: 112px;
+        min-height: 84px;
       }
+
+      .solution-node strong {
+        font-size: 0.82rem;
+      }
+
+      .line-top,
+      .line-bottom {
+        height: 54px;
+      }
+
+      .line-top { top: 48px; }
+      .line-bottom { bottom: 48px; }
+
+      .line-left,
+      .line-right {
+        width: 50px;
+      }
+
+      .line-left { left: 58px; }
+      .line-right { right: 58px; }
     }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="header-shell">
-      <a class="brand" href="index.html" aria-label="Stackemy home">
-        <img src="stackemy-header-logo.png" alt="Stackemy logo" class="brand-logo">
-      </a>
+      <div class="header-left">
+        <a class="brand" href="index.html" aria-label="Stackemy home">
+          <img src="stackemy-header-logo.png" alt="Stackemy logo" class="brand-logo">
+        </a>
+      </div>
 
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="core.html">The Core</a>
-        <a href="future.html">Meet the Future</a>
-        <a class="active" href="solutions.html">Solutions</a>
-        <a href="about.html">About</a>
-      </nav>
+      <div class="header-center">
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="core.html">The Core</a>
+          <a href="future.html">Meet the Future</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
 
-      <a class="header-cta" href="get-started.html">Get Started</a>
+      <div class="header-right">
+        <a class="header-cta" href="get-started.html">Get Started</a>
+      </div>
     </div>
   </header>
 
   <main>
     <section class="hero">
       <div class="section-shell">
-        <div class="hero-layout">
-          <div class="intro-rail">
+        <div class="hero-grid">
+          <div class="hero-copy">
             <p class="eyebrow">Solutions</p>
-            <h1>Everything the business depends on. <span class="gradient-line">One connected environment.</span></h1>
+            <h1>CRM, intelligence, analytics, and industry systems <span class="gradient-line">under one umbrella.</span></h1>
             <p>
-              Stackemy is designed as an umbrella solution system. Instead of forcing companies to buy
-              disconnected categories one at a time, it brings the core operating layers together inside
-              one coherent architecture.
+              Stackemy is not a single-category product. It is a broader solution environment where CRM,
+              business intelligence, artificial intelligence, and industry-specific operating capability
+              come together inside one coherent architecture.
             </p>
 
-            <div class="intro-chips">
-              <span class="intro-chip">CRM</span>
-              <span class="intro-chip">Analytics</span>
-              <span class="intro-chip">AI</span>
-              <span class="intro-chip">Workflow</span>
-              <span class="intro-chip">Governance</span>
-              <span class="intro-chip">Hierarchy</span>
-              <span class="intro-chip">Industry Solutions</span>
-              <span class="intro-chip">Unified Experience</span>
-            </div>
-
-            <div class="value-stack">
-              <div class="value-card">
-                <strong>Broader than one category</strong>
-                <span>The platform is not just a CRM, not just BI, and not just AI. It is a full operating environment.</span>
-              </div>
-
-              <div class="value-card">
-                <strong>Stronger through connection</strong>
-                <span>Each layer becomes more valuable because it shares the same data foundation, logic, and user experience.</span>
-              </div>
-
-              <div class="value-card">
-                <strong>Built to grow without fragmenting</strong>
-                <span>New capability extends around the system instead of turning into a disconnected software stack.</span>
-              </div>
+            <div class="hero-badges">
+              <span class="hero-badge">CRM</span>
+              <span class="hero-badge">Business Intelligence</span>
+              <span class="hero-badge">Artificial Intelligence</span>
+              <span class="hero-badge">Industry Solutions</span>
             </div>
           </div>
 
-          <div class="canvas-panel">
-            <div class="canvas-title">
-              <p class="eyebrow">Solution Architecture Board</p>
-              <h2>The full Stackemy feature system at a glance.</h2>
-              <p>
-                This view shows the platform as a connected solution board rather than a collection of
-                separate products. The center unifies the major capabilities the business needs.
-              </p>
-            </div>
+          <div class="solution-graphic">
+            <div class="solution-graphic-inner">
+              <div class="solution-hub">
+                <div class="hub-ring"></div>
 
-            <div class="system-board">
-              <div class="board-row top">
-                <div class="feature-tile">
-                  <div class="feature-icon icon-crm"></div>
-                  <strong>CRM Core</strong>
-                  <span>Accounts, contacts, deals, activities, and the operating record system.</span>
+                <div class="hub-center">Stackemy<br>Solution<br>Environment</div>
+
+                <div class="hub-line line-top"></div>
+                <div class="hub-line line-right"></div>
+                <div class="hub-line line-bottom"></div>
+                <div class="hub-line line-left"></div>
+
+                <div class="solution-node node-top">
+                  <div class="icon">◎</div>
+                  <strong>CRM</strong>
                 </div>
 
-                <div class="feature-tile">
-                  <div class="feature-icon icon-bi"></div>
-                  <strong>Business Intelligence</strong>
-                  <span>Dashboards, reporting, trend analysis, and executive visibility.</span>
+                <div class="solution-node node-right">
+                  <div class="icon">▥</div>
+                  <strong>Business<br>Intelligence</strong>
                 </div>
 
-                <div class="feature-tile">
-                  <div class="feature-icon icon-ai"></div>
-                  <strong>Artificial Intelligence</strong>
-                  <span>Summaries, reasoning, search, guidance, and contextual decision support.</span>
+                <div class="solution-node node-bottom">
+                  <div class="icon">◌</div>
+                  <strong>Artificial<br>Intelligence</strong>
                 </div>
 
-                <div class="feature-tile">
-                  <div class="feature-icon icon-industry"></div>
-                  <strong>Industry Solutions</strong>
-                  <span>Vertical operating layers built around the protected foundation.</span>
-                </div>
-              </div>
-
-              <div class="board-row middle">
-                <div class="solution-spine">
-                  <div class="spine-content">
-                    <span class="mini-label">Connected Center</span>
-                    <h3>Stackemy Solution Environment</h3>
-                    <p>
-                      One architecture connecting customer operations, intelligence, analytics, execution,
-                      governance, hierarchy, and experience into one system instead of a fragmented stack.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div class="board-row bottom">
-                <div class="feature-tile">
-                  <div class="feature-icon icon-workflow"></div>
-                  <strong>Workflow & Execution</strong>
-                  <span>Structured process, coordinated work, and operational movement across the platform.</span>
-                </div>
-
-                <div class="feature-tile">
-                  <div class="feature-icon icon-governance"></div>
-                  <strong>Governance & Control</strong>
-                  <span>Permissions, policy, oversight, and bounded system growth over time.</span>
-                </div>
-
-                <div class="feature-tile">
-                  <div class="feature-icon icon-hierarchy"></div>
-                  <strong>Hierarchy & Rollups</strong>
-                  <span>Parent-child visibility, cross-entity reporting, and multi-layer oversight.</span>
-                </div>
-
-                <div class="feature-tile">
-                  <div class="feature-icon icon-experience"></div>
-                  <strong>Unified Experience</strong>
-                  <span>One product surface that feels coherent across all major capabilities.</span>
+                <div class="solution-node node-left">
+                  <div class="icon">▣</div>
+                  <strong>Industry<br>Solutions</strong>
                 </div>
               </div>
             </div>
@@ -1017,12 +758,12 @@
       <div class="section-shell">
         <div class="statement-band">
           <p class="eyebrow">Umbrella Solution Model</p>
-          <h2>The advantage is not more software. It is more coherence across everything the business relies on.</h2>
+          <h2>The categories businesses buy separately should increasingly work as one system.</h2>
           <p>
-            Most companies accumulate CRM, reporting, AI, workflow systems, governance tools, and
-            industry platforms one by one. Over time the stack grows broader, but less connected.
-            Stackemy is built toward a stronger model: one environment where those layers reinforce one
-            another instead of drifting apart.
+            Most companies assemble these layers one by one. They buy a CRM, then add reporting, then layer
+            on AI tools, then adopt industry-specific systems, and over time they end up operating across a
+            stack that never quite feels unified. Stackemy is built toward a different model — one umbrella
+            environment where these capabilities reinforce one another inside one operating architecture.
           </p>
         </div>
       </div>
@@ -1030,76 +771,75 @@
 
     <section class="section">
       <div class="section-shell">
-        <div class="solution-columns">
-          <div class="panel">
-            <p class="eyebrow">What the Environment Includes</p>
-            <h2>A broader operating system, not a narrow product box.</h2>
+        <div class="pillar-grid">
+          <article class="pillar">
+            <span class="pillar-label">CRM</span>
+            <h3>The relationship and operational foundation.</h3>
             <p>
-              Stackemy is built to support the actual layers businesses work across every day. The point
-              is not to present a crowded menu of disconnected features. The point is to create one
-              connected solution environment where each layer is stronger because it belongs to the same system.
+              Accounts, contacts, deals, activities, pipelines, and the protected core record system that
+              anchors the broader environment.
             </p>
+          </article>
 
-            <div class="solution-list">
-              <div class="solution-item">
-                <strong>Operational foundation</strong>
-                <span>The CRM core anchors relationships, objects, and execution context underneath the platform.</span>
-              </div>
+          <article class="pillar">
+            <span class="pillar-label">Business Intelligence</span>
+            <h3>Visibility that lives close to execution.</h3>
+            <p>
+              Dashboards, reporting, trend analysis, cross-entity rollups, and executive visibility tied
+              directly to the system where the work actually happens.
+            </p>
+          </article>
 
-              <div class="solution-item">
-                <strong>Intelligence foundation</strong>
-                <span>AI and analytics become more valuable because they are grounded in system-native context.</span>
-              </div>
+          <article class="pillar">
+            <span class="pillar-label">Artificial Intelligence</span>
+            <h3>Intelligence integrated into the platform.</h3>
+            <p>
+              Guidance, summarization, recommendations, pattern recognition, search, and reasoning that get
+              stronger because the AI has native system context.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
-              <div class="solution-item">
-                <strong>Execution foundation</strong>
-                <span>Workflow, visibility, and operating motion stay tied to the same architectural center.</span>
-              </div>
+    <section class="section">
+      <div class="section-shell">
+        <div class="function-grid">
+          <article class="function-card">
+            <p class="eyebrow">CRM Functions</p>
+            <h3>Structured relationship infrastructure</h3>
+            <p>
+              Customer records, deal management, activity history, operational workflow, ownership,
+              pipeline visibility, and the relationship system that everything else can build around.
+            </p>
+          </article>
 
-              <div class="solution-item">
-                <strong>Expansion foundation</strong>
-                <span>Industry solutions, governance, and hierarchy grow around the platform without destabilizing it.</span>
-              </div>
-            </div>
-          </div>
+          <article class="function-card">
+            <p class="eyebrow">BI Functions</p>
+            <h3>Operational analytics and executive visibility</h3>
+            <p>
+              Performance dashboards, hierarchy-aware reporting, rollups, strategic health, operational
+              movement, and visibility layers tied directly to the system beneath them.
+            </p>
+          </article>
 
-          <div class="feature-grid">
-            <article class="feature-card">
-              <span class="label">CRM</span>
-              <h3>The relationship and operating foundation.</h3>
-              <p>
-                Accounts, contacts, deals, activities, pipelines, and the structured system of record that
-                everything else can safely build around.
-              </p>
-            </article>
+          <article class="function-card">
+            <p class="eyebrow">AI Functions</p>
+            <h3>System-native intelligence</h3>
+            <p>
+              Suggested actions, intelligent summaries, contextual support, search, predictive assistance,
+              reasoning over connected data, and deeper decision support over time.
+            </p>
+          </article>
 
-            <article class="feature-card">
-              <span class="label">Business Intelligence</span>
-              <h3>Visibility tied directly to execution.</h3>
-              <p>
-                Dashboards, trend analysis, rollups, executive reporting, and system-wide visibility that
-                stay grounded in real operating data.
-              </p>
-            </article>
-
-            <article class="feature-card">
-              <span class="label">Artificial Intelligence</span>
-              <h3>System-native intelligence across the platform.</h3>
-              <p>
-                Summaries, recommendations, search, reasoning, guided action, and deeper contextual support
-                over time.
-              </p>
-            </article>
-
-            <article class="feature-card">
-              <span class="label">Industry Solutions</span>
-              <h3>Vertical operating capability without fragmentation.</h3>
-              <p>
-                Specialized domain systems that extend around the protected core instead of replacing or
-                splintering it.
-              </p>
-            </article>
-          </div>
+          <article class="function-card">
+            <p class="eyebrow">Industry Functions</p>
+            <h3>Vertical operating capability</h3>
+            <p>
+              Specialized solution layers that extend around the core so industry workflows and domain-specific
+              systems do not require abandoning the architecture underneath.
+            </p>
+          </article>
         </div>
       </div>
     </section>
@@ -1108,12 +848,13 @@
       <div class="section-shell">
         <div class="closing-panel">
           <p class="eyebrow">The Solution Direction</p>
-          <h2>One environment strong enough to hold the full operating picture.</h2>
+          <h2>Not a crowded product menu. A unified solution environment.</h2>
           <p>
             Businesses do not operate in isolated software categories. They operate across relationships,
-            reporting, intelligence, workflow, hierarchy, control, and industry reality all at once.
-            Stackemy solutions are built around that truth: a unified environment where those layers work
-            together as one coherent system designed for the future.
+            reporting, intelligence, workflows, and industry reality all at once. Stackemy solutions are
+            built around that truth. The long-term aim is to create a platform where CRM, business
+            intelligence, artificial intelligence, and industry-specific capability come together inside one
+            coherent system strong enough to support the future.
           </p>
         </div>
       </div>
