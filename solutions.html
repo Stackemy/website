@@ -245,417 +245,29 @@
       font-size: 0.92rem;
     }
 
-    .solutions-map {
+    .solutions-graphic-wrap {
+      padding: 0;
+    }
+
+    .solutions-graphic {
       position: relative;
+      min-height: 640px;
       overflow: hidden;
-      min-height: 860px;
-      background:
-        radial-gradient(circle at 50% 46%, rgba(39,232,255,0.10), transparent 18%),
-        radial-gradient(circle at 50% 46%, rgba(59,130,255,0.08), transparent 28%),
-        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
       border: 1px solid rgba(94,126,255,0.22);
       border-radius: 28px;
       box-shadow: var(--shadow);
-      padding: 34px;
-      isolation: isolate;
+      background:
+        linear-gradient(180deg, rgba(8,12,24,0.08), rgba(7,10,20,0.16)),
+        url("solutions-hero-graphic.png") center center / cover no-repeat;
     }
 
-    .solutions-map::before {
+    .solutions-graphic::before {
       content: "";
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.026) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.026) 1px, transparent 1px);
-      background-size: 34px 34px;
-      opacity: 0.42;
-      pointer-events: none;
-    }
-
-    .solutions-map::after {
-      content: "";
-      position: absolute;
-      inset: 22px;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,0.05);
-      box-shadow:
-        inset 0 0 80px rgba(255,255,255,0.02),
-        inset 0 0 140px rgba(59,130,255,0.04);
-      pointer-events: none;
-    }
-
-    .map-heading {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      margin-bottom: 28px;
-    }
-
-    .map-heading h2 {
-      margin: 0 0 12px;
-      font-size: clamp(2.1rem, 4vw, 3.4rem);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-    }
-
-    .map-heading p {
-      margin: 0 auto;
-      max-width: 780px;
-      color: var(--muted);
-      line-height: 1.82;
-      font-size: 1.02rem;
-    }
-
-    .map-scene {
-      position: relative;
-      z-index: 1;
-      min-height: 690px;
-    }
-
-    .radial-ring {
-      position: absolute;
-      left: 50%;
-      top: 52%;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 0 28px rgba(59,130,255,0.06);
-    }
-
-    .ring-1 {
-      width: 270px;
-      height: 270px;
-    }
-
-    .ring-2 {
-      width: 420px;
-      height: 420px;
-      border-color: rgba(255,255,255,0.06);
-      box-shadow: 0 0 36px rgba(211,45,255,0.05);
-    }
-
-    .ring-3 {
-      width: 560px;
-      height: 560px;
-      border-color: rgba(255,255,255,0.04);
-      box-shadow: 0 0 44px rgba(39,232,255,0.04);
-    }
-
-    .ring-axis {
-      position: absolute;
-      left: 50%;
-      top: 52%;
-      background: linear-gradient(90deg, rgba(39,232,255,0), rgba(39,232,255,0.7), rgba(211,45,255,0));
-      box-shadow: 0 0 14px rgba(39,232,255,0.18);
-      transform: translate(-50%, -50%);
-      opacity: 0.78;
-    }
-
-    .ring-axis.horizontal {
-      width: 500px;
-      height: 2px;
-    }
-
-    .ring-axis.vertical {
-      width: 2px;
-      height: 500px;
-      background: linear-gradient(180deg, rgba(39,232,255,0), rgba(39,232,255,0.7), rgba(211,45,255,0));
-    }
-
-    .ring-axis.diag-a,
-    .ring-axis.diag-b {
-      width: 400px;
-      height: 2px;
-    }
-
-    .ring-axis.diag-a {
-      transform: translate(-50%, -50%) rotate(35deg);
-    }
-
-    .ring-axis.diag-b {
-      transform: translate(-50%, -50%) rotate(-35deg);
-    }
-
-    .map-center {
-      position: absolute;
-      left: 50%;
-      top: 52%;
-      width: 206px;
-      height: 206px;
-      transform: translate(-50%, -50%);
-      border-radius: 36px;
       background:
-        radial-gradient(circle at center, rgba(39,232,255,0.20), rgba(59,130,255,0.16) 52%, rgba(211,45,255,0.14) 100%);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow:
-        0 0 28px rgba(39,232,255,0.18),
-        0 0 56px rgba(59,130,255,0.16),
-        inset 0 0 40px rgba(255,255,255,0.04);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 24px;
-      color: #fff;
-      font-weight: 800;
-      line-height: 1.32;
-      letter-spacing: -0.02em;
-      z-index: 3;
-    }
-
-    .map-center::before,
-    .map-center::after {
-      content: "";
-      position: absolute;
-      border-radius: 28px;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .map-center::before {
-      inset: -20px;
-    }
-
-    .map-center::after {
-      inset: 12px;
-      opacity: 0.5;
-    }
-
-    .feature-node {
-      position: absolute;
-      width: 170px;
-      min-height: 112px;
-      padding: 16px 14px 14px;
-      border-radius: 22px;
-      background: rgba(9, 14, 28, 0.94);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow:
-        0 16px 34px rgba(0,0,0,0.26),
-        inset 0 0 24px rgba(255,255,255,0.02);
-      text-align: center;
-      z-index: 4;
-    }
-
-    .feature-node::before {
-      content: "";
-      position: absolute;
-      inset: 9px;
-      border-radius: 16px;
-      border: 1px solid rgba(39,232,255,0.08);
+        linear-gradient(180deg, rgba(3,5,13,0.08) 0%, rgba(3,5,13,0.04) 34%, rgba(3,5,13,0.42) 100%);
       pointer-events: none;
-    }
-
-    .feature-node .icon {
-      width: 50px;
-      height: 50px;
-      margin: 0 auto 10px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,0.03);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .feature-node strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.95rem;
-      line-height: 1.3;
-      color: #eef4ff;
-      letter-spacing: -0.01em;
-    }
-
-    .feature-node span {
-      display: block;
-      color: var(--muted);
-      font-size: 0.84rem;
-      line-height: 1.52;
-    }
-
-    .node-crm { left: 50%; top: 22px; transform: translateX(-50%); }
-    .node-bi { right: 92px; top: 126px; }
-    .node-ai { right: 28px; top: 52%; transform: translateY(-50%); }
-    .node-industry { right: 92px; bottom: 126px; }
-    .node-workflow { left: 50%; bottom: 22px; transform: translateX(-50%); }
-    .node-governance { left: 92px; bottom: 126px; }
-    .node-hierarchy { left: 28px; top: 52%; transform: translateY(-50%); }
-    .node-experience { left: 92px; top: 126px; }
-
-    .icon-crm::before,
-    .icon-crm::after,
-    .icon-bi::before,
-    .icon-bi::after,
-    .icon-ai::before,
-    .icon-ai::after,
-    .icon-industry::before,
-    .icon-industry::after,
-    .icon-workflow::before,
-    .icon-workflow::after,
-    .icon-governance::before,
-    .icon-governance::after,
-    .icon-hierarchy::before,
-    .icon-hierarchy::after,
-    .icon-experience::before,
-    .icon-experience::after {
-      content: "";
-      position: absolute;
-    }
-
-    .icon-crm::before {
-      width: 24px;
-      height: 16px;
-      border: 1px solid rgba(39,232,255,0.9);
-      border-radius: 8px;
-      top: 11px;
-      left: 13px;
-      box-shadow: 0 0 10px rgba(39,232,255,0.18);
-    }
-
-    .icon-crm::after {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: rgba(211,45,255,0.95);
-      bottom: 12px;
-      left: 50%;
-      transform: translateX(-50%);
-      box-shadow: -12px 0 0 rgba(39,232,255,0.9), 12px 0 0 rgba(59,130,255,0.95);
-    }
-
-    .icon-bi::before {
-      left: 12px;
-      right: 12px;
-      bottom: 12px;
-      height: 1px;
-      background: rgba(255,255,255,0.14);
-    }
-
-    .icon-bi::after {
-      left: 13px;
-      top: 28px;
-      width: 22px;
-      height: 10px;
-      border-left: 2px solid rgba(39,232,255,0.95);
-      border-bottom: 2px solid rgba(39,232,255,0.95);
-      transform: skewX(-34deg) rotate(-10deg);
-      box-shadow:
-        9px -9px 0 -1px rgba(59,130,255,0.95),
-        18px -2px 0 -1px rgba(211,45,255,0.95);
-    }
-
-    .icon-ai::before {
-      inset: 10px;
-      border-radius: 50%;
-      border: 1px solid rgba(59,130,255,0.9);
-      box-shadow: 0 0 10px rgba(59,130,255,0.16);
-    }
-
-    .icon-ai::after {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #fff;
-      left: 50%;
-      top: 10px;
-      transform: translateX(-50%);
-      box-shadow:
-        -12px 20px 0 rgba(39,232,255,0.95),
-        12px 20px 0 rgba(211,45,255,0.95),
-        0 20px 0 rgba(59,130,255,0.95);
-    }
-
-    .icon-industry::before {
-      inset: 11px;
-      border-radius: 10px;
-      border: 1px solid rgba(39,232,255,0.9);
-      transform: rotate(45deg);
-      box-shadow: 0 0 10px rgba(39,232,255,0.18);
-    }
-
-    .icon-industry::after {
-      inset: 18px;
-      border-radius: 8px;
-      border: 1px solid rgba(211,45,255,0.9);
-      transform: rotate(45deg);
-    }
-
-    .icon-workflow::before {
-      width: 24px;
-      height: 2px;
-      background: rgba(39,232,255,0.95);
-      left: 13px;
-      top: 16px;
-      box-shadow: 0 0 10px rgba(39,232,255,0.18);
-    }
-
-    .icon-workflow::after {
-      width: 24px;
-      height: 2px;
-      background: rgba(211,45,255,0.95);
-      left: 13px;
-      bottom: 16px;
-      box-shadow:
-        10px -9px 0 rgba(59,130,255,0.95),
-        0 0 10px rgba(211,45,255,0.18);
-    }
-
-    .icon-governance::before {
-      width: 22px;
-      height: 22px;
-      left: 14px;
-      top: 10px;
-      border: 1px solid rgba(39,232,255,0.95);
-      border-radius: 50%;
-      box-shadow: 0 0 10px rgba(39,232,255,0.18);
-    }
-
-    .icon-governance::after {
-      width: 2px;
-      height: 16px;
-      background: rgba(211,45,255,0.95);
-      left: 24px;
-      bottom: 10px;
-      box-shadow: -8px 4px 0 rgba(59,130,255,0.95), 8px 4px 0 rgba(39,232,255,0.95);
-    }
-
-    .icon-hierarchy::before {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: rgba(39,232,255,0.95);
-      left: 21px;
-      top: 10px;
-      box-shadow:
-        -12px 22px 0 rgba(59,130,255,0.95),
-        12px 22px 0 rgba(211,45,255,0.95),
-        0 22px 0 rgba(255,255,255,0.95);
-    }
-
-    .icon-hierarchy::after {
-      width: 2px;
-      height: 18px;
-      background: rgba(255,255,255,0.14);
-      left: 24px;
-      top: 18px;
-      box-shadow: -12px 18px 0 rgba(255,255,255,0.14), 12px 18px 0 rgba(255,255,255,0.14);
-    }
-
-    .icon-experience::before {
-      inset: 10px;
-      border-radius: 14px;
-      border: 1px solid rgba(39,232,255,0.9);
-      box-shadow: inset 0 0 10px rgba(39,232,255,0.12);
-    }
-
-    .icon-experience::after {
-      left: 14px;
-      right: 14px;
-      top: 17px;
-      height: 2px;
-      background: rgba(211,45,255,0.95);
-      box-shadow: 0 8px 0 rgba(59,130,255,0.95), 0 16px 0 rgba(39,232,255,0.95);
     }
 
     .section {
@@ -815,27 +427,6 @@
     }
 
     @media (max-width: 1180px) {
-      .solutions-map {
-        min-height: 980px;
-      }
-
-      .ring-3 {
-        width: 520px;
-        height: 520px;
-      }
-
-      .ring-axis.horizontal { width: 460px; }
-      .ring-axis.vertical { height: 460px; }
-      .ring-axis.diag-a,
-      .ring-axis.diag-b { width: 360px; }
-
-      .node-bi { right: 48px; top: 144px; }
-      .node-ai { right: 8px; }
-      .node-industry { right: 48px; bottom: 144px; }
-      .node-governance { left: 48px; bottom: 144px; }
-      .node-hierarchy { left: 8px; }
-      .node-experience { left: 48px; top: 144px; }
-
       .brand-logo { height: 54px; }
       .nav { gap: 26px; }
       .nav a { font-size: 1rem; }
@@ -882,6 +473,10 @@
         justify-content: flex-start;
         gap: 18px 24px;
       }
+
+      .solutions-graphic {
+        min-height: 520px;
+      }
     }
 
     @media (max-width: 920px) {
@@ -918,38 +513,6 @@
         gap: 18px 24px;
         justify-content: flex-start;
       }
-
-      .solutions-map {
-        min-height: 1280px;
-      }
-
-      .ring-1 { width: 220px; height: 220px; }
-      .ring-2 { width: 340px; height: 340px; }
-      .ring-3 { width: 440px; height: 440px; }
-
-      .ring-axis.horizontal { width: 340px; }
-      .ring-axis.vertical { height: 340px; }
-      .ring-axis.diag-a,
-      .ring-axis.diag-b { width: 280px; }
-
-      .map-center {
-        width: 180px;
-        height: 180px;
-        font-size: 0.98rem;
-      }
-
-      .feature-node {
-        width: 156px;
-      }
-
-      .node-crm { top: 10px; }
-      .node-bi { right: 50%; top: 108px; transform: translateX(168px); }
-      .node-ai { right: 50%; top: 52%; transform: translate(184px, -50%); }
-      .node-industry { right: 50%; bottom: 108px; transform: translateX(168px); }
-      .node-workflow { bottom: 10px; }
-      .node-governance { left: 50%; bottom: 108px; transform: translateX(-168px); }
-      .node-hierarchy { left: 50%; top: 52%; transform: translate(-184px, -50%); }
-      .node-experience { left: 50%; top: 108px; transform: translateX(-168px); }
     }
 
     @media (max-width: 760px) {
@@ -962,7 +525,6 @@
       }
 
       .intro-panel,
-      .solutions-map,
       .statement-band,
       .panel,
       .feature-card,
@@ -970,42 +532,9 @@
         padding: 24px;
       }
 
-      .solutions-map {
-        min-height: 1540px;
+      .solutions-graphic {
+        min-height: 340px;
       }
-
-      .map-scene {
-        min-height: 1200px;
-      }
-
-      .ring-1,
-      .ring-2,
-      .ring-3,
-      .ring-axis {
-        display: none;
-      }
-
-      .map-center {
-        top: 560px;
-        width: 170px;
-        height: 170px;
-      }
-
-      .feature-node {
-        width: min(100%, 220px);
-        left: 50% !important;
-        right: auto !important;
-        transform: translateX(-50%) !important;
-      }
-
-      .node-crm { top: 0; }
-      .node-experience { top: 126px; }
-      .node-bi { top: 252px; }
-      .node-ai { top: 378px; }
-      .node-industry { top: 722px; }
-      .node-governance { top: 848px; }
-      .node-hierarchy { top: 974px; }
-      .node-workflow { top: 1100px; bottom: auto; }
     }
   </style>
 </head>
@@ -1058,78 +587,8 @@
             </div>
           </div>
 
-          <div class="solutions-map">
-            <div class="map-heading">
-              <p class="eyebrow">Feature Constellation</p>
-              <h2>The full Stackemy environment at a glance.</h2>
-              <p>
-                The system grows outward from a protected center, with every major capability connected
-                to the same architecture instead of living in its own disconnected silo.
-              </p>
-            </div>
-
-            <div class="map-scene">
-              <div class="radial-ring ring-1"></div>
-              <div class="radial-ring ring-2"></div>
-              <div class="radial-ring ring-3"></div>
-
-              <div class="ring-axis horizontal"></div>
-              <div class="ring-axis vertical"></div>
-              <div class="ring-axis diag-a"></div>
-              <div class="ring-axis diag-b"></div>
-
-              <div class="map-center">
-                Stackemy<br>Operating<br>Environment
-              </div>
-
-              <div class="feature-node node-crm">
-                <div class="icon icon-crm"></div>
-                <strong>CRM Core</strong>
-                <span>Accounts, contacts, deals, activities, and the protected center of record.</span>
-              </div>
-
-              <div class="feature-node node-bi">
-                <div class="icon icon-bi"></div>
-                <strong>Business Intelligence</strong>
-                <span>Dashboards, reporting, rollups, and executive visibility tied to real execution.</span>
-              </div>
-
-              <div class="feature-node node-ai">
-                <div class="icon icon-ai"></div>
-                <strong>Artificial Intelligence</strong>
-                <span>System-native reasoning, summaries, search, guidance, and decision support.</span>
-              </div>
-
-              <div class="feature-node node-industry">
-                <div class="icon icon-industry"></div>
-                <strong>Industry Solutions</strong>
-                <span>Vertical operating layers that extend around the core without breaking it.</span>
-              </div>
-
-              <div class="feature-node node-workflow">
-                <div class="icon icon-workflow"></div>
-                <strong>Workflow & Execution</strong>
-                <span>Structured processes, operational motion, and coordinated work across the platform.</span>
-              </div>
-
-              <div class="feature-node node-governance">
-                <div class="icon icon-governance"></div>
-                <strong>Governance & Control</strong>
-                <span>Permissions, policy, oversight, and bounded expansion over time.</span>
-              </div>
-
-              <div class="feature-node node-hierarchy">
-                <div class="icon icon-hierarchy"></div>
-                <strong>Hierarchy & Rollups</strong>
-                <span>Cross-entity visibility, parent-child structures, and multi-layer reporting.</span>
-              </div>
-
-              <div class="feature-node node-experience">
-                <div class="icon icon-experience"></div>
-                <strong>Unified Experience</strong>
-                <span>One coherent product surface instead of a patchwork of disconnected tools.</span>
-              </div>
-            </div>
+          <div class="solutions-graphic-wrap">
+            <div class="solutions-graphic"></div>
           </div>
         </div>
       </div>
