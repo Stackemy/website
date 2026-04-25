@@ -175,6 +175,7 @@
       align-items: center;
       overflow: hidden;
       isolation: isolate;
+      margin-top: -1px;
       background:
         radial-gradient(circle at 18% 36%, rgba(41,235,255,0.08), transparent 18%),
         radial-gradient(circle at 82% 26%, rgba(211,61,255,0.10), transparent 20%),
@@ -317,7 +318,7 @@
     .hero-inner {
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      padding: 24px 0 28px;
+      padding: 0 0 28px;
       position: relative;
       z-index: 4;
     }
@@ -738,6 +739,10 @@
       .hero-copy {
         margin-top: 0;
       }
+
+      .hero-inner {
+        padding: 0 0 24px;
+      }
     }
 
     @media (max-width: 760px) {
@@ -750,7 +755,7 @@
       }
 
       .hero-inner {
-        padding: 34px 0 24px;
+        padding: 0 0 24px;
       }
 
       .hero-copy h1 {
