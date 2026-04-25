@@ -1,868 +1,103 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Solutions | Stackemy</title>
-  <meta name="description" content="Stackemy solutions bring CRM, business intelligence, artificial intelligence, and industry-specific operating systems together inside one unified environment.">
-  <style>
-    :root {
-      --bg: #04060d;
-      --panel: rgba(10, 14, 28, 0.84);
-      --panel-strong: rgba(8, 11, 22, 0.96);
-      --border: rgba(91, 118, 255, 0.24);
-      --text: #f5f7ff;
-      --muted: #a9b3ce;
-      --blue: #3b82ff;
-      --cyan: #27e8ff;
-      --magenta: #d32dff;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
-      --radius: 24px;
-      --max: 1280px;
-      --content: 1200px;
-      --header-height: 98px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top center, rgba(59,130,255,.16), transparent 28%),
-        radial-gradient(circle at 80% 20%, rgba(211,45,255,.12), transparent 24%),
-        radial-gradient(circle at 20% 80%, rgba(39,232,255,.10), transparent 24%),
-        linear-gradient(180deg, #03050d 0%, #02040a 100%);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .site-header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 20;
-      background: linear-gradient(
-        180deg,
-        rgba(2, 4, 10, 0.90) 0%,
-        rgba(2, 4, 10, 0.70) 55%,
-        rgba(2, 4, 10, 0.00) 100%
-      );
-    }
-
-    .header-shell {
-      position: relative;
-      width: 100%;
-      min-height: var(--header-height);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 24px 20px;
-    }
-
-    .header-left,
-    .header-right {
-      display: flex;
-      align-items: center;
-      flex: 0 0 auto;
-      z-index: 2;
-    }
-
-    .header-center {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      flex: 0 0 auto;
-    }
-
-    .brand-logo {
-      display: block;
-      height: 60px;
-      width: auto;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 38px;
-    }
-
-    .nav a {
-      position: relative;
-      font-size: 1.08rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.94);
-      white-space: nowrap;
-    }
-
-    .nav a.active::after,
-    .nav a:hover::after,
-    .nav a::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -12px;
-      width: 42px;
-      height: 2px;
-      transform: translateX(-50%);
-      background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), transparent);
-      opacity: 0.75;
-      border-radius: 999px;
-      box-shadow: 0 0 10px rgba(59,130,255,.5);
-    }
-
-    .header-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 185px;
-      padding: 16px 26px;
-      border-radius: 18px;
-      color: #fff;
-      font-size: 1.1rem;
-      font-weight: 700;
-      background: rgba(20, 16, 48, 0.82);
-      border: 1px solid rgba(117, 126, 255, 0.65);
-      box-shadow:
-        0 0 0 1px rgba(0, 212, 255, 0.10) inset,
-        0 0 18px rgba(96, 88, 255, 0.35),
-        0 0 28px rgba(211, 45, 255, 0.18);
-      backdrop-filter: blur(10px);
-    }
-
-    .section-shell {
-      width: min(var(--content), calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .hero {
-      padding: calc(var(--header-height) + 34px) 0 0;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-
-    .hero-copy {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 38px 34px;
-    }
-
-    .eyebrow {
-      margin: 0 0 10px;
-      font-size: 0.82rem;
-      font-weight: 800;
-      letter-spacing: 0.20em;
-      color: var(--cyan);
-      text-transform: uppercase;
-    }
-
-    .hero-copy h1 {
-      margin: 0 0 16px;
-      font-size: clamp(2.7rem, 5vw, 5.1rem);
-      line-height: 0.94;
-      letter-spacing: -0.05em;
-      max-width: 760px;
-    }
-
-    .hero-copy .gradient-line {
-      background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-copy p {
-      margin: 0;
-      max-width: 760px;
-      color: var(--muted);
-      line-height: 1.9;
-      font-size: 1.05rem;
-    }
-
-    .hero-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .hero-badge {
-      padding: 10px 14px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-      color: #dce6ff;
-      font-size: 0.92rem;
-    }
-
-    .solution-graphic {
-      position: relative;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(39,232,255,0.10), transparent 30%),
-        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
-      border: 1px solid rgba(94,126,255,0.24);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 30px;
-      overflow: hidden;
-    }
-
-    .solution-graphic::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 34px 34px;
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .solution-graphic-inner {
-      position: relative;
-      z-index: 1;
-      min-height: 520px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .solution-hub {
-      position: relative;
-      width: min(100%, 540px);
-      min-height: 430px;
-    }
-
-    .hub-center {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 170px;
-      height: 170px;
-      border-radius: 32px;
-      background:
-        radial-gradient(circle at center, rgba(39,232,255,0.18), rgba(59,130,255,0.12) 55%, rgba(162,45,255,0.12) 100%);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow:
-        0 0 26px rgba(39,232,255,0.16),
-        0 0 56px rgba(59,130,255,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 18px;
-      color: #ffffff;
-      font-weight: 700;
-      line-height: 1.35;
-      letter-spacing: -0.02em;
-    }
-
-    .hub-ring {
-      position: absolute;
-      inset: 50% auto auto 50%;
-      transform: translate(-50%, -50%);
-      width: 360px;
-      height: 360px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow:
-        0 0 0 28px rgba(59,130,255,0.03),
-        0 0 0 64px rgba(211,45,255,0.02);
-    }
-
-    .hub-line {
-      position: absolute;
-      background: linear-gradient(90deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
-      box-shadow: 0 0 14px rgba(39,232,255,0.25);
-    }
-
-    .line-top {
-      width: 2px;
-      height: 76px;
-      left: 50%;
-      top: 38px;
-      transform: translateX(-50%);
-      background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
-    }
-
-    .line-right {
-      width: 92px;
-      height: 2px;
-      right: 78px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .line-bottom {
-      width: 2px;
-      height: 76px;
-      left: 50%;
-      bottom: 38px;
-      transform: translateX(-50%);
-      background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
-    }
-
-    .line-left {
-      width: 92px;
-      height: 2px;
-      left: 78px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .solution-node {
-      position: absolute;
-      width: 150px;
-      min-height: 98px;
-      padding: 14px 14px 12px;
-      border-radius: 20px;
-      background: rgba(9, 14, 28, 0.92);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 16px 34px rgba(0,0,0,0.26);
-      text-align: center;
-    }
-
-    .solution-node .icon {
-      width: 46px;
-      height: 46px;
-      margin: 0 auto 10px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.22rem;
-      color: #ffffff;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .solution-node strong {
-      display: block;
-      font-size: 0.92rem;
-      line-height: 1.35;
-      color: #eef4ff;
-      letter-spacing: -0.01em;
-    }
-
-    .node-top {
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .node-right {
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .node-bottom {
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .node-left {
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .section {
-      padding: 24px 0 0;
-    }
-
-    .statement-band {
-      background: linear-gradient(
-        180deg,
-        rgba(10,14,28,0.90),
-        rgba(7,10,20,0.96)
-      );
-      border: 1px solid rgba(94,126,255,0.22);
-      border-radius: 24px;
-      padding: 34px 30px;
-      box-shadow: var(--shadow);
-    }
-
-    .statement-band h2 {
-      margin: 0 0 14px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.04;
-      letter-spacing: -0.04em;
-      max-width: 960px;
-    }
-
-    .statement-band p {
-      margin: 0;
-      max-width: 980px;
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 1.04rem;
-    }
-
-    .pillar-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .pillar {
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .pillar-label {
-      display: inline-block;
-      margin-bottom: 10px;
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.18em;
-      color: var(--cyan);
-      text-transform: uppercase;
-    }
-
-    .pillar h3 {
-      margin: 0 0 10px;
-      font-size: 1.18rem;
-      letter-spacing: -0.02em;
-    }
-
-    .pillar p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .function-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .function-card {
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 22px;
-      padding: 24px;
-      box-shadow: var(--shadow);
-    }
-
-    .function-card h3 {
-      margin: 0 0 10px;
-      font-size: 1.18rem;
-      letter-spacing: -0.02em;
-    }
-
-    .function-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .closing {
-      padding: 24px 0 40px;
-    }
-
-    .closing-panel {
-      background: linear-gradient(
-        180deg,
-        rgba(10,14,28,0.90),
-        rgba(7,10,20,0.96)
-      );
-      border: 1px solid rgba(94,126,255,0.22);
-      border-radius: 24px;
-      padding: 34px 30px;
-      box-shadow: var(--shadow);
-    }
-
-    .closing-panel h2 {
-      margin: 0 0 14px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-    }
-
-    .closing-panel p {
-      margin: 0;
-      max-width: 940px;
-      color: var(--muted);
-      line-height: 1.85;
-      font-size: 1.04rem;
-    }
-
-    .footer {
-      padding: 8px 0 32px;
-      text-align: center;
-      color: #8892b2;
-      font-size: 0.92rem;
-    }
-
-    @media (max-width: 1180px) {
-      .pillar-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .brand-logo { height: 54px; }
-      .nav { gap: 26px; }
-      .nav a { font-size: 1rem; }
-      .header-cta { min-width: 160px; padding: 14px 20px; }
-    }
-
-    @media (max-width: 1100px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .solution-graphic-inner {
-        min-height: 560px;
-      }
-    }
-
-    @media (max-width: 980px) {
-      .header-shell {
-        padding-left: 18px;
-        padding-right: 18px;
-      }
-
-      .header-center {
-        position: static;
-        transform: none;
-        width: 100%;
-        order: 2;
-        justify-content: flex-start;
-      }
-
-      .header-shell {
-        flex-wrap: wrap;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 18px;
-      }
-
-      .header-left { order: 1; }
-      .header-right { order: 3; }
-
-      .nav {
-        flex-wrap: wrap;
-        justify-content: flex-start;
-        gap: 18px 24px;
-      }
-    }
-
-    @media (max-width: 920px) {
-      .site-header {
-        position: relative;
-        background: rgba(3, 5, 13, 0.95);
-      }
-
-      .header-shell {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        min-height: auto;
-        padding: 18px;
-        gap: 18px;
-      }
-
-      .header-left,
-      .header-center,
-      .header-right {
-        width: 100%;
-        justify-content: flex-start;
-      }
-
-      .function-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 760px) {
-      .brand-logo {
-        height: 48px;
-      }
-
-      .header-cta {
-        width: 100%;
-      }
-
-      .hero-copy,
-      .solution-graphic,
-      .statement-band,
-      .pillar,
-      .function-card,
-      .closing-panel {
-        padding: 24px;
-      }
-
-      .solution-hub {
-        min-height: 420px;
-      }
-
-      .hub-center {
-        width: 130px;
-        height: 130px;
-        font-size: 0.95rem;
-      }
-
-      .hub-ring {
-        width: 250px;
-        height: 250px;
-      }
-
-      .solution-node {
-        width: 112px;
-        min-height: 84px;
-      }
-
-      .solution-node strong {
-        font-size: 0.82rem;
-      }
-
-      .line-top,
-      .line-bottom {
-        height: 54px;
-      }
-
-      .line-top { top: 48px; }
-      .line-bottom { bottom: 48px; }
-
-      .line-left,
-      .line-right {
-        width: 50px;
-      }
-
-      .line-left { left: 58px; }
-      .line-right { right: 58px; }
-    }
-  </style>
-</head>
-<body>
-  <header class="site-header">
-    <div class="header-shell">
-      <div class="header-left">
-        <a class="brand" href="index.html" aria-label="Stackemy home">
-          <img src="stackemy-header-logo.png" alt="Stackemy logo" class="brand-logo">
-        </a>
-      </div>
-
-      <div class="header-center">
-        <nav class="nav" aria-label="Primary navigation">
-          <a href="core.html">The Core</a>
-          <a href="future.html">Meet the Future</a>
-          <a href="solutions.html">Solutions</a>
-          <a href="about.html">About</a>
-        </nav>
-      </div>
-
-      <div class="header-right">
-        <a class="header-cta" href="get-started.html">Get Started</a>
-      </div>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="section-shell">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <p class="eyebrow">Solutions</p>
-            <h1>CRM, intelligence, analytics, and industry systems <span class="gradient-line">under one umbrella.</span></h1>
-            <p>
-              Stackemy is not a single-category product. It is a broader solution environment where CRM,
-              business intelligence, artificial intelligence, and industry-specific operating capability
-              come together inside one coherent architecture.
-            </p>
-
-            <div class="hero-badges">
-              <span class="hero-badge">CRM</span>
-              <span class="hero-badge">Business Intelligence</span>
-              <span class="hero-badge">Artificial Intelligence</span>
-              <span class="hero-badge">Industry Solutions</span>
-            </div>
-          </div>
-
-          <div class="solution-graphic">
-            <div class="solution-graphic-inner">
-              <div class="solution-hub">
-                <div class="hub-ring"></div>
-
-                <div class="hub-center">Stackemy<br>Solution<br>Environment</div>
-
-                <div class="hub-line line-top"></div>
-                <div class="hub-line line-right"></div>
-                <div class="hub-line line-bottom"></div>
-                <div class="hub-line line-left"></div>
-
-                <div class="solution-node node-top">
-                  <div class="icon">◎</div>
-                  <strong>CRM</strong>
-                </div>
-
-                <div class="solution-node node-right">
-                  <div class="icon">▥</div>
-                  <strong>Business<br>Intelligence</strong>
-                </div>
-
-                <div class="solution-node node-bottom">
-                  <div class="icon">◌</div>
-                  <strong>Artificial<br>Intelligence</strong>
-                </div>
-
-                <div class="solution-node node-left">
-                  <div class="icon">▣</div>
-                  <strong>Industry<br>Solutions</strong>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-shell">
-        <div class="statement-band">
-          <p class="eyebrow">Umbrella Solution Model</p>
-          <h2>The categories businesses buy separately should increasingly work as one system.</h2>
-          <p>
-            Most companies assemble these layers one by one. They buy a CRM, then add reporting, then layer
-            on AI tools, then adopt industry-specific systems, and over time they end up operating across a
-            stack that never quite feels unified. Stackemy is built toward a different model — one umbrella
-            environment where these capabilities reinforce one another inside one operating architecture.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-shell">
-        <div class="pillar-grid">
-          <article class="pillar">
-            <span class="pillar-label">CRM</span>
-            <h3>The relationship and operational foundation.</h3>
-            <p>
-              Accounts, contacts, deals, activities, pipelines, and the protected core record system that
-              anchors the broader environment.
-            </p>
-          </article>
-
-          <article class="pillar">
-            <span class="pillar-label">Business Intelligence</span>
-            <h3>Visibility that lives close to execution.</h3>
-            <p>
-              Dashboards, reporting, trend analysis, cross-entity rollups, and executive visibility tied
-              directly to the system where the work actually happens.
-            </p>
-          </article>
-
-          <article class="pillar">
-            <span class="pillar-label">Artificial Intelligence</span>
-            <h3>Intelligence integrated into the platform.</h3>
-            <p>
-              Guidance, summarization, recommendations, pattern recognition, search, and reasoning that get
-              stronger because the AI has native system context.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-shell">
-        <div class="function-grid">
-          <article class="function-card">
-            <p class="eyebrow">CRM Functions</p>
-            <h3>Structured relationship infrastructure</h3>
-            <p>
-              Customer records, deal management, activity history, operational workflow, ownership,
-              pipeline visibility, and the relationship system that everything else can build around.
-            </p>
-          </article>
-
-          <article class="function-card">
-            <p class="eyebrow">BI Functions</p>
-            <h3>Operational analytics and executive visibility</h3>
-            <p>
-              Performance dashboards, hierarchy-aware reporting, rollups, strategic health, operational
-              movement, and visibility layers tied directly to the system beneath them.
-            </p>
-          </article>
-
-          <article class="function-card">
-            <p class="eyebrow">AI Functions</p>
-            <h3>System-native intelligence</h3>
-            <p>
-              Suggested actions, intelligent summaries, contextual support, search, predictive assistance,
-              reasoning over connected data, and deeper decision support over time.
-            </p>
-          </article>
-
-          <article class="function-card">
-            <p class="eyebrow">Industry Functions</p>
-            <h3>Vertical operating capability</h3>
-            <p>
-              Specialized solution layers that extend around the core so industry workflows and domain-specific
-              systems do not require abandoning the architecture underneath.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="closing">
-      <div class="section-shell">
-        <div class="closing-panel">
-          <p class="eyebrow">The Solution Direction</p>
-          <h2>Not a crowded product menu. A unified solution environment.</h2>
-          <p>
-            Businesses do not operate in isolated software categories. They operate across relationships,
-            reporting, intelligence, workflows, and industry reality all at once. Stackemy solutions are
-            built around that truth. The long-term aim is to create a platform where CRM, business
-            intelligence, artificial intelligence, and industry-specific capability come together inside one
-            coherent system strong enough to support the future.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="footer">
-      © 2026 Stackemy. All rights reserved.
-    </section>
-  </main>
-</body>
-</html>
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 20;
+  background: linear-gradient(
+    180deg,
+    rgba(2, 4, 10, 0.90) 0%,
+    rgba(2, 4, 10, 0.70) 55%,
+    rgba(2, 4, 10, 0.00) 100%
+  );
+}
+
+.header-shell {
+  position: relative;
+  width: 100%;
+  min-height: var(--header-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px 20px;
+}
+
+.header-left,
+.header-right {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  z-index: 2;
+}
+
+.header-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.brand-logo {
+  display: block;
+  height: 60px;
+  width: auto;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 38px;
+}
+
+.nav a {
+  position: relative;
+  font-size: 1.08rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.94);
+  white-space: nowrap;
+}
+
+.nav a.active::after,
+.nav a:hover::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  width: 42px;
+  height: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, var(--blue), var(--cyan), transparent);
+  opacity: 0.85;
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(59,130,255,.5);
+}
+
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 185px;
+  padding: 16px 26px;
+  border-radius: 18px;
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: rgba(20, 16, 48, 0.82);
+  border: 1px solid rgba(117, 126, 255, 0.65);
+  box-shadow:
+    0 0 0 1px rgba(0, 212, 255, 0.10) inset,
+    0 0 18px rgba(96, 88, 255, 0.35),
+    0 0 28px rgba(211, 45, 255, 0.18);
+  backdrop-filter: blur(10px);
+}
