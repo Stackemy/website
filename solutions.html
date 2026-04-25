@@ -248,10 +248,10 @@
     .solutions-map {
       position: relative;
       overflow: hidden;
-      min-height: 760px;
+      min-height: 860px;
       background:
-        radial-gradient(circle at 50% 44%, rgba(39,232,255,0.10), transparent 18%),
-        radial-gradient(circle at 50% 44%, rgba(59,130,255,0.08), transparent 28%),
+        radial-gradient(circle at 50% 46%, rgba(39,232,255,0.10), transparent 18%),
+        radial-gradient(circle at 50% 46%, rgba(59,130,255,0.08), transparent 28%),
         linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
       border: 1px solid rgba(94,126,255,0.22);
       border-radius: 28px;
@@ -288,7 +288,7 @@
       position: relative;
       z-index: 1;
       text-align: center;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
     }
 
     .map-heading h2 {
@@ -309,13 +309,13 @@
     .map-scene {
       position: relative;
       z-index: 1;
-      min-height: 590px;
+      min-height: 690px;
     }
 
     .radial-ring {
       position: absolute;
       left: 50%;
-      top: 50%;
+      top: 52%;
       border-radius: 50%;
       transform: translate(-50%, -50%);
       border: 1px solid rgba(255,255,255,0.08);
@@ -328,15 +328,15 @@
     }
 
     .ring-2 {
-      width: 430px;
-      height: 430px;
+      width: 420px;
+      height: 420px;
       border-color: rgba(255,255,255,0.06);
       box-shadow: 0 0 36px rgba(211,45,255,0.05);
     }
 
     .ring-3 {
-      width: 620px;
-      height: 620px;
+      width: 560px;
+      height: 560px;
       border-color: rgba(255,255,255,0.04);
       box-shadow: 0 0 44px rgba(39,232,255,0.04);
     }
@@ -344,7 +344,7 @@
     .ring-axis {
       position: absolute;
       left: 50%;
-      top: 50%;
+      top: 52%;
       background: linear-gradient(90deg, rgba(39,232,255,0), rgba(39,232,255,0.7), rgba(211,45,255,0));
       box-shadow: 0 0 14px rgba(39,232,255,0.18);
       transform: translate(-50%, -50%);
@@ -352,19 +352,19 @@
     }
 
     .ring-axis.horizontal {
-      width: 540px;
+      width: 500px;
       height: 2px;
     }
 
     .ring-axis.vertical {
       width: 2px;
-      height: 540px;
+      height: 500px;
       background: linear-gradient(180deg, rgba(39,232,255,0), rgba(39,232,255,0.7), rgba(211,45,255,0));
     }
 
     .ring-axis.diag-a,
     .ring-axis.diag-b {
-      width: 430px;
+      width: 400px;
       height: 2px;
     }
 
@@ -379,7 +379,7 @@
     .map-center {
       position: absolute;
       left: 50%;
-      top: 50%;
+      top: 52%;
       width: 206px;
       height: 206px;
       transform: translate(-50%, -50%);
@@ -474,14 +474,14 @@
       line-height: 1.52;
     }
 
-    .node-crm { left: 50%; top: 18px; transform: translateX(-50%); }
-    .node-bi { right: 84px; top: 124px; }
-    .node-ai { right: 40px; top: 50%; transform: translateY(-50%); }
-    .node-industry { right: 84px; bottom: 124px; }
-    .node-workflow { left: 50%; bottom: 18px; transform: translateX(-50%); }
-    .node-governance { left: 84px; bottom: 124px; }
-    .node-hierarchy { left: 40px; top: 50%; transform: translateY(-50%); }
-    .node-experience { left: 84px; top: 124px; }
+    .node-crm { left: 50%; top: 22px; transform: translateX(-50%); }
+    .node-bi { right: 92px; top: 126px; }
+    .node-ai { right: 28px; top: 52%; transform: translateY(-50%); }
+    .node-industry { right: 92px; bottom: 126px; }
+    .node-workflow { left: 50%; bottom: 22px; transform: translateX(-50%); }
+    .node-governance { left: 92px; bottom: 126px; }
+    .node-hierarchy { left: 28px; top: 52%; transform: translateY(-50%); }
+    .node-experience { left: 92px; top: 126px; }
 
     .icon-crm::before,
     .icon-crm::after,
@@ -816,20 +816,25 @@
 
     @media (max-width: 1180px) {
       .solutions-map {
-        min-height: 940px;
+        min-height: 980px;
       }
 
       .ring-3 {
-        width: 540px;
-        height: 540px;
+        width: 520px;
+        height: 520px;
       }
 
-      .node-bi { right: 24px; top: 152px; }
+      .ring-axis.horizontal { width: 460px; }
+      .ring-axis.vertical { height: 460px; }
+      .ring-axis.diag-a,
+      .ring-axis.diag-b { width: 360px; }
+
+      .node-bi { right: 48px; top: 144px; }
       .node-ai { right: 8px; }
-      .node-industry { right: 24px; bottom: 152px; }
-      .node-governance { left: 24px; bottom: 152px; }
+      .node-industry { right: 48px; bottom: 144px; }
+      .node-governance { left: 48px; bottom: 144px; }
       .node-hierarchy { left: 8px; }
-      .node-experience { left: 24px; top: 152px; }
+      .node-experience { left: 48px; top: 144px; }
 
       .brand-logo { height: 54px; }
       .nav { gap: 26px; }
@@ -915,17 +920,17 @@
       }
 
       .solutions-map {
-        min-height: 1240px;
+        min-height: 1280px;
       }
 
       .ring-1 { width: 220px; height: 220px; }
       .ring-2 { width: 340px; height: 340px; }
-      .ring-3 { width: 460px; height: 460px; }
+      .ring-3 { width: 440px; height: 440px; }
 
-      .ring-axis.horizontal { width: 360px; }
-      .ring-axis.vertical { height: 360px; }
+      .ring-axis.horizontal { width: 340px; }
+      .ring-axis.vertical { height: 340px; }
       .ring-axis.diag-a,
-      .ring-axis.diag-b { width: 290px; }
+      .ring-axis.diag-b { width: 280px; }
 
       .map-center {
         width: 180px;
@@ -937,14 +942,14 @@
         width: 156px;
       }
 
-      .node-crm { top: 0; }
-      .node-bi { right: 50%; top: 104px; transform: translateX(168px); }
-      .node-ai { right: 50%; top: 50%; transform: translate(182px, -50%); }
-      .node-industry { right: 50%; bottom: 104px; transform: translateX(168px); }
-      .node-workflow { bottom: 0; }
-      .node-governance { left: 50%; bottom: 104px; transform: translateX(-168px); }
-      .node-hierarchy { left: 50%; top: 50%; transform: translate(-182px, -50%); }
-      .node-experience { left: 50%; top: 104px; transform: translateX(-168px); }
+      .node-crm { top: 10px; }
+      .node-bi { right: 50%; top: 108px; transform: translateX(168px); }
+      .node-ai { right: 50%; top: 52%; transform: translate(184px, -50%); }
+      .node-industry { right: 50%; bottom: 108px; transform: translateX(168px); }
+      .node-workflow { bottom: 10px; }
+      .node-governance { left: 50%; bottom: 108px; transform: translateX(-168px); }
+      .node-hierarchy { left: 50%; top: 52%; transform: translate(-184px, -50%); }
+      .node-experience { left: 50%; top: 108px; transform: translateX(-168px); }
     }
 
     @media (max-width: 760px) {
@@ -966,11 +971,11 @@
       }
 
       .solutions-map {
-        min-height: 1520px;
+        min-height: 1540px;
       }
 
       .map-scene {
-        min-height: 1180px;
+        min-height: 1200px;
       }
 
       .ring-1,
@@ -981,7 +986,7 @@
       }
 
       .map-center {
-        top: 50%;
+        top: 560px;
         width: 170px;
         height: 170px;
       }
@@ -1001,10 +1006,6 @@
       .node-governance { top: 848px; }
       .node-hierarchy { top: 974px; }
       .node-workflow { top: 1100px; bottom: auto; }
-
-      .map-center {
-        top: 560px;
-      }
     }
   </style>
 </head>
