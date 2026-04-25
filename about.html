@@ -47,23 +47,46 @@
     }
 
     .site-header {
-      position: sticky;
+      position: absolute;
       top: 0;
+      left: 0;
+      width: 100%;
       z-index: 40;
-      background: rgba(2, 4, 10, 0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      background: linear-gradient(
+        180deg,
+        rgba(2, 4, 10, 0.90) 0%,
+        rgba(2, 4, 10, 0.70) 55%,
+        rgba(2, 4, 10, 0.00) 100%
+      );
     }
 
     .header-shell {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
+      position: relative;
+      width: 100%;
       min-height: var(--header-height);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      padding: 18px 0 20px;
+      padding: 18px 24px 20px;
+    }
+
+    .header-left,
+    .header-right {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      z-index: 2;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
     }
 
     .brand {
@@ -81,6 +104,7 @@
     .nav {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 38px;
     }
 
@@ -667,22 +691,40 @@
     @media (max-width: 920px) {
       .site-header {
         position: relative;
+        background: rgba(3, 5, 13, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
       }
 
       .header-shell {
-        min-height: auto;
-        padding: 18px 0;
+        display: flex;
         flex-direction: column;
         align-items: flex-start;
+        min-height: auto;
+        padding: 18px;
+        gap: 18px;
       }
 
-      .brand-logo {
-        height: 54px;
+      .header-left,
+      .header-center,
+      .header-right {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .header-center {
+        position: static;
+        transform: none;
       }
 
       .nav {
         flex-wrap: wrap;
+        justify-content: flex-start;
         gap: 18px 24px;
+      }
+
+      .brand-logo {
+        height: 54px;
       }
 
       .hero-copy,
@@ -749,18 +791,24 @@
 <body>
   <header class="site-header">
     <div class="header-shell">
-      <a class="brand" href="index.html" aria-label="Stackemy home">
-        <img src="stackemy-header-logo.png" alt="Stackemy logo" class="brand-logo">
-      </a>
+      <div class="header-left">
+        <a class="brand" href="index.html" aria-label="Stackemy home">
+          <img src="stackemy-header-logo.png" alt="Stackemy logo" class="brand-logo">
+        </a>
+      </div>
 
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="core.html">The Core</a>
-        <a href="future.html">Meet the Future</a>
-        <a href="solutions.html">Solutions</a>
-        <a class="active" href="about.html">About</a>
-      </nav>
+      <div class="header-center">
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="core.html">The Core</a>
+          <a href="future.html">Meet the Future</a>
+          <a href="solutions.html">Solutions</a>
+          <a class="active" href="about.html">About</a>
+        </nav>
+      </div>
 
-      <a class="header-cta" href="get-started.html">Get Started</a>
+      <div class="header-right">
+        <a class="header-cta" href="get-started.html">Get Started</a>
+      </div>
     </div>
   </header>
 
@@ -824,124 +872,4 @@
             <div class="value-icon"></div>
             <h3>Core technology</h3>
             <p>
-              We create strong foundational business systems that support operational clarity, connected
-              workflows, and scalable growth across the platform.
-            </p>
-          </article>
-
-          <article class="value-card">
-            <div class="value-icon"></div>
-            <h3>Tailored custom technology</h3>
-            <p>
-              We extend beyond generic software by building technology shaped around industry needs,
-              agency models, and specialized product environments.
-            </p>
-          </article>
-
-          <article class="value-card">
-            <div class="value-icon"></div>
-            <h3>White-labeled delivery</h3>
-            <p>
-              We support branded solution models that allow organizations to deliver modern technology
-              under their own identity without losing architectural quality.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-shell">
-        <div class="split-layout">
-          <div class="panel">
-            <p class="eyebrow">How We Build</p>
-            <h2>Custom engineered systems with authority, flexibility, and long-horizon intent.</h2>
-            <p>
-              Stackemy is built through modern engineering, not by stitching together weak compromises.
-              Our approach is to create technology that can serve as a stable core while also supporting
-              tailored solutions above it. That combination allows us to serve common business needs and
-              more specialized operating models at the same time.
-            </p>
-
-            <div class="belief-list">
-              <div class="belief-item">
-                <strong>Scientific discipline</strong>
-                <span>Strong engineering, clean architecture, and precision in how systems are designed and delivered.</span>
-              </div>
-              <div class="belief-item">
-                <strong>Practical innovation</strong>
-                <span>Technology that solves real business needs while remaining modern, extensible, and differentiated.</span>
-              </div>
-              <div class="belief-item">
-                <strong>Technical alchemy</strong>
-                <span>The ability to mix core systems, custom capability, and branded delivery into one cohesive solution model.</span>
-              </div>
-              <div class="belief-item">
-                <strong>Authoritative execution</strong>
-                <span>We are building and delivering technology now, with systems meant to remain relevant well into the future.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="formula-grid">
-            <article class="formula-card">
-              <span class="formula-step">Capability 01</span>
-              <h3>Common business technology</h3>
-              <p>
-                Core platform capabilities provide the stable operating base that businesses need to run,
-                scale, and coordinate work with greater clarity.
-              </p>
-            </article>
-
-            <article class="formula-card">
-              <span class="formula-step">Capability 02</span>
-              <h3>Industry and agency adaptation</h3>
-              <p>
-                Tailored custom technology allows Stackemy to serve more specific environments without
-                losing the power of the broader system underneath.
-              </p>
-            </article>
-
-            <article class="formula-card">
-              <span class="formula-step">Capability 03</span>
-              <h3>White-label platform delivery</h3>
-              <p>
-                We support models where branded solutions matter, giving organizations the ability to
-                deliver sophisticated technology under their own name and market presence.
-              </p>
-            </article>
-
-            <article class="formula-card">
-              <span class="formula-step">Capability 04</span>
-              <h3>Magical modern experience</h3>
-              <p>
-                The result should not feel ordinary. It should feel elevated, intuitive, and distinctive —
-                where powerful engineering becomes a memorable product experience.
-              </p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="closing">
-      <div class="section-shell">
-        <div class="closing-panel">
-          <p class="eyebrow">The Stackemy Standard</p>
-          <h2>Modern technology, tailored intelligently, and engineered to endure.</h2>
-          <p>
-            Stackemy is where technology meets science, artistic innovation, and the art of alchemy.
-            We combine core business technology with tailored custom systems for industries, agencies,
-            and white-labeled products — delivering established, authoritative technology that is built
-            for real use, real scale, and long-term relevance.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="footer">
-      © 2026 Stackemy. All rights reserved.
-    </section>
-  </main>
-</body>
-</html>
+             
