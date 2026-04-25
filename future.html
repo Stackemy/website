@@ -18,18 +18,12 @@
       --magenta: #d32dff;
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
       --radius: 24px;
-      --max: 1280px;
-      --content: 1200px;
       --header-height: 98px;
+      --content: 1200px;
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -42,10 +36,7 @@
         linear-gradient(180deg, #03050d 0%, #02040a 100%);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+    a { color: inherit; text-decoration: none; }
 
     .site-header {
       position: absolute;
@@ -156,23 +147,49 @@
     }
 
     .hero {
-      padding: 34px 0 0;
+      padding: calc(var(--header-height) + 32px) 0 0;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 22px;
-      align-items: stretch;
-      padding-top: calc(var(--header-height) + 24px);
+    .hero-band {
+      position: relative;
+      min-height: 620px;
+      border-radius: 30px;
+      overflow: hidden;
+      border: 1px solid rgba(94,126,255,0.22);
+      box-shadow: var(--shadow);
+      background:
+        linear-gradient(90deg, rgba(3,5,13,0.82) 0%, rgba(3,5,13,0.62) 28%, rgba(3,5,13,0.22) 62%, rgba(3,5,13,0.10) 100%),
+        linear-gradient(180deg, rgba(3,5,13,0.18) 0%, rgba(3,5,13,0.04) 45%, rgba(3,5,13,0.78) 100%),
+        linear-gradient(180deg, rgba(10,14,28,0.94), rgba(7,10,20,0.98));
+    }
+
+    .hero-band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 34px 34px;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .hero-band::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 180px;
+      background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.88) 100%);
+      pointer-events: none;
     }
 
     .hero-copy {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 38px 34px;
+      position: relative;
+      z-index: 3;
+      width: min(620px, calc(100% - 48px));
+      margin: 0;
+      padding: 52px 40px;
     }
 
     .eyebrow {
@@ -192,7 +209,7 @@
       max-width: 760px;
     }
 
-    .hero-copy .gradient-line {
+    .gradient-line {
       background: linear-gradient(90deg, var(--cyan), var(--blue), var(--magenta));
       -webkit-background-clip: text;
       background-clip: text;
@@ -224,57 +241,28 @@
       font-size: 1.1rem;
     }
 
-    .future-graphic {
-      position: relative;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(39,232,255,0.10), transparent 30%),
-        linear-gradient(180deg, rgba(10,14,28,0.92), rgba(7,10,20,0.98));
-      border: 1px solid rgba(94,126,255,0.24);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
-      padding: 28px;
-      overflow: hidden;
-    }
-
-    .future-graphic::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 34px 34px;
-      opacity: 0.5;
-      pointer-events: none;
-    }
-
-    .future-graphic-inner {
-      position: relative;
-      z-index: 1;
-      min-height: 540px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
     .future-stage {
-      position: relative;
-      width: min(100%, 560px);
-      min-height: 470px;
+      position: absolute;
+      right: 24px;
+      left: 44%;
+      top: 30px;
+      bottom: 24px;
+      z-index: 2;
+      min-height: 0;
     }
 
     .pulse-rings {
       position: absolute;
       left: 50%;
-      bottom: 22px;
+      bottom: 26px;
       transform: translateX(-50%);
-      width: 360px;
-      height: 360px;
+      width: 420px;
+      height: 420px;
       border-radius: 50%;
       border: 2px solid rgba(59,130,255,0.22);
       box-shadow:
-        0 0 0 28px rgba(59,130,255,0.04),
-        0 0 0 64px rgba(211,45,255,0.03);
+        0 0 0 32px rgba(59,130,255,0.04),
+        0 0 0 72px rgba(211,45,255,0.03);
     }
 
     .pulse-rings::before,
@@ -295,8 +283,8 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      width: 250px;
-      height: 80px;
+      width: 290px;
+      height: 94px;
       clip-path: polygon(50% 0%, 100% 24%, 50% 100%, 0% 24%);
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow:
@@ -305,30 +293,30 @@
     }
 
     .layer.layer-1 {
-      bottom: 88px;
+      bottom: 110px;
       background: linear-gradient(180deg, rgba(12,170,255,0.16), rgba(211,45,255,0.16));
     }
 
     .layer.layer-2 {
-      bottom: 132px;
-      width: 220px;
+      bottom: 164px;
+      width: 252px;
       background: linear-gradient(180deg, rgba(59,130,255,0.18), rgba(39,232,255,0.14));
     }
 
     .layer.layer-3 {
-      bottom: 176px;
-      width: 190px;
+      bottom: 216px;
+      width: 214px;
       background: linear-gradient(180deg, rgba(162,45,255,0.16), rgba(59,130,255,0.16));
     }
 
     .stack-core {
       position: absolute;
       left: 50%;
-      bottom: 214px;
+      bottom: 268px;
       transform: translateX(-50%);
-      width: 142px;
-      height: 142px;
-      border-radius: 26px;
+      width: 156px;
+      height: 156px;
+      border-radius: 28px;
       background:
         radial-gradient(circle at center, rgba(39,232,255,0.18), rgba(59,130,255,0.14) 55%, rgba(162,45,255,0.14) 100%);
       border: 1px solid rgba(255,255,255,0.14);
@@ -338,7 +326,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 4.2rem;
+      font-size: 4.6rem;
       font-weight: 900;
       color: #8fdcff;
       text-shadow:
@@ -354,39 +342,39 @@
     }
 
     .connector-left {
-      width: 88px;
-      left: 90px;
-      top: 178px;
+      width: 108px;
+      left: 48px;
+      top: 190px;
     }
 
     .connector-right {
-      width: 88px;
-      right: 90px;
-      top: 178px;
+      width: 108px;
+      right: 48px;
+      top: 190px;
     }
 
     .connector-top {
       width: 2px;
-      height: 74px;
+      height: 84px;
       left: 50%;
-      top: 72px;
+      top: 54px;
       transform: translateX(-50%);
       background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
     }
 
     .connector-bottom {
       width: 2px;
-      height: 86px;
+      height: 92px;
       left: 50%;
-      bottom: 94px;
+      bottom: 120px;
       transform: translateX(-50%);
       background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
     }
 
     .future-node {
       position: absolute;
-      width: 142px;
-      min-height: 92px;
+      width: 154px;
+      min-height: 96px;
       padding: 14px 14px 12px;
       border-radius: 20px;
       background: rgba(9, 14, 28, 0.92);
@@ -418,33 +406,33 @@
     }
 
     .node-top {
-      top: 18px;
+      top: 0;
       left: 50%;
       transform: translateX(-50%);
     }
 
     .node-left {
-      top: 132px;
-      left: 8px;
+      top: 144px;
+      left: 0;
     }
 
     .node-right {
-      top: 132px;
-      right: 8px;
+      top: 144px;
+      right: 0;
     }
 
     .node-bottom {
       left: 50%;
-      bottom: 6px;
+      bottom: 14px;
       transform: translateX(-50%);
     }
 
+    .section {
+      padding: 24px 0 0;
+    }
+
     .statement-band {
-      background: linear-gradient(
-        180deg,
-        rgba(10,14,28,0.90),
-        rgba(7,10,20,0.96)
-      );
+      background: linear-gradient(180deg, rgba(10,14,28,0.90), rgba(7,10,20,0.96));
       border: 1px solid rgba(94,126,255,0.22);
       border-radius: 24px;
       padding: 34px 30px;
@@ -562,11 +550,7 @@
     }
 
     .closing-panel {
-      background: linear-gradient(
-        180deg,
-        rgba(10,14,28,0.90),
-        rgba(7,10,20,0.96)
-      );
+      background: linear-gradient(180deg, rgba(10,14,28,0.90), rgba(7,10,20,0.96));
       border: 1px solid rgba(94,126,255,0.22);
       border-radius: 24px;
       padding: 34px 30px;
@@ -596,25 +580,16 @@
     }
 
     @media (max-width: 1180px) {
-      .brand-logo {
-        height: 54px;
-      }
+      .brand-logo { height: 54px; }
+      .nav { gap: 26px; }
+      .nav a { font-size: 1rem; }
+      .header-cta { min-width: 160px; padding: 14px 20px; }
+      .pillar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
 
-      .nav {
-        gap: 26px;
-      }
-
-      .nav a {
-        font-size: 1rem;
-      }
-
-      .header-cta {
-        min-width: 160px;
-        padding: 14px 20px;
-      }
-
-      .pillar-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    @media (max-width: 1100px) {
+      .future-stage {
+        left: 40%;
       }
     }
 
@@ -640,13 +615,8 @@
         gap: 18px;
       }
 
-      .header-left {
-        order: 1;
-      }
-
-      .header-right {
-        order: 3;
-      }
+      .header-left { order: 1; }
+      .header-right { order: 3; }
 
       .nav {
         flex-wrap: wrap;
@@ -654,7 +624,21 @@
         gap: 18px 24px;
       }
 
-      .hero-grid,
+      .hero-band {
+        min-height: 760px;
+      }
+
+      .hero-copy {
+        width: min(100%, calc(100% - 48px));
+      }
+
+      .future-stage {
+        left: 24px;
+        right: 24px;
+        top: 290px;
+        bottom: 24px;
+      }
+
       .split-section {
         grid-template-columns: 1fr;
       }
@@ -682,8 +666,12 @@
         justify-content: flex-start;
       }
 
-      .hero-grid {
+      .hero {
         padding-top: 32px;
+      }
+
+      .hero-band {
+        min-height: 780px;
       }
 
       .pillar-grid {
@@ -692,16 +680,10 @@
     }
 
     @media (max-width: 760px) {
-      .brand-logo {
-        height: 48px;
-      }
-
-      .header-cta {
-        width: 100%;
-      }
+      .brand-logo { height: 48px; }
+      .header-cta { width: 100%; }
 
       .hero-copy,
-      .future-graphic,
       .statement-band,
       .pillar,
       .panel,
@@ -709,8 +691,12 @@
         padding: 24px;
       }
 
+      .hero-band {
+        min-height: 700px;
+      }
+
       .future-stage {
-        min-height: 430px;
+        top: 330px;
       }
 
       .pulse-rings {
@@ -754,33 +740,13 @@
         font-size: 0.82rem;
       }
 
-      .connector-left {
-        left: 58px;
-        width: 58px;
-      }
+      .connector-left { left: 58px; width: 58px; }
+      .connector-right { right: 58px; width: 58px; }
+      .connector-top { top: 84px; height: 52px; }
+      .connector-bottom { bottom: 108px; height: 54px; }
 
-      .connector-right {
-        right: 58px;
-        width: 58px;
-      }
-
-      .connector-top {
-        top: 84px;
-        height: 52px;
-      }
-
-      .connector-bottom {
-        bottom: 108px;
-        height: 54px;
-      }
-
-      .node-left {
-        left: -2px;
-      }
-
-      .node-right {
-        right: -2px;
-      }
+      .node-left { left: -2px; }
+      .node-right { right: -2px; }
     }
   </style>
 </head>
@@ -811,7 +777,7 @@
   <main>
     <section class="hero">
       <div class="section-shell">
-        <div class="hero-grid">
+        <div class="hero-band">
           <div class="hero-copy">
             <p class="eyebrow">Meet the Future</p>
             <h1>The future isn’t more software. <span class="gradient-line">It’s one system that works as one.</span></h1>
@@ -824,41 +790,37 @@
             <a href="solutions.html" class="hero-link">Explore the future</a>
           </div>
 
-          <div class="future-graphic">
-            <div class="future-graphic-inner">
-              <div class="future-stage">
-                <div class="pulse-rings"></div>
+          <div class="future-stage">
+            <div class="pulse-rings"></div>
 
-                <div class="layer layer-1"></div>
-                <div class="layer layer-2"></div>
-                <div class="layer layer-3"></div>
-                <div class="stack-core">S</div>
+            <div class="layer layer-1"></div>
+            <div class="layer layer-2"></div>
+            <div class="layer layer-3"></div>
+            <div class="stack-core">S</div>
 
-                <div class="connector connector-left"></div>
-                <div class="connector connector-right"></div>
-                <div class="connector connector-top"></div>
-                <div class="connector connector-bottom"></div>
+            <div class="connector connector-left"></div>
+            <div class="connector connector-right"></div>
+            <div class="connector connector-top"></div>
+            <div class="connector connector-bottom"></div>
 
-                <div class="future-node node-top">
-                  <div class="icon">▣</div>
-                  <strong>Industry<br>Capability</strong>
-                </div>
+            <div class="future-node node-top">
+              <div class="icon">▣</div>
+              <strong>Industry<br>Capability</strong>
+            </div>
 
-                <div class="future-node node-left">
-                  <div class="icon">◌</div>
-                  <strong>Intelligence<br>& AI</strong>
-                </div>
+            <div class="future-node node-left">
+              <div class="icon">◌</div>
+              <strong>Intelligence<br>& AI</strong>
+            </div>
 
-                <div class="future-node node-right">
-                  <div class="icon">▥</div>
-                  <strong>Analytics &<br>Insight</strong>
-                </div>
+            <div class="future-node node-right">
+              <div class="icon">▥</div>
+              <strong>Analytics &<br>Insight</strong>
+            </div>
 
-                <div class="future-node node-bottom">
-                  <div class="icon">◍</div>
-                  <strong>Protected<br>CRM Core</strong>
-                </div>
-              </div>
+            <div class="future-node node-bottom">
+              <div class="icon">◍</div>
+              <strong>Protected<br>CRM Core</strong>
             </div>
           </div>
         </div>
