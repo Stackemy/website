@@ -217,218 +217,23 @@
 
     .graphic-band {
       position: relative;
-      min-height: 620px;
+      min-height: 640px;
       border-radius: 30px;
       overflow: hidden;
       border: 1px solid rgba(94,126,255,0.22);
       box-shadow: var(--shadow);
       background:
-        linear-gradient(180deg, rgba(10,14,28,0.94), rgba(7,10,20,0.98));
-    }
-
-    .graphic-band::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 34px 34px;
-      opacity: 0.45;
-      pointer-events: none;
+        linear-gradient(180deg, rgba(8,12,24,0.12), rgba(7,10,20,0.18)),
+        url("future-hero-graphic.png") center center / cover no-repeat;
     }
 
     .graphic-band::after {
       content: "";
       position: absolute;
-      inset: auto 0 0 0;
-      height: 160px;
-      background: linear-gradient(180deg, rgba(3,5,13,0) 0%, rgba(3,5,13,0.72) 100%);
-      pointer-events: none;
-    }
-
-    .future-stage {
-      position: relative;
-      z-index: 2;
-      width: min(100%, 920px);
-      min-height: 620px;
-      margin: 0 auto;
-    }
-
-    .pulse-rings {
-      position: absolute;
-      left: 50%;
-      bottom: 34px;
-      transform: translateX(-50%);
-      width: 430px;
-      height: 430px;
-      border-radius: 50%;
-      border: 2px solid rgba(59,130,255,0.22);
-      box-shadow:
-        0 0 0 34px rgba(59,130,255,0.04),
-        0 0 0 76px rgba(211,45,255,0.03);
-    }
-
-    .pulse-rings::before,
-    .pulse-rings::after {
-      content: "";
-      position: absolute;
-      inset: 9%;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.10);
-    }
-
-    .pulse-rings::after {
-      inset: 21%;
-      border-color: rgba(255,255,255,0.07);
-    }
-
-    .layer {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 300px;
-      height: 98px;
-      clip-path: polygon(50% 0%, 100% 24%, 50% 100%, 0% 24%);
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow:
-        0 0 24px rgba(39,232,255,0.12),
-        0 0 48px rgba(59,130,255,0.10);
-    }
-
-    .layer.layer-1 {
-      bottom: 126px;
-      background: linear-gradient(180deg, rgba(12,170,255,0.16), rgba(211,45,255,0.16));
-    }
-
-    .layer.layer-2 {
-      bottom: 184px;
-      width: 258px;
-      background: linear-gradient(180deg, rgba(59,130,255,0.18), rgba(39,232,255,0.14));
-    }
-
-    .layer.layer-3 {
-      bottom: 238px;
-      width: 218px;
-      background: linear-gradient(180deg, rgba(162,45,255,0.16), rgba(59,130,255,0.16));
-    }
-
-    .stack-core {
-      position: absolute;
-      left: 50%;
-      bottom: 296px;
-      transform: translateX(-50%);
-      width: 162px;
-      height: 162px;
-      border-radius: 28px;
+      inset: 0;
       background:
-        radial-gradient(circle at center, rgba(39,232,255,0.18), rgba(59,130,255,0.14) 55%, rgba(162,45,255,0.14) 100%);
-      border: 1px solid rgba(255,255,255,0.14);
-      box-shadow:
-        0 0 26px rgba(39,232,255,0.16),
-        0 0 56px rgba(59,130,255,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4.8rem;
-      font-weight: 900;
-      color: #8fdcff;
-      text-shadow:
-        0 0 18px rgba(39,232,255,0.28),
-        0 0 38px rgba(59,130,255,0.22);
-    }
-
-    .connector {
-      position: absolute;
-      background: linear-gradient(90deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
-      height: 2px;
-      box-shadow: 0 0 14px rgba(39,232,255,0.32);
-    }
-
-    .connector-left {
-      width: 138px;
-      left: 124px;
-      top: 218px;
-    }
-
-    .connector-right {
-      width: 138px;
-      right: 124px;
-      top: 218px;
-    }
-
-    .connector-top {
-      width: 2px;
-      height: 94px;
-      left: 50%;
-      top: 54px;
-      transform: translateX(-50%);
-      background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
-    }
-
-    .connector-bottom {
-      width: 2px;
-      height: 110px;
-      left: 50%;
-      bottom: 146px;
-      transform: translateX(-50%);
-      background: linear-gradient(180deg, rgba(39,232,255,0.9), rgba(211,45,255,0.8));
-    }
-
-    .future-node {
-      position: absolute;
-      width: 166px;
-      min-height: 102px;
-      padding: 14px 14px 12px;
-      border-radius: 20px;
-      background: rgba(9, 14, 28, 0.92);
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: 0 16px 34px rgba(0,0,0,0.26);
-      text-align: center;
-    }
-
-    .future-node .icon {
-      width: 44px;
-      height: 44px;
-      margin: 0 auto 10px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      color: #ffffff;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .future-node strong {
-      display: block;
-      font-size: 0.94rem;
-      line-height: 1.35;
-      color: #eef4ff;
-      letter-spacing: -0.01em;
-    }
-
-    .node-top {
-      top: 26px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .node-left {
-      top: 170px;
-      left: 54px;
-    }
-
-    .node-right {
-      top: 170px;
-      right: 54px;
-    }
-
-    .node-bottom {
-      left: 50%;
-      bottom: 22px;
-      transform: translateX(-50%);
+        linear-gradient(180deg, rgba(3,5,13,0.10) 0%, rgba(3,5,13,0.04) 35%, rgba(3,5,13,0.46) 100%);
+      pointer-events: none;
     }
 
     .section {
@@ -622,26 +427,12 @@
         gap: 18px 24px;
       }
 
-      .graphic-band {
-        min-height: 760px;
-      }
-
-      .future-stage {
-        width: 100%;
-      }
-
-      .connector-left {
-        left: 72px;
-        width: 96px;
-      }
-
-      .connector-right {
-        right: 72px;
-        width: 96px;
-      }
-
       .split-section {
         grid-template-columns: 1fr;
+      }
+
+      .graphic-band {
+        min-height: 520px;
       }
     }
 
@@ -697,57 +488,8 @@
       }
 
       .graphic-band {
-        min-height: 660px;
+        min-height: 360px;
       }
-
-      .pulse-rings {
-        width: 250px;
-        height: 250px;
-        bottom: 56px;
-      }
-
-      .layer.layer-1 {
-        width: 180px;
-        height: 62px;
-        bottom: 104px;
-      }
-
-      .layer.layer-2 {
-        width: 158px;
-        height: 56px;
-        bottom: 140px;
-      }
-
-      .layer.layer-3 {
-        width: 136px;
-        height: 50px;
-        bottom: 176px;
-      }
-
-      .stack-core {
-        width: 110px;
-        height: 110px;
-        bottom: 210px;
-        font-size: 3rem;
-      }
-
-      .future-node {
-        width: 110px;
-        min-height: 84px;
-        padding: 12px 10px 10px;
-      }
-
-      .future-node strong {
-        font-size: 0.82rem;
-      }
-
-      .connector-left { left: 58px; width: 58px; }
-      .connector-right { right: 58px; width: 58px; }
-      .connector-top { top: 84px; height: 52px; }
-      .connector-bottom { bottom: 108px; height: 54px; }
-
-      .node-left { left: -2px; }
-      .node-right { right: -2px; }
     }
   </style>
 </head>
@@ -794,41 +536,7 @@
 
     <section class="graphic-band-wrap">
       <div class="section-shell">
-        <div class="graphic-band">
-          <div class="future-stage">
-            <div class="pulse-rings"></div>
-
-            <div class="layer layer-1"></div>
-            <div class="layer layer-2"></div>
-            <div class="layer layer-3"></div>
-            <div class="stack-core">S</div>
-
-            <div class="connector connector-left"></div>
-            <div class="connector connector-right"></div>
-            <div class="connector connector-top"></div>
-            <div class="connector connector-bottom"></div>
-
-            <div class="future-node node-top">
-              <div class="icon">▣</div>
-              <strong>Industry<br>Capability</strong>
-            </div>
-
-            <div class="future-node node-left">
-              <div class="icon">◌</div>
-              <strong>Intelligence<br>& AI</strong>
-            </div>
-
-            <div class="future-node node-right">
-              <div class="icon">▥</div>
-              <strong>Analytics &<br>Insight</strong>
-            </div>
-
-            <div class="future-node node-bottom">
-              <div class="icon">◍</div>
-              <strong>Protected<br>CRM Core</strong>
-            </div>
-          </div>
-        </div>
+        <div class="graphic-band"></div>
       </div>
     </section>
 
