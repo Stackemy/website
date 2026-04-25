@@ -57,14 +57,32 @@
     }
 
     .header-shell {
-      width: min(var(--max), calc(100% - 40px));
-      margin: 0 auto;
+      position: relative;
+      width: 100%;
       min-height: var(--header-height);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
-      padding: 18px 0 20px;
+      padding: 18px 24px 20px;
+    }
+
+    .header-left,
+    .header-right {
+      display: flex;
+      align-items: center;
+      flex: 0 0 auto;
+      z-index: 2;
+    }
+
+    .header-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
     }
 
     .brand {
@@ -82,6 +100,7 @@
     .nav {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 38px;
     }
 
@@ -93,6 +112,7 @@
       white-space: nowrap;
     }
 
+    .nav a.active::after,
     .nav a:hover::after {
       content: "";
       position: absolute;
@@ -394,6 +414,23 @@
       .info-grid {
         grid-template-columns: 1fr;
       }
+
+      .brand-logo {
+        height: 54px;
+      }
+
+      .nav {
+        gap: 26px;
+      }
+
+      .nav a {
+        font-size: 1rem;
+      }
+
+      .header-cta {
+        min-width: 160px;
+        padding: 14px 20px;
+      }
     }
 
     @media (max-width: 1100px) {
@@ -404,10 +441,24 @@
 
     @media (max-width: 920px) {
       .header-shell {
-        min-height: auto;
-        padding: 18px 0;
+        display: flex;
         flex-direction: column;
         align-items: flex-start;
+        min-height: auto;
+        padding: 18px;
+        gap: 18px;
+      }
+
+      .header-left,
+      .header-center,
+      .header-right {
+        width: 100%;
+        justify-content: flex-start;
+      }
+
+      .header-center {
+        position: static;
+        transform: none;
       }
 
       .brand-logo {
@@ -417,6 +468,7 @@
       .nav {
         flex-wrap: wrap;
         gap: 18px 24px;
+        justify-content: flex-start;
       }
 
       .contact-form {
@@ -453,18 +505,24 @@
 <body>
   <header class="site-header">
     <div class="header-shell">
-      <a class="brand" href="index.html" aria-label="Stackemy home">
-        <img src="stackemy-header-logo.png" alt="Stackemy logo" class="brand-logo">
-      </a>
+      <div class="header-left">
+        <a class="brand" href="index.html" aria-label="Stackemy home">
+          <img src="stackemy-header-logo.png" alt="Stackemy logo" class="brand-logo">
+        </a>
+      </div>
 
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="core.html">The Core</a>
-        <a href="future.html">Meet the Future</a>
-        <a href="solutions.html">Solutions</a>
-        <a href="about.html">About</a>
-      </nav>
+      <div class="header-center">
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="core.html">The Core</a>
+          <a href="future.html">Meet the Future</a>
+          <a href="solutions.html">Solutions</a>
+          <a href="about.html">About</a>
+        </nav>
+      </div>
 
-      <a class="header-cta" href="get-started.html">Get Started</a>
+      <div class="header-right">
+        <a class="header-cta" href="get-started.html">Get Started</a>
+      </div>
     </div>
   </header>
 
